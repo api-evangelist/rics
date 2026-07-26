@@ -1,0 +1,2749 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "DigitalCommunity API",
+    "description": "To use this API, you need to have been first been issued a username and password by RICS. These need to be sent in a JSON User object in the body of a POST request to the /token endpoint in order to receive back a secure bearer token. This token must then be sent with every subsequent request to an information endpoint (in the request's authorization header). Bearer tokens have a limited lifetime and will need to be refreshed by your client periodically. The mechanism by which this refresh occurs is a matter for your client software to address.",
+    "version": "v1"
+  },
+  "paths": {
+    "/api/AzureStorage/GetRegulationDeclarationDocuments": {
+      "get": {
+        "tags": [
+          "AzureStorage"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/RegulationDeclaration"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/RegulationDeclaration"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/RegulationDeclaration"
+                  }
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "deprecated": true
+      }
+    },
+    "/api/AzureStorage/DeleteRegulationDeclarationDocuments": {
+      "delete": {
+        "tags": [
+          "AzureStorage"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/RegulationDeclaration"
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/RegulationDeclaration"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/RegulationDeclaration"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/RegulationDeclaration"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": true
+      }
+    },
+    "/api/AzureStorage/StoreRegulationDeclarationDocument": {
+      "post": {
+        "tags": [
+          "AzureStorage"
+        ],
+        "parameters": [
+          {
+            "name": "RowKey",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "SchemeId",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "StorageUrl",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "SharepointPath",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": true
+      }
+    },
+    "/api/AzureStorage/UploadFile": {
+      "post": {
+        "tags": [
+          "AzureStorage"
+        ],
+        "parameters": [
+          {
+            "name": "containerName",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": true
+      }
+    },
+    "/api/AzureStorage/DownloadFile": {
+      "get": {
+        "tags": [
+          "AzureStorage"
+        ],
+        "parameters": [
+          {
+            "name": "fileUrl",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": true
+      }
+    },
+    "/api/AzureStorage/DeleteLogData": {
+      "post": {
+        "tags": [
+          "AzureStorage"
+        ],
+        "parameters": [
+          {
+            "name": "tableName",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "toDate",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": true
+      }
+    },
+    "/api/OlaMerchantPost": {
+      "post": {
+        "tags": [
+          "OlaMerchantPost"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Payment/{id}": {
+      "get": {
+        "tags": [
+          "Payment"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaymentRequestModel"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Payment/{id}/reference/{reference}": {
+      "get": {
+        "tags": [
+          "Payment"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "reference",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaymentRequestModel"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Payment/update": {
+      "post": {
+        "tags": [
+          "Payment"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": {
+                  "$ref": "#/components/schemas/JToken"
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": {
+                  "$ref": "#/components/schemas/JToken"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": {
+                  "$ref": "#/components/schemas/JToken"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": {
+                  "$ref": "#/components/schemas/JToken"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Profile/{id}": {
+      "get": {
+        "tags": [
+          "Profile"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfileModel"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Regulation/{schemeNumber}": {
+      "get": {
+        "tags": [
+          "Regulation"
+        ],
+        "parameters": [
+          {
+            "name": "schemeNumber",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegulationScheme"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Regulation/Subscriptions": {
+      "get": {
+        "tags": [
+          "Regulation"
+        ],
+        "parameters": [
+          {
+            "name": "regulationSchemeId",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegulationSubscriptions"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Regulation/PaymentInformation": {
+      "get": {
+        "tags": [
+          "Regulation"
+        ],
+        "parameters": [
+          {
+            "name": "regulationSchemeId",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaymentInformation"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/SurveyWriter/{id}": {
+      "get": {
+        "tags": [
+          "SurveyWriter"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SurveyWriterModel"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/token": {
+      "post": {
+        "tags": [
+          "Token"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": {
+                  "$ref": "#/components/schemas/JToken"
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": {
+                  "$ref": "#/components/schemas/JToken"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": {
+                  "$ref": "#/components/schemas/JToken"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": {
+                  "$ref": "#/components/schemas/JToken"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Address": {
+        "type": "object",
+        "properties": {
+          "ownerId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "subsOnlineUpdate": {
+            "type": "boolean"
+          },
+          "addressType": {
+            "$ref": "#/components/schemas/AddressType"
+          },
+          "organisation": {
+            "type": "string",
+            "nullable": true
+          },
+          "line1": {
+            "type": "string",
+            "nullable": true
+          },
+          "line2": {
+            "type": "string",
+            "nullable": true
+          },
+          "line3": {
+            "type": "string",
+            "nullable": true
+          },
+          "city": {
+            "type": "string",
+            "nullable": true
+          },
+          "county": {
+            "type": "string",
+            "nullable": true
+          },
+          "state": {
+            "type": "string",
+            "nullable": true
+          },
+          "postcode": {
+            "type": "string",
+            "nullable": true
+          },
+          "isoCountryCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "countryName": {
+            "type": "string",
+            "nullable": true
+          },
+          "countryId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "longitude": {
+            "type": "number",
+            "format": "double"
+          },
+          "latitude": {
+            "type": "number",
+            "format": "double"
+          },
+          "telephone": {
+            "type": "string",
+            "nullable": true
+          },
+          "website": {
+            "type": "string",
+            "nullable": true
+          },
+          "emailAddress": {
+            "type": "string",
+            "nullable": true
+          },
+          "basedInChannelIslands": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AddressType": {
+        "enum": [
+          0,
+          1,
+          2
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "CancellationReason": {
+        "enum": [
+          0,
+          200000000,
+          200000001,
+          200000002,
+          200000003,
+          200000004,
+          200000005
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "CurrentApplicationType": {
+        "enum": [
+          0,
+          200000000,
+          200000001,
+          200000002,
+          200000003
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "EndDateChangeReason": {
+        "enum": [
+          0,
+          200000000,
+          200000001,
+          200000002,
+          200000003,
+          200000004
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "Fees": {
+        "type": "object",
+        "properties": {
+          "subsscriptionAmount": {
+            "type": "number",
+            "format": "double"
+          },
+          "lionHeartAmount": {
+            "type": "number",
+            "format": "double"
+          },
+          "upgAmount": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "FirmRegsRoute": {
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "Gima": {
+        "enum": [
+          0,
+          200000000,
+          200000001,
+          200000002,
+          200000003
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "InclusionReason": {
+        "enum": [
+          0,
+          200000000,
+          200000001
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "JToken": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/JToken"
+        }
+      },
+      "LicenceEndReason": {
+        "enum": [
+          0,
+          200000000,
+          200000001,
+          200000002,
+          200000003,
+          200000004,
+          200000005,
+          200000006,
+          200000007,
+          200000008,
+          200000009,
+          200000010,
+          200000011,
+          200000012,
+          200000013,
+          200000014,
+          200000015,
+          200000016
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "MemberDesignation": {
+        "enum": [
+          0,
+          200000000,
+          200000001,
+          200000002,
+          200000003,
+          200000004
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "MemberDirectorPrincipal": {
+        "type": "object",
+        "properties": {
+          "contactId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "connectionId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "emailAddress": {
+            "type": "string",
+            "nullable": true
+          },
+          "emailAddress2": {
+            "type": "string",
+            "nullable": true
+          },
+          "emailAddress3": {
+            "type": "string",
+            "nullable": true
+          },
+          "contactNo": {
+            "type": "string",
+            "nullable": true
+          },
+          "fullName": {
+            "type": "string",
+            "nullable": true
+          },
+          "hasPreviousBadSchemeStatus": {
+            "type": "boolean"
+          },
+          "notFoundInCrm": {
+            "type": "boolean"
+          },
+          "isResponsiblePrincipal": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "MemberPiiAndAdrRoute": {
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "Office": {
+        "type": "object",
+        "properties": {
+          "accountId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "firmNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "officeNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "publicationName": {
+            "type": "string",
+            "nullable": true
+          },
+          "registeredName": {
+            "type": "string",
+            "nullable": true
+          },
+          "tradingName": {
+            "type": "string",
+            "nullable": true
+          },
+          "primaryContact": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "primaryContactName": {
+            "type": "string",
+            "nullable": true
+          },
+          "address": {
+            "$ref": "#/components/schemas/Address"
+          },
+          "isoCountryCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "vatRegNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "isHeadOffice": {
+            "type": "boolean"
+          },
+          "isRegulated": {
+            "type": "boolean"
+          },
+          "hasActiveRegistration": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PaymentInformation": {
+        "type": "object",
+        "properties": {
+          "quotes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RegulationQuote"
+            },
+            "nullable": true
+          },
+          "salesOrders": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RegulationSalesOrder"
+            },
+            "nullable": true
+          },
+          "countOfQuotes": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "countOfSalesOrders": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "countOfSchemeAnnualReturns": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PaymentRequestModel": {
+        "type": "object",
+        "properties": {
+          "contactNo": {
+            "type": "string",
+            "nullable": true
+          },
+          "firstName": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastName": {
+            "type": "string",
+            "nullable": true
+          },
+          "friendlyName": {
+            "type": "string",
+            "nullable": true
+          },
+          "address1": {
+            "type": "string",
+            "nullable": true
+          },
+          "administrativeArea": {
+            "type": "string",
+            "nullable": true
+          },
+          "country": {
+            "type": "string",
+            "nullable": true
+          },
+          "currency": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "locality": {
+            "type": "string",
+            "nullable": true
+          },
+          "phoneNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "postalCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "currencyCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "canPayByIvr": {
+            "type": "boolean"
+          },
+          "reference": {
+            "type": "string",
+            "nullable": true
+          },
+          "formattedReference": {
+            "type": "string",
+            "nullable": true
+          },
+          "mid": {
+            "type": "string",
+            "nullable": true
+          },
+          "paymentFees": {
+            "$ref": "#/components/schemas/Fees"
+          },
+          "isTest": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PiiInsurer": {
+        "type": "object",
+        "properties": {
+          "piiUnderwriterName": {
+            "type": "string",
+            "nullable": true
+          },
+          "piiUnderwriterId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "policyNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "piiInsuranceId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "regulatedSchemeId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "schemeName": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PortalLocation": {
+        "enum": [
+          0,
+          200000000,
+          200000001,
+          200000002,
+          200000003
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "ProblemDetails": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "detail": {
+            "type": "string",
+            "nullable": true
+          },
+          "instance": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": { }
+      },
+      "ProfessionalGrade": {
+        "enum": [
+          0,
+          200000000,
+          200000001,
+          200000002,
+          200000003,
+          200000004
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "ProfileModel": {
+        "type": "object",
+        "properties": {
+          "contactId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "contactNo": {
+            "type": "string",
+            "nullable": true
+          },
+          "firstName": {
+            "type": "string",
+            "nullable": true
+          },
+          "middleName": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastName": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "preferredEmail": {
+            "type": "string",
+            "nullable": true
+          },
+          "salutation": {
+            "type": "string",
+            "nullable": true
+          },
+          "honours": {
+            "type": "string",
+            "nullable": true
+          },
+          "country": {
+            "type": "string",
+            "nullable": true
+          },
+          "region": {
+            "type": "string",
+            "nullable": true
+          },
+          "worldRegion": {
+            "type": "string",
+            "nullable": true
+          },
+          "jobTitle": {
+            "type": "string",
+            "nullable": true
+          },
+          "department": {
+            "type": "string",
+            "nullable": true
+          },
+          "businessPhone": {
+            "type": "string",
+            "nullable": true
+          },
+          "mobilePhone": {
+            "type": "string",
+            "nullable": true
+          },
+          "contactType": {
+            "type": "string",
+            "nullable": true
+          },
+          "professionalGrade": {
+            "$ref": "#/components/schemas/ProfessionalGrade"
+          },
+          "designation": {
+            "$ref": "#/components/schemas/MemberDesignation"
+          },
+          "applicantType": {
+            "$ref": "#/components/schemas/CurrentApplicationType"
+          },
+          "summary": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PurchaseType": {
+        "enum": [
+          0,
+          200000000,
+          200000001
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "QuoteStatus": {
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          200000000,
+          647390000
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "RedressProvider": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "regulatedSchemeId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "regulatedSchemeName": {
+            "type": "string",
+            "nullable": true
+          },
+          "redressSchemeId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "redressSchemeName": {
+            "type": "string",
+            "nullable": true
+          },
+          "countryId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "countryName": {
+            "type": "string",
+            "nullable": true
+          },
+          "countryCode": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "RegulatedOrganisationType": {
+        "enum": [
+          0,
+          200000000,
+          200000001,
+          200000002,
+          200000003,
+          200000004,
+          200000005
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "RegulationDeclaration": {
+        "type": "object",
+        "properties": {
+          "rowKey": {
+            "type": "string",
+            "nullable": true
+          },
+          "schemeId": {
+            "type": "string",
+            "nullable": true
+          },
+          "storageUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "sharepointPath": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "RegulationQuote": {
+        "type": "object",
+        "properties": {
+          "quoteId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "quoteRef": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "revisionNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "transactionCurrencyId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "isoCurrencyCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "currencyName": {
+            "type": "string",
+            "nullable": true
+          },
+          "currencySymbol": {
+            "type": "string",
+            "nullable": true
+          },
+          "totalAmount": {
+            "type": "number",
+            "format": "double"
+          },
+          "taxAmount": {
+            "type": "number",
+            "format": "double"
+          },
+          "discountAmount": {
+            "type": "number",
+            "format": "double"
+          },
+          "priceListId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "paymentReceived": {
+            "type": "boolean"
+          },
+          "status": {
+            "$ref": "#/components/schemas/QuoteStatus"
+          },
+          "quoteLines": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RegulationQuoteLine"
+            },
+            "nullable": true
+          },
+          "dateCreated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "purchaseType": {
+            "$ref": "#/components/schemas/PurchaseType"
+          }
+        },
+        "additionalProperties": false
+      },
+      "RegulationQuoteLine": {
+        "type": "object",
+        "properties": {
+          "quoteLineId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "catalogProductId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "quantity": {
+            "type": "number",
+            "format": "double"
+          },
+          "unitPrice": {
+            "type": "number",
+            "format": "double"
+          },
+          "baseAmount": {
+            "type": "number",
+            "format": "double"
+          },
+          "extendedAmount": {
+            "type": "number",
+            "format": "double"
+          },
+          "discountAmount": {
+            "type": "number",
+            "format": "double"
+          },
+          "productTypeCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "productName": {
+            "type": "string",
+            "nullable": true
+          },
+          "productNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "sequenceNo": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isPriceOverridden": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "subscriptionId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "RegulationReturn": {
+        "type": "object",
+        "properties": {
+          "regulatoryReturnId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "returnTypeId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "returnTypeName": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "regulatoryType": {
+            "$ref": "#/components/schemas/RegulatoryType"
+          },
+          "regulatoryTypeName": {
+            "type": "string",
+            "nullable": true
+          },
+          "regulatoryTypeCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "regulatedMember": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "regulatedMemberName": {
+            "type": "string",
+            "nullable": true
+          },
+          "regulatedFirm": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "regulatedFirmName": {
+            "type": "string",
+            "nullable": true
+          },
+          "contactOfficer": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "contactOfficerName": {
+            "type": "string",
+            "nullable": true
+          },
+          "statusCode": {
+            "$ref": "#/components/schemas/ReturnStatusCode"
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "submitterId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "submitterName": {
+            "type": "string",
+            "nullable": true
+          },
+          "dateOfSubmission": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "returnDueDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "regulationCaseId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "regulationCaseName": {
+            "type": "string",
+            "nullable": true
+          },
+          "surveyResponseId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "surveyResponseName": {
+            "type": "string",
+            "nullable": true
+          },
+          "totalAnswersRequired": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalAnswersProvided": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "regulatedSchemeId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "regulatedSchemeName": {
+            "type": "string",
+            "nullable": true
+          },
+          "responsiblePrincipal": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "responsiblePrincipalName": {
+            "type": "string",
+            "nullable": true
+          },
+          "result": {
+            "$ref": "#/components/schemas/ScoreResult"
+          },
+          "score": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "createdOn": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "modifiedOn": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "RegulationSalesOrder": {
+        "type": "object",
+        "properties": {
+          "orderId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "orderRef": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "$ref": "#/components/schemas/SalesOrderStatus"
+          },
+          "totalAmount": {
+            "type": "number",
+            "format": "double"
+          },
+          "dateCreated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "isoCurrencyCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "currencySymbol": {
+            "type": "string",
+            "nullable": true
+          },
+          "quoteNumber": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "RegulationScheme": {
+        "type": "object",
+        "properties": {
+          "regulatedSchemeId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "regulatedSchemeNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "parentRegulatedSchemeId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "parentRegulatedSchemeName": {
+            "type": "string",
+            "nullable": true
+          },
+          "licencedContactId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "licencedContactName": {
+            "type": "string",
+            "nullable": true
+          },
+          "licencedContactNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "submittedByContactId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "submittedByContactNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "submittedByContact": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "regulatedEntityName": {
+            "type": "string",
+            "nullable": true
+          },
+          "regulatedSchemeTypeId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "regulatedSchemeTypeName": {
+            "type": "string",
+            "nullable": true
+          },
+          "regulatedSchemeTypeCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "schemeLicenceType": {
+            "$ref": "#/components/schemas/SchemeLicenceType"
+          },
+          "schemeLicenceTypeName": {
+            "type": "string",
+            "nullable": true
+          },
+          "masterAccount": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "masterAccountName": {
+            "type": "string",
+            "nullable": true
+          },
+          "officeNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "firmNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "contactOfficer": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "personalAddressOkay": {
+            "type": "boolean"
+          },
+          "preferredAddressOkay": {
+            "type": "boolean"
+          },
+          "localGroupOkay": {
+            "type": "boolean"
+          },
+          "isSellable": {
+            "type": "boolean"
+          },
+          "contactOfficerName": {
+            "type": "string",
+            "nullable": true
+          },
+          "contactOfficerNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "schemeLicenceStatus": {
+            "$ref": "#/components/schemas/SchemeLicenceStatus"
+          },
+          "schemeLicenceStatusName": {
+            "type": "string",
+            "nullable": true
+          },
+          "schemeLicenceStatusReason": {
+            "$ref": "#/components/schemas/SchemeLicenceStatusReason"
+          },
+          "schemeLicenceStatusReasonName": {
+            "type": "string",
+            "nullable": true
+          },
+          "approvalConditions": {
+            "type": "string",
+            "nullable": true
+          },
+          "submissionDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "approvalDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "licenceEndDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "licenceEndReason": {
+            "$ref": "#/components/schemas/LicenceEndReason"
+          },
+          "licenceEndReasonName": {
+            "type": "string",
+            "nullable": true
+          },
+          "inclusionReason": {
+            "$ref": "#/components/schemas/InclusionReason"
+          },
+          "inclusionReasonName": {
+            "type": "string",
+            "nullable": true
+          },
+          "numDirectorPrincipals": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "numMemberDirectorPrincipals": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "regulatedOrganisationType": {
+            "$ref": "#/components/schemas/RegulatedOrganisationType"
+          },
+          "regulatedOrganisationTypeName": {
+            "type": "string",
+            "nullable": true
+          },
+          "isSelfDeclaredAsVrsEligible": {
+            "type": "boolean"
+          },
+          "vrsSponsorshipCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "isMemberSignoffRequired": {
+            "type": "boolean"
+          },
+          "signOffContactId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "signOffContactName": {
+            "type": "string",
+            "nullable": true
+          },
+          "signOffContactNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "dateSignedOff": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "alternatePiiUnderwriters": {
+            "type": "string",
+            "nullable": true
+          },
+          "clientMoneyType": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "clientMoneyTypeName": {
+            "type": "string",
+            "nullable": true
+          },
+          "gimaStatus": {
+            "$ref": "#/components/schemas/Gima"
+          },
+          "gimaStatusName": {
+            "type": "string",
+            "nullable": true
+          },
+          "hasPii": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "sponsorship": {
+            "type": "boolean"
+          },
+          "statusChangeDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "renewalsDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "responsiblePrincipalId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "responsiblePrincipalName": {
+            "type": "string",
+            "nullable": true
+          },
+          "responsiblePrincipalNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "isResponsiblePrincipalValid": {
+            "type": "boolean"
+          },
+          "memberPiiAndAdrRoute": {
+            "$ref": "#/components/schemas/MemberPiiAndAdrRoute"
+          },
+          "memberPiiAndAdrRouteName": {
+            "type": "string",
+            "nullable": true
+          },
+          "firmPiiAndAdrRoute": {
+            "$ref": "#/components/schemas/FirmRegsRoute"
+          },
+          "firmPiiAndAdrRouteName": {
+            "type": "string",
+            "nullable": true
+          },
+          "regulationReturns": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RegulationReturn"
+            },
+            "nullable": true
+          },
+          "childSchemes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RegulationScheme"
+            },
+            "nullable": true
+          },
+          "surveyingServices": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SurveyingService"
+            },
+            "nullable": true
+          },
+          "piiInsurers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PiiInsurer"
+            },
+            "nullable": true
+          },
+          "noPiiExplanation": {
+            "type": "string",
+            "nullable": true
+          },
+          "redressProviders": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RedressProvider"
+            },
+            "nullable": true
+          },
+          "offices": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Office"
+            },
+            "nullable": true
+          },
+          "memberDirectorPrincipals": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MemberDirectorPrincipal"
+            },
+            "nullable": true
+          },
+          "createdOn": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "modifiedOn": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "countOfReturns": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "countOfMemberDirectorPrincipals": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "countOfSubscriptions": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "RegulationSubscription": {
+        "type": "object",
+        "properties": {
+          "ownerId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "ownerName": {
+            "type": "string",
+            "nullable": true
+          },
+          "subscriptionNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "subscriptionProductId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "subscriptionProductName": {
+            "type": "string",
+            "nullable": true
+          },
+          "contactId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "contactName": {
+            "type": "string",
+            "nullable": true
+          },
+          "preferredEmailAddress": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "numberOfLicences": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "isOnBehalfOfAnAccount": {
+            "type": "boolean"
+          },
+          "reasonForEndDateChange": {
+            "$ref": "#/components/schemas/EndDateChangeReason"
+          },
+          "reasonForEndDateChangeName": {
+            "type": "string",
+            "nullable": true
+          },
+          "reasonForSuspension": {
+            "$ref": "#/components/schemas/SuspensionReason"
+          },
+          "reasonForSuspensionName": {
+            "type": "string",
+            "nullable": true
+          },
+          "reasonForCancellation": {
+            "$ref": "#/components/schemas/CancellationReason"
+          },
+          "reasonForCancellationName": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "$ref": "#/components/schemas/SubscriptionOwnerStatus"
+          },
+          "subscriptions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Subscription"
+            },
+            "nullable": true
+          },
+          "subscriptionUsers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SubscriptionUser"
+            },
+            "nullable": true
+          },
+          "sponsorshipCode": {
+            "$ref": "#/components/schemas/SponsorshipCode"
+          },
+          "paymentMethod": {
+            "$ref": "#/components/schemas/SubscriptionPaymentMethod"
+          },
+          "paymentMethodName": {
+            "type": "string",
+            "nullable": true
+          },
+          "renewalGuid": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "regulatedScheme": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "regulatedSchemeName": {
+            "type": "string",
+            "nullable": true
+          },
+          "portalSection": {
+            "$ref": "#/components/schemas/PortalLocation"
+          },
+          "portalSectionName": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdOn": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "modifiedOn": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "RegulationSubscriptions": {
+        "type": "object",
+        "properties": {
+          "subscriptions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RegulationSubscription"
+            },
+            "nullable": true
+          },
+          "countOfSubscriptions": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "RegulatoryType": {
+        "enum": [
+          0,
+          200000000,
+          200000001
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "ReturnStatusCode": {
+        "enum": [
+          0,
+          200000000,
+          200000001,
+          200000002,
+          200000003,
+          200000004,
+          200000005,
+          200000006,
+          200000007,
+          200000008,
+          200000009,
+          200000010,
+          200000011,
+          200000012,
+          200000013
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "SalesOrderStatus": {
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          100001,
+          100002,
+          100003,
+          200000,
+          200001
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "SchemeLicenceStatus": {
+        "enum": [
+          0,
+          1,
+          2,
+          200000000,
+          200000001,
+          200000002,
+          200000003,
+          200000004,
+          200000005,
+          200000006,
+          200000007,
+          200000008,
+          200000009,
+          200000010,
+          200000011,
+          200000012,
+          200000013,
+          200000014,
+          200000015
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "SchemeLicenceStatusReason": {
+        "enum": [
+          0,
+          200000000,
+          200000001,
+          200000002,
+          200000003,
+          200000004,
+          200000005,
+          200000006,
+          200000007,
+          200000008,
+          200000009,
+          200000010,
+          200000011,
+          200000012,
+          200000013,
+          200000014,
+          200000015,
+          200000016
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "SchemeLicenceType": {
+        "enum": [
+          0,
+          200000000,
+          200000001
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "ScoreResult": {
+        "enum": [
+          0,
+          1,
+          2
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "SponsorshipCode": {
+        "type": "object",
+        "properties": {
+          "sponsorshipCodeId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "$ref": "#/components/schemas/SponsorshipCodeStatus"
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "totalAllowance": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "quantityAvailable": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "quantityUsed": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "createdOn": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "modifiedOn": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SponsorshipCodeStatus": {
+        "enum": [
+          0,
+          1,
+          2,
+          200000000,
+          200000001
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "Subscription": {
+        "type": "object",
+        "properties": {
+          "subscriptionId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "numberOfLicences": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "poNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "salesOrders": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "nullable": true
+          },
+          "quotes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SubscriptionOwnerStatus": {
+        "enum": [
+          0,
+          1,
+          2,
+          200000000,
+          200000002,
+          200000003,
+          200000004,
+          200000005,
+          200000006,
+          200000007
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "SubscriptionPaymentMethod": {
+        "enum": [
+          0,
+          200000000,
+          200000002,
+          200000003,
+          200000004,
+          200000006
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "SubscriptionUser": {
+        "type": "object",
+        "properties": {
+          "subscriptionUserId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "contactId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "contactNo": {
+            "type": "string",
+            "nullable": true
+          },
+          "contactName": {
+            "type": "string",
+            "nullable": true
+          },
+          "preferredEmailAddress": {
+            "type": "string",
+            "nullable": true
+          },
+          "sponsorshipCodeId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "subscriptionProductId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "subscriptionId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "status": {
+            "$ref": "#/components/schemas/SubscriptionUserStatus"
+          },
+          "approvalStatus": {
+            "$ref": "#/components/schemas/SubscriptionUserApprovalStatus"
+          },
+          "licenceKey": {
+            "type": "string",
+            "nullable": true
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "vrsSponsorshipApplicationId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SubscriptionUserApprovalStatus": {
+        "enum": [
+          0,
+          200000000,
+          200000001
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "SubscriptionUserStatus": {
+        "enum": [
+          0,
+          1,
+          2
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "SurveyWriterModel": {
+        "type": "object",
+        "properties": {
+          "isValid": {
+            "type": "boolean"
+          },
+          "licenceKey": {
+            "type": "string",
+            "nullable": true
+          },
+          "organisation": {
+            "type": "string",
+            "nullable": true
+          },
+          "productType": {
+            "type": "string",
+            "nullable": true
+          },
+          "productCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SurveyingService": {
+        "type": "object",
+        "properties": {
+          "serviceId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "service": {
+            "type": "string",
+            "nullable": true
+          },
+          "isValuationService": {
+            "type": "boolean"
+          },
+          "countryId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "countryName": {
+            "type": "string",
+            "nullable": true
+          },
+          "countryCode": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SuspensionReason": {
+        "enum": [
+          0,
+          200000000,
+          200000001,
+          200000002
+        ],
+        "type": "integer",
+        "format": "int32"
+      }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "apiKey",
+        "description": "Please enter into field the word 'Bearer' following by space and JWT",
+        "name": "Authorization",
+        "in": "header"
+      }
+    }
+  },
+  "security": [
+    {
+      "Bearer": [ ]
+    }
+  ]
+}

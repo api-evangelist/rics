@@ -1,0 +1,446 @@
+aid: rics
+name: RICS (Royal Institution of Chartered Surveyors)
+review:
+  question: >-
+    Does RICS, the United Kingdom's royal-chartered professional body for surveyors and valuers,
+    publish a reachable developer surface, and what does the RESO question mean in a market that
+    has no MLS?
+  answer: >-
+    Yes, narrowly, and RESO means nothing here. RICS operates one real production API - the
+    DigitalCommunity API at api.rics.org - whose OpenAPI 3.0.1 contract is served publicly and
+    anonymously from a live Swagger UI, but it is a regulation, membership, billing and
+    survey-writer integration API, not a property-data API, and its own description says
+    credentials must first be issued by RICS. RICS separately publishes the RICS Data Standard
+    (RDS) 3.3.3 as an MIT-licensed JSON Schema and XSD on GitHub, anonymously downloadable. There
+    is no RESO reference anywhere in the RICS estate, no OData $metadata, no Universal Property
+    Identifier, and no open dataset.
+  date: '2026-07-26'
+  reviewer: API Evangelist
+  tier: industry-body
+  homeMarket: United Kingdom
+
+resoPosture:
+  summary: >-
+    No RESO reference found. RESO is a North American construct tied to NAR-affiliated MLSs, and the
+    United Kingdom has no MLS to certify against, so RICS is neither RESO-certified nor a candidate
+    for certification. The "certified but not reachable" pattern does not apply to RICS - there is
+    no certification layer for property data in this market at all.
+  resoCertified: false
+  resoCertifiedRationale: >-
+    RICS does not appear in the RESO certification directory and does not implement, reference or
+    endorse the RESO Data Dictionary or the RESO Web API. RICS is a professional and valuation
+    standards body, not a listing-data operator; it holds no listing data and runs no OData service.
+  evidence:
+    webApiCertification: none - RICS operates no OData service and publishes no RESO Web API endpoint
+    dataDictionaryCertification: none
+    odataMetadata: >-
+      No $metadata document exists anywhere in the RICS estate. api.rics.org is an ASP.NET/IIS
+      REST service documented with OpenAPI 3.0.1, not OData; there is no /odata route and no
+      OData service document. www.rics.org sits behind Imperva Incapsula and answers every path,
+      real or invented, with a ~212 to ~875 byte JavaScript challenge body, so no path-level
+      probe of that host can be treated as evidence either way.
+    universalPropertyIdentifier: >-
+      No UPI. RICS uses its own regulation-scheme numbers and member/firm identifiers - the
+      DigitalCommunity API addresses records as /api/Regulation/{schemeNumber}, /api/Profile/{id}
+      and /api/SurveyWriter/{id}. UK property identity is carried by HM Land Registry title
+      numbers and Ordnance Survey UPRN/TOID, neither of which is a RICS artifact.
+    certificationDirectoryListing: >-
+      Not listed. RESO's public directory at https://www.reso.org/certificates/ carries US MLSs
+      and data providers; no United Kingdom professional body appears in it.
+  whatRICSStandardisesInstead: >-
+    RICS is the certifying and standards body for the professional layer, not the data-transport
+    layer. It publishes the RICS Valuation - Global Standards (the Red Book, incorporating the
+    International Valuation Standards), the RICS Home Survey Standard, RICS Property Measurement
+    (IPMS), the International Construction Measurement Standards (ICMS), the International Land
+    Measurement Standard (ILMS) and the Rules of Conduct, and it regulates firms and individuals
+    against them. Its one genuinely machine-readable contract is the RICS Data Standard.
+
+ricsDataStandard:
+  name: RICS Data Standard (RDS)
+  version: 3.3.3
+  lastUpdated: '2022-03-15'
+  latestRelease: v3.3.3, published 2022-03-16 (GitHub Releases; prior release v3.2.1, April 2021)
+  repository: https://github.com/RICS-Data-Standard/RDS
+  repositoryHttpStatus: 200
+  organization: https://github.com/RICS-Data-Standard (GitHub org id 83720225, one public repository)
+  licence: MIT (LICENSE file reads "MIT License / Copyright (c) 2021 aknight-rics")
+  formats: JSON Schema draft-04 and W3C XML Schema (XSD), plus HTML documentation and example instances
+  scope: >-
+    Per the schema's own description block - "a JSON schema for the RICS Data Standard (RDS)
+    incorporating ICMS, ILMS, IPMS, IVS, and IBOS using address formats from buildingSMART IFC,
+    and Oasis xAL". Covers capture and exchange of data on land, property, real estate and
+    infrastructure assets.
+  contact: datastandards@rics.org (stated inside the schema description)
+  freelyDownloadable: true
+  gateNote: >-
+    Genuinely open. Every RDS artifact in openapi/ was fetched anonymously from
+    raw.githubusercontent.com with HTTP 200, no account, no EULA click-through and no membership.
+    This is the sharpest contrast with RESO, whose reso.org downloads are wrapped in a EULA.
+  isItAnAPI: >-
+    No. RDS is a schema and exchange format only. It defines no transport, no endpoints and no
+    authentication, and RICS operates no service that serves or accepts RDS documents over HTTP.
+
+accessGate:
+  classification: partner-only
+  appliesTo: The RICS DigitalCommunity API at api.rics.org, the only RICS-operated API found.
+  whatADeveloperMustSignOrJoin:
+    toReadTheAPIContract: >-
+      Nothing. https://api.rics.org/ serves a Swagger UI and
+      https://api.rics.org/swagger/v1/swagger.json returns the full OpenAPI 3.0.1 document to an
+      anonymous GET (HTTP 200, 67,992 bytes). No login, no key, no referer check.
+    toReadTheDataStandard: >-
+      Nothing. The RDS JSON Schema, XSD, examples and HTML docs are MIT-licensed and anonymously
+      downloadable from github.com/RICS-Data-Standard/RDS.
+    toActuallyCallTheAPI: >-
+      Credentials must be issued by RICS. The specification's info.description states verbatim:
+      "To use this API, you need to have been first been issued a username and password by RICS.
+      These need to be sent in a JSON User object in the body of a POST request to the /token
+      endpoint in order to receive back a secure bearer token." No application form, developer
+      terms page, pricing page or signup flow for this API exists on any RICS property. The only
+      published route into a RICS technology relationship is the RICS Tech Partner Programme
+      (https://www.rics.org/get-involved/rics-tech-partner-programme), a curated, commercially
+      negotiated partner network - hence partner-only rather than application-approval, because
+      there is no published application to make.
+    toReadTheStandardsThemselves: >-
+      Standards PDFs are linked from www.rics.org under /content/dam/ricsglobal/documents/standards/
+      and RICS states that its standards are published openly, but this could NOT be confirmed by
+      anonymous automated request: every www.rics.org path, including
+      /content/dam/ricsglobal/documents/standards/Red-Book-Global-Standards_redline.pdf, returned
+      HTTP 200 with a 212-byte Imperva Incapsula JavaScript challenge instead of the document, both
+      with a default and with a full browser user-agent and header set. The subscription platform
+      isurv.com (RICS-operated) carries the same standards behind a paid subscription. Treat the
+      free-PDF claim as unverified here rather than as a finding.
+  selfServeDeveloperPortal: false
+  developerPortalNote: >-
+    developer.rics.org, developers.rics.org, docs.rics.org, data.rics.org and standards.rics.org all
+    fail DNS resolution (curl exit 000). The nearest thing to a developer portal is the bare Swagger
+    UI at https://api.rics.org/, which has tryItOutEnabled set to false in its configuration, offers
+    no signup and issues no keys. developer.bcis.co.uk is a real Stoplight developer portal, but it
+    belongs to BCIS, not to RICS - see adjacentButNotRICS below.
+
+openData:
+  hasOpenData: false
+  note: >-
+    RICS publishes no open, unlicensed, publicly callable dataset. Its market intelligence - the
+    RICS UK Residential Market Survey, Construction Monitor and Commercial Property Monitor - is
+    published as reports and news pages, not as data endpoints. What is open from RICS is
+    SPECIFICATION, not data: the MIT-licensed RICS Data Standard schema. The genuinely open UK
+    property data layer belongs to the public sector - HM Land Registry Price Paid Data under the
+    Open Government Licence and Ordnance Survey's open addressing and mapping products - and none
+    of it comes from RICS.
+
+authModel:
+  digitalCommunityAPI:
+    scheme: Bearer JWT via a proprietary username/password token exchange
+    securitySchemeDeclared: >-
+      components.securitySchemes.Bearer, declared as type apiKey, name Authorization, in header,
+      with the description "Please enter into field the word 'Bearer' following by space and JWT".
+      Applied globally via a top-level security requirement.
+    tokenEndpoint: POST https://api.rics.org/token with a JSON User object; returns a short-lived bearer token
+    notOAuth2: >-
+      Despite issuing JWTs this is not OAuth 2.0 - there is no grant type, no client_id/client_secret,
+      no scopes and no discovery document. Refresh is explicitly pushed onto the client: "Bearer
+      tokens have a limited lifetime and will need to be refreshed by your client periodically. The
+      mechanism by which this refresh occurs is a matter for your client software to address."
+    scopes: none defined in the specification
+    liveBehaviour: >-
+      Anonymous GET https://api.rics.org/api/Profile/1 returned HTTP 401 and anonymous GET
+      https://api.rics.org/token returned HTTP 405 (POST-only) on 2026-07-26, confirming the service
+      is live and enforcing authentication. Note an IIS quirk: HEAD requests to the swagger.json path
+      return 404 while GET returns 200.
+  memberSignIn:
+    scheme: OpenID Connect over Azure AD B2C
+    tenant: ricsb2clive.onmicrosoft.com
+    tenantId: 88b1d398-08db-4fc1-af82-65ba1595185c
+    policy: B2C_1A_RICS_signup_signin (custom policy, CombinedSigninAndSignup)
+    vanityHost: b2clogin.rics.org
+    discoveryDocument: >-
+      https://b2clogin.rics.org/ricsb2clive.onmicrosoft.com/B2C_1A_RICS_signup_signin/v2.0/.well-known/openid-configuration
+      returned HTTP 200 application/json anonymously (1,420 bytes) and is saved verbatim at
+      openapi/rics-azure-ad-b2c-openid-configuration.json.
+    scopesSupported: ['openid']
+    idTokenSigningAlg: RS256
+    note: >-
+      This is the sign-in for RICS members and customers reached through
+      https://services.rics.org/Rics.IntermediaryIdentityService/ - it is NOT a developer
+      authorization surface and issues no API credentials. https://www.rics.org/.well-known/openid-configuration
+      returns the Incapsula challenge, not a discovery document, and https://b2clogin.rics.org/.well-known/openid-configuration
+      returns HTTP 404.
+
+surfaces:
+  openapi:
+    exists: true
+    detail: >-
+      One OpenAPI 3.0.1 document, publicly and anonymously served from
+      https://api.rics.org/swagger/v1/swagger.json. 16 paths, 7 tags (AzureStorage,
+      OlaMerchantPost, Payment, Profile, Regulation, SurveyWriter, Token), 49 component schemas.
+      No servers block is declared; the base URL is the host serving it, https://api.rics.org.
+  webhooks:
+    exists: false
+    detail: No webhook, callback or subscription-delivery mechanism is declared in the specification or documented anywhere.
+  events:
+    exists: false
+  graphql:
+    exists: false
+  sdks:
+    exists: false
+    detail: No RICS-published client library was found. The only RICS GitHub organization discovered is RICS-Data-Standard, which contains schemas and examples, not SDKs. github.com/rics is an unrelated individual (Ricardo Silva).
+  postman:
+    exists: false
+  cli:
+    exists: false
+  statusPage:
+    exists: false
+    detail: None found for RICS. (BCIS operates a "BCIS status" page, but BCIS is a separate company.)
+  undocumentedInternalSurface:
+    host: www.ricsfirms.com
+    detail: >-
+      The Find a Surveyor directory is an Umbraco site whose React bundle
+      (/dist/js/rics-react.js) calls internal endpoints under /umbraco/api/, including
+      /umbraco/api/contentGridApi/ and /umbraco/api/officeApi/recordClientsideView. These are CMS
+      internals, not a published API - there is no documentation, no terms, no contract and no
+      versioning, so they are deliberately NOT listed in apis.yml.
+
+adjacentButNotRICS:
+  bcis:
+    name: BCIS (Building Cost Information Service)
+    relationship: >-
+      Founded by RICS in 1961 and operated as part of RICS for decades, BCIS was spun out in 2022
+      as an independent company with backing led by LDC; RICS retains only a minority shareholding.
+      bcis.co.uk carries no RICS branding or ownership statement as of 2026-07-26. RICS still
+      resells and cites BCIS cost data.
+    developerPortal: https://developer.bcis.co.uk/ (HTTP 200, a Stoplight-hosted developer portal, client-side rendered)
+    whyExcluded: >-
+      A real developer portal exists here, but it is a separate legal entity's, not RICS's. It is
+      recorded for the record and should be profiled as its own provider rather than attributed to
+      RICS. No spec could be extracted anonymously - the Stoplight SPA renders its table of contents
+      client-side and every server-side path probed (/sitemap.xml, /api/sitemap.xml,
+      /api/v1/projects, /api/v1/workspaces, /openapi.json, /docs) returned 404.
+  homonymTrap:
+    warning: >-
+      "RICS" is heavily overloaded. Search results for "RICS API" are dominated by RICS Software
+      (ricssoftware.com), an unrelated United States retail point-of-sale vendor with its own
+      documented API, and by LSEG "RICs" (Reuters Instrument Codes) and Oracle's Retail Integration
+      Cloud Service. None of these belong in this profile. Everything recorded here was taken from
+      the rics.org domain, its subdomains, or the RICS-Data-Standard GitHub organization.
+
+probes:
+  date: '2026-07-26'
+  note: >-
+    www.rics.org is fronted by Imperva Incapsula. Every path on that host - existing, invented,
+    /openapi.json, /swagger.json, /llms.txt, /.well-known/* - returns HTTP 200 with a 212 to 875
+    byte JavaScript challenge body rather than content, with both default and full browser
+    user-agent and header sets. A 200 from www.rics.org therefore proves nothing about whether a
+    resource exists, and none of those rows should be read as a confirmed artifact.
+  results:
+    - url: https://rics.org/
+      status: 200
+      note: redirects to https://www.rics.org/ (Incapsula challenge body)
+    - url: https://www.rics.org/
+      status: 200
+      note: Incapsula JS challenge, 864 bytes
+    - url: https://api.rics.org/
+      status: 200
+      note: redirects to /index.html, Swagger UI, 4,764 bytes - THE developer surface
+    - url: https://api.rics.org/swagger/v1/swagger.json
+      status: 200
+      note: application/json, 67,992 bytes, OpenAPI 3.0.1 "DigitalCommunity API" - harvested verbatim
+    - url: https://api.rics.org/api/Profile/1
+      status: 401
+      note: live and enforcing authentication
+    - url: https://api.rics.org/token
+      status: 405
+      note: POST-only token endpoint
+    - url: https://api.rics.org/swagger/index.html
+      status: 404
+    - url: https://api.rics.org/health
+      status: 404
+    - url: https://developer.rics.org/
+      status: 000
+      note: DNS does not resolve
+    - url: https://developers.rics.org/
+      status: 000
+      note: DNS does not resolve
+    - url: https://docs.rics.org/
+      status: 000
+      note: DNS does not resolve
+    - url: https://data.rics.org/
+      status: 000
+      note: DNS does not resolve
+    - url: https://standards.rics.org/
+      status: 000
+      note: DNS does not resolve
+    - url: https://my.rics.org/
+      status: 000
+      note: DNS does not resolve
+    - url: https://portal.rics.org/
+      status: 000
+      note: DNS does not resolve
+    - url: https://identity.rics.org/
+      status: 000
+      note: DNS does not resolve
+    - url: https://services.rics.org/
+      status: 200
+      note: 159-byte JS redirect to /Rics.IntermediaryIdentityService/, an Azure AD B2C sign-in page
+    - url: https://services.rics.org/Rics.IntermediaryIdentityService/
+      status: 200
+      note: Azure AD B2C self-asserted sign-in UI, 177,845 bytes
+    - url: https://services.rics.org/Rics.IntermediaryIdentityService/swagger/v1/swagger.json
+      status: 404
+    - url: https://b2clogin.rics.org/ricsb2clive.onmicrosoft.com/B2C_1A_RICS_signup_signin/v2.0/.well-known/openid-configuration
+      status: 200
+      note: real OIDC discovery document, harvested verbatim
+    - url: https://b2clogin.rics.org/.well-known/openid-configuration
+      status: 404
+    - url: https://www.rics.org/openapi.json
+      status: 200
+      note: Incapsula challenge, 212 bytes - NOT a specification
+    - url: https://www.rics.org/swagger.json
+      status: 200
+      note: Incapsula challenge, 212 bytes - NOT a specification
+    - url: https://www.rics.org/api-docs
+      status: 200
+      note: Incapsula challenge, 869 bytes
+    - url: https://www.rics.org/llms.txt
+      status: 200
+      note: Incapsula challenge, 212 bytes
+    - url: https://www.rics.org/.well-known/openid-configuration
+      status: 200
+      note: Incapsula challenge, not a discovery document
+    - url: https://www.rics.org/.well-known/security.txt
+      status: 200
+      note: Incapsula challenge, 212 bytes
+    - url: https://www.rics.org/content/dam/ricsglobal/documents/standards/Red-Book-Global-Standards_redline.pdf
+      status: 200
+      note: content-type text/html, 212 bytes - Incapsula challenge, the PDF itself was not retrievable anonymously
+    - url: https://github.com/RICS-Data-Standard
+      status: 200
+      note: RICS Data Standard GitHub organization, one public repository
+    - url: https://github.com/RICS-Data-Standard/RDS
+      status: 200
+      note: MIT-licensed schemas, latest release v3.3.3 (2022-03-16)
+    - url: https://github.com/rics
+      status: 200
+      note: NOT RICS - an unrelated individual, Ricardo Silva
+    - url: https://www.ricsfirms.com/
+      status: 200
+      note: Find a Surveyor directory, Umbraco/React, no documented API
+    - url: https://www.ricsfirms.com/umbraco/api/contentGridApi/
+      status: 200
+      note: undocumented CMS internal endpoint returning HTML, not a published API
+    - url: https://api.ricsfirms.com/
+      status: 000
+      note: DNS does not resolve
+    - url: https://www.isurv.com/
+      status: 200
+      note: RICS subscription knowledge platform
+    - url: https://api.isurv.com/
+      status: 000
+      note: DNS does not resolve
+    - url: https://www.bcis.co.uk/
+      status: 200
+      note: separate company since 2022 - see adjacentButNotRICS
+    - url: https://developer.bcis.co.uk/
+      status: 200
+      note: Stoplight developer portal belonging to BCIS, not RICS
+
+harvestedArtifacts:
+  directory: openapi/
+  fetchedOn: '2026-07-26'
+  validated: >-
+    All seven JSON documents parse with json.load; the XSD parses with xml.etree and has root
+    element {http://www.w3.org/2001/XMLSchema}schema with 1,014 top-level children. The OpenAPI
+    document declares openapi 3.0.1 with 16 paths and 49 component schemas.
+  files:
+    - path: openapi/rics-digitalcommunity-api-openapi.json
+      type: OpenAPI 3.0.1
+      sourceURL: https://api.rics.org/swagger/v1/swagger.json
+      httpStatus: 200
+      bytes: 67992
+      licence: none stated
+    - path: openapi/rics-data-standard-3.3.3-schema.json
+      type: JSON Schema (draft-04) - RICS Data Standard 3.3.3
+      sourceURL: https://raw.githubusercontent.com/RICS-Data-Standard/RDS/main/JSON/rics-3.3.3.json
+      httpStatus: 200
+      bytes: 1269661
+      licence: MIT
+    - path: openapi/rics-data-standard-3.3.3-schema.xsd
+      type: W3C XML Schema (XSD) - RICS Data Standard 3.3.3
+      sourceURL: https://raw.githubusercontent.com/RICS-Data-Standard/RDS/main/XML/rics-3.3.3.xsd
+      httpStatus: 200
+      bytes: 1598079
+      licence: MIT
+    - path: openapi/rics-data-standard-3.3.3-description.json
+      type: JSON Schema description, licence and contact block
+      sourceURL: https://raw.githubusercontent.com/RICS-Data-Standard/RDS/main/JSON/description.json
+      httpStatus: 200
+      bytes: 1505
+      licence: MIT
+    - path: openapi/rics-data-standard-3.3.3-example.json
+      type: Example instance (rics:DataTransfer)
+      sourceURL: https://raw.githubusercontent.com/RICS-Data-Standard/RDS/main/JSON/rics-example-3.3.3.json
+      httpStatus: 200
+      bytes: 49248
+      licence: MIT
+    - path: openapi/rics-data-standard-3.3.3-ipms-example.json
+      type: Example instance - IPMS
+      sourceURL: https://raw.githubusercontent.com/RICS-Data-Standard/RDS/main/JSON/ipms-example-3.3.3.json
+      httpStatus: 200
+      bytes: 3483
+      licence: MIT
+    - path: openapi/rics-data-standard-3.3.3-icms-example.json
+      type: Example instance - ICMS
+      sourceURL: https://raw.githubusercontent.com/RICS-Data-Standard/RDS/main/JSON/icms-example-3.3.3.json
+      httpStatus: 200
+      bytes: 130067
+      licence: MIT
+    - path: openapi/rics-azure-ad-b2c-openid-configuration.json
+      type: OpenID Connect discovery document (member sign-in, not a developer surface)
+      sourceURL: https://b2clogin.rics.org/ricsb2clive.onmicrosoft.com/B2C_1A_RICS_signup_signin/v2.0/.well-known/openid-configuration
+      httpStatus: 200
+      bytes: 1420
+      licence: not applicable
+  notHarvested:
+    - what: RICS Data Standard 3.3.3 HTML documentation (JSON/rics-3.3.3.html, XML/rics-3.3.3.html)
+      reason: 45 MB and 44 MB generated HTML documentation, not a machine-readable contract; linked instead
+    - what: RICS standards PDFs (Red Book, Home Survey Standard, Property Measurement)
+      reason: not retrievable anonymously - www.rics.org returns an Imperva Incapsula challenge for every path
+    - what: BCIS developer portal specifications
+      reason: BCIS is a separate company since 2022; its Stoplight portal renders client-side and exposes no server-side spec path
+
+sources:
+  - url: https://api.rics.org/swagger/v1/swagger.json
+    type: OpenAPI
+    note: The only RICS-operated API contract found. Source of the "issued a username and password by RICS" access statement.
+  - url: https://api.rics.org/
+    type: APIReference
+    note: Public Swagger UI, configuration names the spec "DigitalCommunity API V1" and sets tryItOutEnabled false.
+  - url: https://github.com/RICS-Data-Standard/RDS
+    type: SourceCode
+    note: Canonical, MIT-licensed home of the RICS Data Standard schemas and examples.
+  - url: https://www.rics.org/profession-standards/rics-standards-and-guidance/sector-standards/construction-standards/rics-data-standards
+    type: Documentation
+    note: RICS Data Standards landing page (content not retrievable anonymously behind Incapsula).
+  - url: https://www.rics.org/get-involved/rics-tech-partner-programme
+    type: Partners
+    note: The only published route into a RICS technology relationship; a curated partner network, not a developer signup.
+  - url: https://b2clogin.rics.org/ricsb2clive.onmicrosoft.com/B2C_1A_RICS_signup_signin/v2.0/.well-known/openid-configuration
+    type: Authentication
+    note: Confirms Azure AD B2C as the member identity layer; scopes_supported is ['openid'] only.
+  - url: https://www.ricsfirms.com/
+    type: Directory
+    note: Public Find a Surveyor directory of RICS-regulated firms; Umbraco CMS internals only, no published API.
+
+conclusion: >-
+  RICS is the counter-example to RESO in this study. Where RESO publishes a mandated, certified,
+  machine-readable contract that no developer can actually call, RICS publishes an unmandated,
+  uncertified contract that anyone can download and nobody has to implement - the MIT-licensed RICS
+  Data Standard - and separately runs one real API whose contract is fully public while its
+  credentials are not. The United Kingdom has no MLS, so RESO is absent rather than unreachable:
+  no certification, no OData, no $metadata, no UPI. RICS is a professional and valuation standards
+  body, and its only production API governs regulation, insurance declarations, redress,
+  subscriptions, payments and survey-writer integration - never listings, never valuations, never
+  property records. Two facts held apart: the OpenAPI 3.0.1 document at api.rics.org is genuinely
+  public and anonymously downloadable, and calling the API behind it requires a username and
+  password issued by RICS with no published way to ask for one. Open data in this market comes from
+  HM Land Registry and Ordnance Survey, not from the professional body.
