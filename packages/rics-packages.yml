@@ -1,0 +1,22 @@
+generated: '2026-07-26'
+method: none
+source: registry searches on 2026-07-26
+summary: >-
+  RICS ships no client libraries. Every public registry was searched and nothing first-party exists
+  for either the DigitalCommunity API or the RICS Data Standard. The near-misses are all name
+  collisions with unrelated projects, and they are recorded below so a later round does not mistake
+  them for RICS artifacts. Consumers of the DigitalCommunity API generate their own client from
+  https://api.rics.org/swagger/v1/swagger.json; consumers of the RICS Data Standard validate against
+  the raw JSON Schema or XSD in the GitHub repository.
+packages: []
+registries_probed:
+- {registry: npm, query: 'rics, rics-data-standard', result: no first-party package}
+- {registry: pypi, query: 'rics, rics-data-standard, ricsapi', result: no first-party package}
+- {registry: nuget, query: rics, result: no first-party package (notable because the API itself is ASP.NET)}
+- {registry: github, query: RICS organisations, result: 'only RICS-Data-Standard/RDS is the real body; RICS-Datalab, NOVA-RICS-Open-Lab and RICS-UNINOVA are an unrelated university research institute, ricssoftware is the unrelated US retail POS vendor'}
+name_collisions:
+- {name: 'pypi:rics', owner: Richard Sundqvist, note: "a personal Python toolbox - unrelated"}
+- {name: 'ricssoftware', owner: RICS Software, note: US retail point-of-sale vendor with its own unrelated API at enterprise.ricssoftware.com}
+- {name: 'RICS (Oracle)', owner: Oracle, note: Retail Integration Cloud Service - unrelated}
+- {name: 'RIC / RICs', owner: LSEG/Refinitiv, note: Reuters Instrument Codes - unrelated}
+sdk_count: 0

@@ -1,0 +1,60 @@
+generated: '2026-07-26'
+method: derived
+source: mcp/rics-mcp.yml and openapi/rics-digitalcommunity-api-openapi.json
+summary: >-
+  A degenerate crosswalk, recorded for completeness. RICS runs no MCP server and no GraphQL
+  endpoint, so there is no live tool surface to reconcile against REST. Every row below binds a
+  CANDIDATE tool derived by API Evangelist to the single OpenAPI operation it was derived from -
+  coverage is 16 of 16 by construction, and there are no mcp_only or rest_only divergences. The one
+  thing worth carrying forward is that the OpenAPI declares NO operationIds at all, so each binding
+  is expressed as method + path; overlays/rics-digitalcommunity-api-overlay.yaml proposes the
+  operationIds these tools would use.
+surfaces:
+  openapi:
+    file: openapi/rics-digitalcommunity-api-openapi.json
+    live: https://api.rics.org/swagger/v1/swagger.json
+    status: 200 anonymous
+    operations: 16
+    operationIds_declared: 0
+  graphql:
+    endpoint: null
+    probe: {url: 'https://api.rics.org/graphql', status: 404}
+  mcp:
+    url: null
+    probe: {url: 'https://api.rics.org/mcp', status: 404}
+    tools_list_gated: n/a - no server exists
+crosswalk:
+- {tool: get_token, category: auth, rest: ['POST /token'], binding: rest, confidence: high}
+- {tool: get_regulation_scheme, category: regulation, rest: ['GET /api/Regulation/{schemeNumber}'], binding: rest, confidence: high}
+- {tool: list_regulation_subscriptions, category: regulation, rest: ['GET /api/Regulation/Subscriptions'], binding: rest, confidence: high}
+- {tool: get_regulation_payment_information, category: regulation, rest: ['GET /api/Regulation/PaymentInformation'], binding: rest, confidence: high}
+- {tool: get_member_profile, category: membership, rest: ['GET /api/Profile/{id}'], binding: rest, confidence: high}
+- {tool: get_payment_request, category: payments, rest: ['GET /api/Payment/{id}'], binding: rest, confidence: high}
+- {tool: get_payment_request_by_reference, category: payments, rest: ['GET /api/Payment/{id}/reference/{reference}'], binding: rest, confidence: high}
+- {tool: update_payment, category: payments, rest: ['POST /api/Payment/update'], binding: rest, confidence: high, note: request body is application/json with no declared schema beyond a free-form object, so the tool cannot inherit a real inputSchema}
+- {tool: post_ola_merchant, category: payments, rest: ['POST /api/OlaMerchantPost'], binding: rest, confidence: low, note: the operation declares no description, no parameters, no request body and only a 200 response - its contract is unknowable from the specification}
+- {tool: validate_survey_writer_licence, category: partner-integration, rest: ['GET /api/SurveyWriter/{id}'], binding: rest, confidence: high}
+- {tool: list_regulation_declaration_documents, category: documents, rest: ['GET /api/AzureStorage/GetRegulationDeclarationDocuments'], binding: rest, confidence: high}
+- {tool: store_regulation_declaration_document, category: documents, rest: ['POST /api/AzureStorage/StoreRegulationDeclarationDocument'], binding: rest, confidence: high}
+- {tool: delete_regulation_declaration_documents, category: documents, rest: ['DELETE /api/AzureStorage/DeleteRegulationDeclarationDocuments'], binding: rest, confidence: high}
+- {tool: upload_file, category: documents, rest: ['POST /api/AzureStorage/UploadFile'], binding: rest, confidence: medium, note: the file payload itself is not modelled in the specification - only a containerName query parameter is declared}
+- {tool: download_file, category: documents, rest: ['GET /api/AzureStorage/DownloadFile'], binding: rest, confidence: high}
+- {tool: delete_log_data, category: admin, rest: ['POST /api/AzureStorage/DeleteLogData'], binding: rest, confidence: high}
+mcp_only: []
+rest_only: []
+coverage:
+  tools_named: 16
+  tools_bound: 16
+  mcp_only: 0
+  rest_ops_total: 16
+  rest_ops_with_tool: 16
+  note: 16/16 by construction - the tools were derived from the operations, so this is not evidence of a well-covered API.
+inputschema_quality:
+  operations_with_typed_request_body: 0
+  note: >-
+    Three write operations (POST /token, POST /api/Payment/update,
+    DELETE /api/AzureStorage/DeleteRegulationDeclarationDocuments) declare their body only as a
+    free-form object of JToken values, and two more (POST /api/AzureStorage/UploadFile,
+    POST /api/OlaMerchantPost) declare no body at all. A tool built from this spec would inherit no
+    usable input schema for any write - the read operations, which are addressed purely by path and
+    query identifiers, are the only ones with a complete input contract.

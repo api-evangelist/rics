@@ -1,0 +1,132 @@
+generated: '2026-07-26'
+method: derived
+source: >-
+  openapi/rics-digitalcommunity-api-openapi.json, openapi/rics-data-standard-3.3.3-schema.json,
+  openapi/rics-azure-ad-b2c-openid-configuration.json, and RICS published standards pages
+summary: >-
+  RICS conforms to the specification standards it writes for the built environment and to the basic
+  description standards its own vendors ship (OpenAPI 3.0.1 from Swashbuckle, JSON Schema draft-04
+  and W3C XSD in the RDS, OIDC discovery from Azure AD B2C). It conforms to none of the API-industry
+  standards a consumer would look for - no OAuth 2.0 on the API itself, no RFC 9457, no OData, no
+  JSON:API, no pagination or idempotency convention, and - decisively for a property body - no RESO
+  Data Dictionary or RESO Web API, because the United Kingdom has no MLS to certify against.
+standards:
+- id: openapi-3.0
+  conforms: true
+  evidence: >-
+    openapi/rics-digitalcommunity-api-openapi.json declares openapi 3.0.1 and parses; served
+    anonymously from https://api.rics.org/swagger/v1/swagger.json (HTTP 200, 67,992 bytes).
+- id: openapi-3.1
+  conforms: false
+  evidence: document is 3.0.1
+- id: json-schema-draft-04
+  conforms: true
+  evidence: >-
+    The RICS Data Standard 3.3.3 is published as a JSON Schema draft-04 document
+    (openapi/rics-data-standard-3.3.3-schema.json, 1.27 MB, MIT licensed).
+- id: w3c-xml-schema
+  conforms: true
+  evidence: RDS 3.3.3 also ships as a W3C XSD (openapi/rics-data-standard-3.3.3-schema.xsd, 1.6 MB).
+- id: rfc7807-problem-details
+  conforms: partial
+  evidence: >-
+    components.schemas.ProblemDetails carries type/title/status/detail/instance and is bound to the
+    Payment, Profile, Regulation and SurveyWriter error responses - but as application/json, not
+    application/problem+json, and the six AzureStorage operations declare bodyless errors.
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: no application/problem+json media type anywhere in the specification
+- id: oauth2
+  conforms: false
+  evidence: >-
+    The DigitalCommunity API declares a single securityScheme of type apiKey (Authorization header)
+    carrying a bearer JWT minted by a bespoke POST /token credential exchange. There is no
+    authorization endpoint, no OAuth grant, no scopes and no refresh token.
+- id: openid-connect
+  conforms: true
+  scope: member sign-in only, not the API
+  evidence: >-
+    https://b2clogin.rics.org/ricsb2clive.onmicrosoft.com/B2C_1A_RICS_signup_signin/v2.0/.well-known/openid-configuration
+    returns a valid OIDC discovery document (HTTP 200) for the Azure AD B2C tenant
+    ricsb2clive.onmicrosoft.com. scopes_supported is ["openid"] only. This governs the RICS website
+    and member portal, not api.rics.org.
+- id: rfc8414-oauth-authorization-server-metadata
+  conforms: false
+  evidence: /.well-known/oauth-authorization-server returns 404 on both api.rics.org and b2clogin.rics.org
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: no /.well-known/security.txt on any reachable RICS host (see well-known/rics-well-known.yml)
+- id: rfc8594-sunset-header
+  conforms: false
+  evidence: no Sunset or Deprecation header support published or observable
+- id: odata
+  conforms: false
+  evidence: >-
+    api.rics.org is an ASP.NET Core Web API described with OpenAPI. There is no /odata route, no
+    service document and no $metadata anywhere in the RICS estate.
+- id: json-api
+  conforms: false
+  evidence: responses are plain JSON DTOs with no JSON:API document structure
+- id: graphql
+  conforms: false
+  evidence: https://api.rics.org/graphql returns 404 (hard 404, control path also 404)
+- id: mcp
+  conforms: false
+  evidence: https://api.rics.org/mcp returns 404; RICS publishes no MCP server
+- id: pagination-convention
+  conforms: false
+  evidence: no limit/offset/page/cursor parameter on any of the 16 operations
+- id: idempotency-convention
+  conforms: false
+  evidence: no Idempotency-Key header or equivalent on any write operation
+- id: reso-data-dictionary
+  conforms: false
+  evidence: >-
+    No RESO reference anywhere in the RICS estate. RESO is a North-American, NAR-affiliated MLS
+    construct and the United Kingdom has no MLS, so there is no certification layer to conform to.
+- id: reso-web-api
+  conforms: false
+  evidence: RICS operates no OData service and publishes no RESO Web API endpoint
+- id: ivs
+  conforms: true
+  role: implements and incorporates
+  evidence: >-
+    RICS Valuation - Global Standards (the Red Book) incorporates the International Valuation
+    Standards; IVS is one of the standards named inside the RDS schema description block.
+- id: ipms
+  conforms: true
+  role: author and incorporator
+  evidence: >-
+    RICS Property Measurement (2nd edition) implements IPMS, and IPMS is incorporated into the RDS
+    schema; openapi/rics-data-standard-3.3.3-ipms-example.json is the published IPMS example
+    instance.
+- id: icms
+  conforms: true
+  role: author and incorporator
+  evidence: >-
+    ICMS is incorporated into RDS 3.3.3; openapi/rics-data-standard-3.3.3-icms-example.json is the
+    published ICMS example instance.
+- id: ilms
+  conforms: true
+  role: incorporator
+  evidence: named in the RDS 3.3.3 schema description block as incorporated
+- id: ibos
+  conforms: true
+  role: incorporator
+  evidence: named in the RDS 3.3.3 schema description block as incorporated
+- id: buildingsmart-ifc-address
+  conforms: true
+  scope: address formats only
+  evidence: >-
+    The RDS schema description states it uses "address formats from buildingSMART IFC, and Oasis
+    xAL".
+- id: oasis-xal
+  conforms: true
+  scope: address formats only
+  evidence: same RDS schema description block
+certifications_published: none
+compliance_program_published: >-
+  No SOC 2, ISO 27001, PCI DSS, HIPAA or FedRAMP claim was found on any reachable RICS property, and
+  no trust centre exists (probe-security-programs found no trust centre and no vulnerability
+  disclosure programme). RICS is itself a regulator of firms, but it publishes no security or
+  privacy certification posture for its own platforms.

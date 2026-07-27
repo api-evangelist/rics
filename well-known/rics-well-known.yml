@@ -1,0 +1,130 @@
+generated: '2026-07-26'
+method: searched
+source: live anonymous probes of every RICS host in apis.yml on 2026-07-26
+summary: >-
+  One real /.well-known/ document exists across the RICS estate: the Azure AD B2C OpenID Connect
+  discovery document for RICS member sign-in on b2clogin.rics.org. The API host api.rics.org
+  publishes no /.well-known/ surface at all - every probe returned a hard HTTP 404 with a zero-byte
+  body, which is a clean negative because api.rics.org returns the same hard 404 for an invented
+  control path. www.rics.org cannot be probed at path level: it sits behind Imperva Incapsula and
+  answers every path, real or invented, with HTTP 200 and a ~212-byte JavaScript challenge body, so
+  its /.well-known/security.txt "200" is the challenge, not a document. ricsfirms.com, isurv.com and
+  community.rics.org return their own soft/hard 404s for the same paths. No RFC 9116 security.txt,
+  no api-catalog, no ai-plugin.json anywhere.
+hosts:
+- host: https://b2clogin.rics.org
+  role: identity provider (Azure AD B2C, tenant ricsb2clive.onmicrosoft.com)
+  documents:
+  - path: /ricsb2clive.onmicrosoft.com/B2C_1A_RICS_signup_signin/v2.0/.well-known/openid-configuration
+    status: 200
+    bytes: 1420
+    file: ../openapi/rics-azure-ad-b2c-openid-configuration.json
+    note: >-
+      OIDC discovery for the B2C_1A_RICS_signup_signin user flow. Issuer
+      https://b2clogin.rics.org/88b1d398-08db-4fc1-af82-65ba1595185c/v2.0/. scopes_supported is
+      ["openid"] only. This governs RICS member/website sign-in, NOT the DigitalCommunity API,
+      which uses its own /token endpoint and an opaque RICS-issued username/password.
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /ricsb2clive.onmicrosoft.com/B2C_1A_RICS_signup_signin/v2.0/.well-known/oauth-authorization-server
+    status: 404
+- host: https://api.rics.org
+  role: DigitalCommunity API host (Microsoft-IIS/10.0, ASP.NET)
+  control_probe:
+    path: /nonexistent-xyz123
+    status: 404
+    bytes: 0
+    note: hard 404 with empty body, so the 404s below are genuine absences
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /openapi.json
+    status: 404
+  - path: /swagger.json
+    status: 404
+  - path: /api-docs
+    status: 404
+  - path: /graphql
+    status: 404
+  - path: /mcp
+    status: 404
+  - path: /swagger/v1/swagger.json
+    status: 200
+    bytes: 67992
+    file: ../openapi/rics-digitalcommunity-api-openapi.json
+    note: the only machine-readable contract on this host; harvested verbatim
+- host: https://www.rics.org
+  role: main website
+  probe_validity: unusable
+  control_probe:
+    path: /this-path-does-not-exist-xyz123
+    status: 200
+    bytes: 212
+    content_type: text/html
+    note: >-
+      Imperva Incapsula JavaScript challenge. Identical 200/212-byte response for
+      /.well-known/security.txt, /security.txt and /llms.txt, so NO path-level conclusion can be
+      drawn for this host in either direction.
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    bytes: 212
+    verdict: challenge-body, not a document
+  - path: /security.txt
+    status: 200
+    bytes: 212
+    verdict: challenge-body, not a document
+  - path: /llms.txt
+    status: 200
+    bytes: 212
+    verdict: challenge-body, not a document
+- host: https://www.ricsfirms.com
+  role: Find a Surveyor public directory
+  control_probe:
+    path: /nonexistent-xyz123
+    status: 404
+    bytes: 69835
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /llms.txt
+    status: 404
+- host: https://www.isurv.com
+  role: isurv knowledge platform
+  control_probe:
+    path: /nonexistent-xyz123
+    status: 404
+    bytes: 26859
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+- host: https://community.rics.org
+  role: myRICS community
+  control_probe:
+    path: /nonexistent-xyz123
+    status: 200
+    bytes: 66675
+    content_type: text/html
+    note: soft 404 - returns the community shell for any path
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    bytes: 66735
+    content_type: text/html
+    verdict: soft-404 HTML shell, not a security.txt
+- host: https://services.rics.org
+  role: RICS Intermediary Identity Service
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+security_txt: none
+api_catalog: none
+ai_plugin: none

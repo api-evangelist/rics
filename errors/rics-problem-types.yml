@@ -1,0 +1,115 @@
+generated: '2026-07-26'
+method: derived
+source: openapi/rics-digitalcommunity-api-openapi.json
+api: RICS DigitalCommunity API
+format: rfc7807-shaped
+media_type: application/json
+envelope:
+  schema: ProblemDetails
+  fields:
+  - {name: type, type: string, nullable: true, note: a URI reference identifying the problem type - RICS publishes no problem-type registry, so this is expected to be null or the ASP.NET default}
+  - {name: title, type: string, nullable: true}
+  - {name: status, type: integer, nullable: true}
+  - {name: detail, type: string, nullable: true}
+  - {name: instance, type: string, nullable: true}
+  additional_properties: open
+  note: >-
+    The stock ASP.NET Core ProblemDetails object. It is RFC 7807 in shape but is declared as
+    application/json rather than application/problem+json, and it is NOT bound to every error
+    response - the six AzureStorage operations declare 401/403/404 with no response body.
+summary:
+  distinct_status_codes: [204, 400, 401, 403, 404, 500]
+  operations_with_problem_details: 8
+  operations_with_bodyless_errors: 8
+  docs_error_reference: none - RICS publishes no developer documentation or error reference for this API
+problems:
+- status: 400
+  title: Bad Request
+  schema: ProblemDetails
+  media_type: application/json
+  source_operations:
+  - openapi/rics-digitalcommunity-api-openapi.json#POST /token
+  - openapi/rics-digitalcommunity-api-openapi.json#POST /api/Payment/update
+  - openapi/rics-digitalcommunity-api-openapi.json#GET /api/Regulation/{schemeNumber}
+  - openapi/rics-digitalcommunity-api-openapi.json#GET /api/Regulation/Subscriptions
+  - openapi/rics-digitalcommunity-api-openapi.json#GET /api/Regulation/PaymentInformation
+  remediation: >-
+    Check the identifier or body you sent. On /token the declared 400 also has text/plain and
+    text/json representations, but an empty JSON body was observed to return 500 rather than 400.
+- status: 400
+  title: Bad Request (no body)
+  schema: none
+  source_operations:
+  - openapi/rics-digitalcommunity-api-openapi.json#GET /api/AzureStorage/GetRegulationDeclarationDocuments
+  remediation: No response body is declared - the status code is the entire signal.
+- status: 401
+  title: Unauthorized
+  schema: none
+  challenge: 'WWW-Authenticate: Bearer'
+  source_operations:
+  - openapi/rics-digitalcommunity-api-openapi.json#GET /api/Profile/{id}
+  - openapi/rics-digitalcommunity-api-openapi.json#GET /api/Payment/{id}
+  - openapi/rics-digitalcommunity-api-openapi.json#GET /api/Payment/{id}/reference/{reference}
+  - openapi/rics-digitalcommunity-api-openapi.json#GET /api/SurveyWriter/{id}
+  - openapi/rics-digitalcommunity-api-openapi.json#GET /api/AzureStorage/DownloadFile
+  - openapi/rics-digitalcommunity-api-openapi.json#POST /api/AzureStorage/UploadFile
+  - openapi/rics-digitalcommunity-api-openapi.json#POST /api/AzureStorage/StoreRegulationDeclarationDocument
+  - openapi/rics-digitalcommunity-api-openapi.json#POST /api/AzureStorage/DeleteLogData
+  - openapi/rics-digitalcommunity-api-openapi.json#DELETE /api/AzureStorage/DeleteRegulationDeclarationDocuments
+  observed: >-
+    GET /api/Profile/1 probed anonymously on 2026-07-26 returned 401 with Content-Length 0 and
+    WWW-Authenticate: Bearer.
+  remediation: >-
+    POST your RICS-issued credentials to /token and resend with
+    Authorization: Bearer <token>. Tokens expire; re-POST /token to refresh, there is no refresh
+    grant.
+- status: 403
+  title: Forbidden
+  schema: none
+  source_operations:
+  - openapi/rics-digitalcommunity-api-openapi.json#GET /api/Profile/{id}
+  - openapi/rics-digitalcommunity-api-openapi.json#GET /api/Payment/{id}
+  - openapi/rics-digitalcommunity-api-openapi.json#GET /api/Payment/{id}/reference/{reference}
+  - openapi/rics-digitalcommunity-api-openapi.json#GET /api/SurveyWriter/{id}
+  - openapi/rics-digitalcommunity-api-openapi.json#GET /api/AzureStorage/DownloadFile
+  - openapi/rics-digitalcommunity-api-openapi.json#POST /api/AzureStorage/UploadFile
+  - openapi/rics-digitalcommunity-api-openapi.json#POST /api/AzureStorage/StoreRegulationDeclarationDocument
+  - openapi/rics-digitalcommunity-api-openapi.json#POST /api/AzureStorage/DeleteLogData
+  - openapi/rics-digitalcommunity-api-openapi.json#DELETE /api/AzureStorage/DeleteRegulationDeclarationDocuments
+  remediation: >-
+    The token is valid but the credential RICS issued you is not entitled to that record or that
+    operation. There is no published scope or permission model to inspect - contact RICS.
+- status: 404
+  title: Not Found
+  schema: none
+  source_operations:
+  - openapi/rics-digitalcommunity-api-openapi.json#GET /api/Profile/{id}
+  - openapi/rics-digitalcommunity-api-openapi.json#GET /api/Payment/{id}
+  - openapi/rics-digitalcommunity-api-openapi.json#GET /api/Payment/{id}/reference/{reference}
+  - openapi/rics-digitalcommunity-api-openapi.json#GET /api/SurveyWriter/{id}
+  - openapi/rics-digitalcommunity-api-openapi.json#GET /api/AzureStorage/DownloadFile
+  - openapi/rics-digitalcommunity-api-openapi.json#POST /api/AzureStorage/UploadFile
+  - openapi/rics-digitalcommunity-api-openapi.json#POST /api/AzureStorage/StoreRegulationDeclarationDocument
+  - openapi/rics-digitalcommunity-api-openapi.json#POST /api/AzureStorage/DeleteLogData
+  - openapi/rics-digitalcommunity-api-openapi.json#DELETE /api/AzureStorage/DeleteRegulationDeclarationDocuments
+  remediation: The addressed contact, payment, licence or blob does not exist.
+non_error_signals:
+- status: 204
+  title: No Content
+  meaning: >-
+    The three Regulation reads and GET /api/AzureStorage/GetRegulationDeclarationDocuments return
+    204 for an empty result set rather than an empty array with 200. Treat 204 as "found nothing",
+    not as an error.
+  source_operations:
+  - openapi/rics-digitalcommunity-api-openapi.json#GET /api/Regulation/{schemeNumber}
+  - openapi/rics-digitalcommunity-api-openapi.json#GET /api/Regulation/Subscriptions
+  - openapi/rics-digitalcommunity-api-openapi.json#GET /api/Regulation/PaymentInformation
+  - openapi/rics-digitalcommunity-api-openapi.json#GET /api/AzureStorage/GetRegulationDeclarationDocuments
+undeclared_observed:
+- status: 500
+  title: Internal Server Error
+  declared_in_spec: false
+  observed: >-
+    POST /token with body {} returned HTTP 500 with Content-Length 0 (probed anonymously
+    2026-07-26). A malformed credential payload is not surfaced as the declared 400, so clients must
+    treat 500 on /token as a client-side body problem as well as a server fault.

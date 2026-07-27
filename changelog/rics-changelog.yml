@@ -1,0 +1,49 @@
+generated: '2026-07-26'
+method: searched
+source: https://github.com/RICS-Data-Standard/RDS/releases
+summary: >-
+  RICS publishes exactly one dated, machine-readable change history: the GitHub Releases feed of the
+  RICS Data Standard (RDS). It is genuine but dormant - two releases, the most recent in March 2022.
+  The DigitalCommunity API at api.rics.org has no changelog, no release notes and no version history
+  of any kind; its OpenAPI has been pinned at info.version "v1" with no dated record of change.
+scheme: semver
+current_version: 3.3.3
+current_released: '2022-03-16'
+feed: https://github.com/RICS-Data-Standard/RDS/releases
+covers: RICS Data Standard (RDS) - JSON Schema and XSD
+entries:
+- version: v3.3.3
+  date: '2022-03-16'
+  title: RICS Data Standard (RDS) - March 2022
+  breaking: true
+  highlights:
+  - Replaces the April 2021 release and all previous RICS Data Standards for IPMS and ICMS, which are both now incorporated into the single RDS schema.
+  - Schema and example data files published in both XML and JSON, with separate HTML documentation directories for each.
+  - Adds carbon emissions and building operation to the range of RICS and international standards the schema references and supports, alongside property measurement, valuation, due diligence, life-cycle costing, brokerage, leasing and building surveying.
+  - Published under the MIT License; RICS offers technical implementation support via datastandards@rics.org.
+  supersedes: v3.2.1
+  artifacts_removed: 3.3.2 files removed from the repository in the same release cycle
+- version: v3.2.1
+  date: '2021-04-19'
+  title: RICS Data Standard (RDS) - April 2021
+  breaking: true
+  highlights:
+  - Replaces all previous RICS Data Standards for IPMS and ICMS by incorporating both into one schema.
+  - Schema and example data files in XML and JSON with separate HTML documentation.
+  - Covers property measurement, valuation, due diligence, life-cycle costing, brokerage, leasing and building surveying.
+  supersedes: all prior standalone IPMS and ICMS data standards
+commit_trail:
+- {date: '2022-03-16', message: 'Merge pull request #1 from RICS-Data-Standard/Sprint'}
+- {date: '2022-03-16', message: Remove 3.3.2 Files}
+- {date: '2022-03-16', message: Version 3.3.3}
+- {date: '2022-03-15', message: Version 3.3.3 - Prerelease - Final Changes & Updated Documentation}
+- {date: '2022-03-11', message: Version 3.3.3 - Prerelease}
+- {date: '2022-03-04', message: Remove 3.2.1 Documentation}
+- {date: '2022-02-18', message: Version 3.3.2}
+- {date: '2022-01-24', message: Version 3.3.1}
+last_repository_push: '2025-01-07'
+gaps:
+  digitalcommunity_api: >-
+    No changelog exists for the DigitalCommunity API. Consumers cannot tell when an operation,
+    schema field or enum member changed; the only detectable signal is a diff of
+    https://api.rics.org/swagger/v1/swagger.json over time.

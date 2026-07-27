@@ -1,0 +1,61 @@
+generated: '2026-07-26'
+method: searched
+source: >-
+  https://b2clogin.rics.org/ricsb2clive.onmicrosoft.com/B2C_1A_RICS_signup_signin/v2.0/.well-known/openid-configuration
+  (HTTP 200, fetched anonymously 2026-07-26)
+summary: >-
+  RICS exposes exactly one OAuth/OIDC surface, and it is not the API. The Azure AD B2C tenant behind
+  RICS member sign-in publishes an OIDC discovery document whose scopes_supported list contains a
+  single value, "openid" - there is no resource scope, no API scope and no consent surface for
+  third-party applications. The DigitalCommunity API at api.rics.org has no scope model at all: it
+  authenticates with a RICS-issued username and password exchanged at POST /token for a bearer JWT,
+  and entitlement is decided server-side and surfaced only as 403 Forbidden.
+applies_to: RICS member sign-in (website and member portal), not api.rics.org
+schemes:
+- name: Azure AD B2C - B2C_1A_RICS_signup_signin
+  type: openIdConnect
+  source: openapi/rics-azure-ad-b2c-openid-configuration.json
+  issuer: https://b2clogin.rics.org/88b1d398-08db-4fc1-af82-65ba1595185c/v2.0/
+  tenant: ricsb2clive.onmicrosoft.com
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://b2clogin.rics.org/ricsb2clive.onmicrosoft.com/b2c_1a_rics_signup_signin/oauth2/v2.0/authorize
+    tokenUrl: https://b2clogin.rics.org/ricsb2clive.onmicrosoft.com/b2c_1a_rics_signup_signin/oauth2/v2.0/token
+  response_types_supported: [code, code id_token, code token, code id_token token, id_token, id_token token, token, token id_token]
+  token_endpoint_auth_methods_supported: [client_secret_post, client_secret_basic]
+  end_session_endpoint: https://b2clogin.rics.org/ricsb2clive.onmicrosoft.com/b2c_1a_rics_signup_signin/oauth2/v2.0/logout
+  jwks_uri: https://b2clogin.rics.org/ricsb2clive.onmicrosoft.com/b2c_1a_rics_signup_signin/discovery/v2.0/keys
+scopes:
+- scope: openid
+  description: >-
+    The only scope this authorization server advertises. Requests an ID token identifying the signed
+    in RICS member; it grants no access to any RICS API resource.
+  flows: [authorizationCode]
+  sources: [openapi/rics-azure-ad-b2c-openid-configuration.json]
+claims_supported:
+- contactNumber
+- sub
+- name
+- given_name
+- family_name
+- email
+- upn
+- oid
+- tid
+- uniqueId
+- iss
+- iat
+- exp
+- aud
+- acr
+- nonce
+- auth_time
+notes:
+  api_scopes: >-
+    None. The DigitalCommunity API declares one securityScheme of type apiKey (Authorization header,
+    bearer JWT). No scope, permission or role is published, so an integrator cannot reason about
+    least privilege before receiving credentials from RICS.
+  contactNumber_claim: >-
+    The non-standard contactNumber claim is the RICS member/contact number, the same identifier the
+    DigitalCommunity API surfaces as contactNo on ProfileModel - the one visible join between the
+    member identity layer and the API data layer.

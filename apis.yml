@@ -79,7 +79,53 @@ apis:
   - type: Partners
     url: https://www.rics.org/get-involved/rics-tech-partner-programme
     name: RICS Tech Partner Programme - the only published route to a RICS technology integration
+  - type: Overlay
+    url: overlays/rics-digitalcommunity-api-overlay.yaml
+    name: API Evangelist Overlay 1.0.0 assigning the operationIds and tags the published spec never declared
+  - type: ToolCrosswalk
+    url: mcp/rics-tool-crosswalk.yml
+    name: Candidate MCP tool to OpenAPI operation crosswalk (RICS runs no MCP server; 16 of 16 bound by construction)
 common:
+- type: AgenticAccess
+  url: agentic-access/rics-agentic-access.yml
+- type: DomainSecurity
+  url: security/rics-domain-security.yml
+- type: Authentication
+  url: authentication/rics-authentication.yml
+  name: Derived auth profile - one Bearer scheme (apiKey in the Authorization header), credentials issued by RICS
+- type: OAuthScopes
+  url: scopes/rics-scopes.yml
+  name: The single OIDC scope RICS advertises (openid, member sign-in) and why the API itself has no scope model
+- type: WellKnown
+  url: well-known/rics-well-known.yml
+  name: Every /.well-known/ probe across the RICS estate with status - one hit, the Azure AD B2C OIDC discovery document
+- type: Conventions
+  url: conventions/rics-conventions.yml
+  name: Cross-cutting semantics of the DigitalCommunity API - bearer auth, no idempotency, no pagination, no rate-limit signalling
+- type: ErrorCatalog
+  url: errors/rics-problem-types.yml
+  name: The ProblemDetails envelope and every declared 4xx/5xx, plus the undeclared 500 observed on /token
+- type: DataModel
+  url: data-model/rics-data-model.yml
+  name: Derived entity-relationship graph of the 52 DigitalCommunity schemas, hubbed on RegulationScheme
+- type: Lifecycle
+  url: lifecycle/rics-lifecycle.yml
+  name: Versioning and maintenance posture - unversioned v1 API with no deprecation policy, SLA or status page
+- type: ChangeLog
+  url: changelog/rics-changelog.yml
+  name: RICS Data Standard release history from GitHub Releases (v3.3.3 March 2022, v3.2.1 April 2021)
+- type: Conformance
+  url: conformance/rics-conformance.yml
+  name: Standards conformance - OpenAPI 3.0.1, JSON Schema draft-04, OIDC, IVS/IPMS/ICMS/ILMS/IBOS; no RESO, no OData, no OAuth on the API
+- type: MCPServer
+  url: mcp/rics-mcp.yml
+  name: Candidate MCP tool list derived from the OpenAPI - RICS publishes no MCP server (api.rics.org/mcp returns 404)
+- type: AgentSkill
+  url: skills/_index.yml
+  name: Three generated agent skills grounded in the real read operations of the DigitalCommunity API
+- type: LLMsTxt
+  url: llms/rics-llms.txt
+  name: Generated llms.txt for RICS - no /llms.txt is published on any RICS host
 - type: Website
   url: https://www.rics.org/
 - type: About
@@ -140,11 +186,36 @@ common:
 - type: Partners
   url: https://www.rics.org/get-involved/rics-tech-partner-programme
   name: RICS Tech Partner Programme
-- type: NewsAndInsights
+- type: Blog
   url: https://www.rics.org/news-insights
+  name: RICS news and insights - the professional body's editorial and research publishing
+- type: Support
+  url: https://www.rics.org/footer/contact-us
+  name: Contact RICS - the only published support route; there is no developer support channel
+- type: Community
+  url: https://community.rics.org/home
+  name: myRICS community - member discussion platform
+- type: SignUp
+  url: https://www.rics.org/join-rics/apply-to-join-rics
+  name: Apply to join RICS - membership signup (there is no API signup of any kind)
+- type: Pricing
+  url: https://www.rics.org/join-rics/join-fees
+  name: RICS join fees - published membership pricing (no API pricing exists)
+- type: Pricing
+  url: https://www.rics.org/renew-my-membership/professional-fees
+  name: RICS professional fees - annual subscription rates by region
+- type: TermsOfService
+  url: https://www.rics.org/footer/rics-org-terms-and-conditions
+  name: rics.org terms and conditions
+- type: PrivacyPolicy
+  url: https://www.rics.org/footer/rics-privacy-policy
+  name: RICS privacy policy
 - type: Email
   url: mailto:datastandards@rics.org
   name: RICS Data Standard support contact, per the RDS schema description block
+- type: Email
+  url: mailto:join@rics.org
+  name: RICS membership enquiries
 - type: LinkedIn
   url: https://www.linkedin.com/company/rics
 maintainers:

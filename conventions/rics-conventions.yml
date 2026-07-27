@@ -1,0 +1,117 @@
+generated: '2026-07-26'
+method: derived
+source: openapi/rics-digitalcommunity-api-openapi.json plus live anonymous probes of api.rics.org on 2026-07-26
+api: RICS DigitalCommunity API
+summary: >-
+  The DigitalCommunity API is a plain ASP.NET Core Web API with almost no cross-cutting contract
+  beyond bearer authentication. There is no idempotency key, no pagination, no field expansion, no
+  metadata bag, no request-id echo, no rate-limit signalling and no documented versioning policy.
+  Its one genuine convention is the ASP.NET ProblemDetails error object (RFC 7807 shape, served as
+  application/json rather than application/problem+json). Everything below was derived from the
+  published OpenAPI 3.0.1 and from live anonymous probes; RICS publishes no developer documentation
+  for this API, so nothing here could be upgraded to searched.
+authentication:
+  style: bearer JWT obtained from a credential exchange
+  scheme: >-
+    Single OpenAPI securityScheme "Bearer", declared as type apiKey in the Authorization header,
+    applied globally via a root-level security requirement. The description reads "Please enter into
+    field the word 'Bearer' following by space and JWT".
+  token_endpoint: POST /token
+  token_request: >-
+    A JSON object POSTed to /token carrying the RICS-issued username and password. The OpenAPI
+    models the body only as a free-form object of JToken values, so the exact property names are not
+    published; info.description states credentials "need to be sent in a JSON User object".
+  credential_issuance: not self-serve - RICS must issue a username and password first
+  token_lifetime: >-
+    "Bearer tokens have a limited lifetime and will need to be refreshed by your client
+    periodically" (info.description). No TTL is published and there is no refresh endpoint - the
+    spec explicitly makes refresh "a matter for your client software to address", which in practice
+    means re-POSTing /token.
+  observed_challenge: >-
+    GET /api/Profile/1 anonymously returns HTTP 401 with WWW-Authenticate: Bearer and a zero-length
+    body (probed 2026-07-26).
+  details: authentication/rics-authentication.yml
+idempotency:
+  supported: false
+  evidence: >-
+    No Idempotency-Key header, no idempotency parameter and no idempotency language anywhere in the
+    OpenAPI or in info.description. The write operations (POST /api/Payment/update,
+    POST /api/AzureStorage/StoreRegulationDeclarationDocument, POST /api/AzureStorage/UploadFile,
+    POST /api/OlaMerchantPost, DELETE /api/AzureStorage/DeleteRegulationDeclarationDocuments) carry
+    no replay-protection contract.
+  note: >-
+    This matters because the write surface includes payment updates and a merchant post endpoint.
+    A safe retry contract is the single largest gap in this API for agent or integrator use.
+pagination:
+  supported: false
+  evidence: >-
+    No limit/offset/page/cursor parameter appears on any of the 16 operations. Collection responses
+    are returned whole and self-count instead: RegulationSubscriptions carries countOfSubscriptions,
+    PaymentInformation carries countOfQuotes / countOfSalesOrders / countOfSchemeAnnualReturns, and
+    RegulationScheme carries countOfReturns / countOfMemberDirectorPrincipals / countOfSubscriptions.
+  filtering: >-
+    Scope is narrowed only by identifier - path parameters (id, schemeNumber, reference) and the
+    regulationSchemeId query parameter on GET /api/Regulation/Subscriptions and
+    GET /api/Regulation/PaymentInformation.
+field_expansion:
+  supported: false
+  note: >-
+    The opposite pattern is used - responses are deeply pre-expanded. A single
+    GET /api/Regulation/{schemeNumber} returns RegulationScheme with nested regulationReturns,
+    childSchemes, surveyingServices, piiInsurers, redressProviders, offices and
+    memberDirectorPrincipals inline, plus a self-referential childSchemes tree.
+metadata:
+  custom_metadata: false
+  audit_fields: >-
+    Most first-class objects expose createdOn and modifiedOn (RegulationScheme,
+    RegulationSubscription, RegulationReturn), and status objects carry paired code/name fields
+    (schemeLicenceStatus + schemeLicenceStatusName) - an enum plus its label.
+request_tracing:
+  request_id_header: none
+  observed_headers: >-
+    Responses carry Request-Context (Application Insights appId
+    cid-v1:4e26c298-913b-4364-bdb3-6e9cb56c469f), Server: Microsoft-IIS/10.0 and X-Powered-By:
+    ASP.NET. There is no X-Request-Id, X-Correlation-Id or traceparent echo, so a client cannot
+    quote a server-side correlation id when raising an incident.
+versioning:
+  scheme: none-in-path
+  current: v1
+  evidence: >-
+    info.version is "v1" and the Swagger document is served at /swagger/v1/swagger.json, but the
+    operation paths themselves are unversioned (/api/Profile/{id}, /token). There is no version
+    header, no date-based version and no published deprecation or sunset policy.
+  details: lifecycle/rics-lifecycle.yml
+error_envelope:
+  format: rfc7807-shaped
+  media_type: application/json
+  schema: ProblemDetails
+  fields: [type, title, status, detail, instance]
+  note: >-
+    The ASP.NET Core ProblemDetails object with additionalProperties open. It is declared as
+    application/json, not application/problem+json, so it is RFC 7807 in shape but not in content
+    negotiation. Only the Payment, Profile, Regulation and SurveyWriter operations bind
+    ProblemDetails to their error responses; the AzureStorage operations declare 401/403/404 with no
+    response body at all.
+  observed: >-
+    POST /token with an empty JSON body returned HTTP 500 with a zero-length body (probed
+    anonymously 2026-07-26) - a malformed credential payload is not surfaced as the declared 400.
+  details: errors/rics-problem-types.yml
+rate_limiting:
+  documented: false
+  headers_observed: none
+  note: >-
+    No RateLimit-*, X-RateLimit-* or Retry-After headers were returned on any anonymous probe of
+    api.rics.org, and RICS publishes no rate-limit documentation for this API.
+content_types:
+  request: [application/json, application/json-patch+json, text/json, 'application/*+json']
+  response: [application/json, text/json, text/plain]
+  note: >-
+    Response bodies are offered as text/plain, application/json and text/json on collection
+    endpoints - the ASP.NET Core default output formatter set, not a deliberate content-negotiation
+    design.
+cross_links:
+  authentication: authentication/rics-authentication.yml
+  errors: errors/rics-problem-types.yml
+  lifecycle: lifecycle/rics-lifecycle.yml
+  data_model: data-model/rics-data-model.yml
+  agentic_access: agentic-access/rics-agentic-access.yml

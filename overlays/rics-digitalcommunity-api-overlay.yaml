@@ -1,0 +1,117 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the RICS DigitalCommunity API
+  version: 1.0.0
+extends: openapi/rics-digitalcommunity-api-openapi.json
+x-apievangelist:
+  generated: '2026-07-26'
+  method: generated
+  source: openapi/rics-digitalcommunity-api-openapi.json
+  rationale: >-
+    The harvested specification declares zero operationIds across sixteen operations and no
+    top-level tags block, which makes it impossible to reference an operation by name in an Arazzo
+    workflow, an agent skill or an MCP tool binding. This overlay assigns an operationId to every
+    operation and declares the seven tags the operations already use, without mutating the
+    harvested document. The operationIds below are API Evangelist assignments, NOT RICS names.
+actions:
+- target: $.info
+  update:
+    x-apievangelist-enriched: '2026-07-26'
+    x-apievangelist-access: >-
+      Credential-gated. RICS must issue a username and password before any operation can be called;
+      there is no self-serve signup, no developer portal and no published application route other
+      than the RICS Tech Partner Programme.
+    x-apievangelist-operationids: >-
+      All operationIds in this overlay are assigned by API Evangelist because the source
+      specification declares none.
+- target: $
+  update:
+    tags:
+    - {name: Token, description: Credential exchange for a short-lived bearer token}
+    - {name: Regulation, description: RICS firm regulation schemes, subscriptions and scheme payment information}
+    - {name: Profile, description: RICS member and applicant profiles}
+    - {name: Payment, description: Payment requests and payment updates}
+    - {name: SurveyWriter, description: Survey-writing software licence validation}
+    - {name: AzureStorage, description: Regulation declaration documents and file storage}
+    - {name: OlaMerchantPost, description: Undocumented merchant post endpoint}
+- target: $.paths['/token'].post
+  update:
+    operationId: getToken
+    summary: Exchange RICS-issued credentials for a bearer token
+- target: $.paths['/api/Regulation/{schemeNumber}'].get
+  update:
+    operationId: getRegulationScheme
+    summary: Get a regulation scheme by scheme number
+- target: $.paths['/api/Regulation/Subscriptions'].get
+  update:
+    operationId: listRegulationSubscriptions
+    summary: List subscriptions for a regulation scheme
+- target: $.paths['/api/Regulation/PaymentInformation'].get
+  update:
+    operationId: getRegulationPaymentInformation
+    summary: Get quotes and sales orders for a regulation scheme
+- target: $.paths['/api/Profile/{id}'].get
+  update:
+    operationId: getProfile
+    summary: Get a member or applicant profile by contact id
+    x-apievangelist-data-class: personal-data
+- target: $.paths['/api/Payment/{id}'].get
+  update:
+    operationId: getPayment
+    summary: Get a payment request by id
+    x-apievangelist-data-class: personal-and-financial-data
+- target: $.paths['/api/Payment/{id}/reference/{reference}'].get
+  update:
+    operationId: getPaymentByReference
+    summary: Get a payment request by id and payment reference
+    x-apievangelist-data-class: personal-and-financial-data
+- target: $.paths['/api/Payment/update'].post
+  update:
+    operationId: updatePayment
+    summary: Post a payment update
+    x-apievangelist-retry-safety: >-
+      Not safe to retry. The API publishes no idempotency key, so a repeated payment update cannot
+      be de-duplicated by the server.
+- target: $.paths['/api/OlaMerchantPost'].post
+  update:
+    operationId: postOlaMerchant
+    summary: Post to the OLA merchant endpoint
+    x-apievangelist-note: >-
+      Contract unknowable from the specification - no description, no parameters, no request body
+      schema and only a 200 response are declared.
+- target: $.paths['/api/SurveyWriter/{id}'].get
+  update:
+    operationId: getSurveyWriterLicence
+    summary: Validate a survey-writing software licence key
+- target: $.paths['/api/AzureStorage/GetRegulationDeclarationDocuments'].get
+  update:
+    operationId: listRegulationDeclarationDocuments
+    summary: List regulation declaration documents
+- target: $.paths['/api/AzureStorage/StoreRegulationDeclarationDocument'].post
+  update:
+    operationId: storeRegulationDeclarationDocument
+    summary: Record a regulation declaration document pointer
+- target: $.paths['/api/AzureStorage/DeleteRegulationDeclarationDocuments'].delete
+  update:
+    operationId: deleteRegulationDeclarationDocuments
+    summary: Delete regulation declaration document records
+    x-apievangelist-consequence: destructive
+- target: $.paths['/api/AzureStorage/UploadFile'].post
+  update:
+    operationId: uploadFile
+    summary: Upload a file to a storage container
+- target: $.paths['/api/AzureStorage/DownloadFile'].get
+  update:
+    operationId: downloadFile
+    summary: Download a file by storage URL
+- target: $.paths['/api/AzureStorage/DeleteLogData'].post
+  update:
+    operationId: deleteLogData
+    summary: Delete log table data up to a given date
+    x-apievangelist-consequence: destructive
+- target: $.components.schemas.ProblemDetails
+  update:
+    x-apievangelist-note: >-
+      RFC 7807 in shape but served as application/json rather than application/problem+json, and
+      bound only to the Payment, Profile, Regulation and SurveyWriter error responses. See
+      errors/rics-problem-types.yml.

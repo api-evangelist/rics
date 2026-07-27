@@ -1,0 +1,60 @@
+generated: '2026-07-26'
+method: derived
+source: >-
+  openapi/rics-digitalcommunity-api-openapi.json, GitHub Releases for RICS-Data-Standard/RDS, and
+  live anonymous probes on 2026-07-26
+summary: >-
+  RICS runs two independently versioned things and neither carries a published lifecycle policy for
+  integrators. The DigitalCommunity API is on an unversioned "v1" with no deprecation policy, no
+  Sunset/Deprecation header support, no SLA and no status page. The RICS Data Standard (RDS) is
+  properly versioned and released on GitHub - v3.3.3 (March 2022) superseding v3.2.1 (April 2021) -
+  but it has had no release in over four years and its repository last saw a push in January 2025.
+apis:
+- name: RICS DigitalCommunity API
+  versioning:
+    scheme: none-in-path
+    current: v1
+    evidence: >-
+      info.version = "v1"; document served at /swagger/v1/swagger.json; operation paths themselves
+      are unversioned (/api/Profile/{id}, /token).
+    docs: none
+  deprecation:
+    policy_url: none
+    sunset_header: unknown
+    deprecation_header: unknown
+    note: >-
+      No RFC 8594 Sunset or Deprecation header could be observed - every anonymous probe is
+      rejected at 401 before a resource response is produced, and no operation in the spec is
+      marked deprecated: true.
+  deprecated_operations: []
+  sla:
+    url: none
+    uptime_target: none
+  status_page: none
+  support_channel: https://www.rics.org/footer/contact-us
+  breaking_change_notice: none published
+- name: RICS Data Standard (RDS)
+  versioning:
+    scheme: semver
+    current: 3.3.3
+    released: '2022-03-16'
+    docs: https://github.com/RICS-Data-Standard/RDS/releases
+  releases:
+  - {version: v3.3.3, published: '2022-03-16', title: RICS Data Standard (RDS) - March 2022}
+  - {version: v3.2.1, published: '2021-04-19', title: RICS Data Standard (RDS) - April 2021}
+  deprecation:
+    policy_url: none
+    note: >-
+      Supersession is stated in the release notes rather than in a policy - the v3.3.3 notes say the
+      release "replaces the April 2021 release and all previous RICS Data Standards for IPMS and
+      ICMS", and the 3.3.2 and 3.2.1 artifact files were deleted from the repository rather than
+      archived (commits "Remove 3.3.2 Files", "Remove 3.2.1 Documentation").
+  maintenance_signal:
+    last_release: '2022-03-16'
+    last_push: '2025-01-07'
+    open_governance: none - one public repository, no issues/discussions process published
+status_page: none
+evidence:
+- {source: openapi/rics-digitalcommunity-api-openapi.json, finding: info.version v1, no deprecated operations}
+- {source: 'https://github.com/RICS-Data-Standard/RDS/releases', finding: two dated releases, v3.3.3 and v3.2.1}
+- {source: live probe, finding: 'no status.rics.org and no status page linked from any RICS property'}

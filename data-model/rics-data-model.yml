@@ -1,0 +1,160 @@
+generated: '2026-07-26'
+method: derived
+source: openapi/rics-digitalcommunity-api-openapi.json
+api: RICS DigitalCommunity API
+summary: >-
+  Fifty-two schemas describing a regulator's back office, not a property dataset. The graph has one
+  hub - RegulationScheme, the licence a RICS-regulated firm holds - which fans out to its offices,
+  member directors and principals, professional indemnity insurers, redress providers, surveying
+  services and annual regulatory returns, and recurses into child schemes. Two smaller trees hang
+  off it: subscriptions and their licensed users, and the quote/sales-order/payment chain that bills
+  them. Profile (the individual member) and SurveyWriter (a survey-writing software licence) stand
+  apart, joined to the rest only by contact identifiers. Roughly half the schemas are enum lookups -
+  statuses, reasons and types - which is the shape of a regulation system.
+entities:
+- name: RegulationScheme
+  role: hub - a firm's RICS regulation licence
+  addressed_by: GET /api/Regulation/{schemeNumber}
+  identifiers: [regulatedSchemeId, regulatedSchemeNumber]
+  fields: 79
+  notable_fields: [schemeLicenceType, schemeLicenceStatus, hasPii, clientMoneyType, gimaStatus, responsiblePrincipalId, renewalsDate, isSelfDeclaredAsVrsEligible, createdOn, modifiedOn]
+- name: Office
+  role: a regulated firm's office/premises
+  identifiers: [accountId, firmNumber, officeNumber]
+  notable_fields: [registeredName, tradingName, vatRegNumber, isHeadOffice, isRegulated, hasActiveRegistration]
+- name: PiiInsurer
+  role: professional indemnity insurance declaration
+- name: RedressProvider
+  role: consumer redress scheme declaration
+- name: MemberDirectorPrincipal
+  role: the members who are directors or principals of the regulated firm
+- name: SurveyingService
+  role: the surveying services the scheme is licensed for
+- name: RegulationReturn
+  role: annual regulatory return submitted against a scheme
+  identifiers: [regulatoryReturnId]
+  notable_fields: [returnDueDate, dateOfSubmission, totalAnswersRequired, totalAnswersProvided, score, result, statusCode]
+- name: RegulationSubscriptions
+  role: collection wrapper
+  addressed_by: GET /api/Regulation/Subscriptions
+  notable_fields: [subscriptions, countOfSubscriptions]
+- name: RegulationSubscription
+  role: a subscription owned by a contact or account, optionally tied to a regulated scheme
+  identifiers: [subscriptionNumber, ownerId, contactId]
+  notable_fields: [numberOfLicences, startDate, endDate, status, paymentMethod, sponsorshipCode, renewalGuid]
+- name: Subscription
+  role: subscription term detail carrying its sales orders and quotes
+  identifiers: [subscriptionId]
+- name: SubscriptionUser
+  role: an individual licence seat on a subscription
+  identifiers: [subscriptionUserId, contactId]
+  notable_fields: [licenceKey, approvalStatus, status, endDate]
+- name: PaymentInformation
+  role: collection wrapper for a scheme's commercial documents
+  addressed_by: GET /api/Regulation/PaymentInformation
+  notable_fields: [quotes, salesOrders, countOfQuotes, countOfSalesOrders, countOfSchemeAnnualReturns]
+- name: RegulationQuote
+  role: a priced quote for regulation or subscription fees
+  identifiers: [quoteId, quoteRef]
+  notable_fields: [totalAmount, taxAmount, discountAmount, isoCurrencyCode, paymentReceived, status, purchaseType]
+- name: RegulationQuoteLine
+  role: line item on a quote
+- name: RegulationSalesOrder
+  role: the order a quote converts into
+  identifiers: [orderId, orderRef]
+  notable_fields: [totalAmount, status, quoteNumber]
+- name: PaymentRequestModel
+  role: a payment request and its payer details
+  addressed_by: GET /api/Payment/{id}, GET /api/Payment/{id}/reference/{reference}
+  identifiers: [contactNo, reference, formattedReference, mid]
+  notable_fields: [currency, currencyCode, paymentFees, canPayByIvr, isTest]
+- name: Fees
+  role: fee breakdown carried on a payment request
+- name: ProfileModel
+  role: an individual RICS member or applicant
+  addressed_by: GET /api/Profile/{id}
+  identifiers: [contactId, contactNo]
+  notable_fields: [professionalGrade, designation, applicantType, worldRegion, region, country]
+- name: SurveyWriterModel
+  role: a survey-writing software licence check
+  addressed_by: GET /api/SurveyWriter/{id}
+  identifiers: [licenceKey]
+  notable_fields: [isValid, organisation, productType, productCode, startDate, endDate]
+- name: RegulationDeclaration
+  role: pointer to a declaration document held in Azure blob/SharePoint storage
+  identifiers: [rowKey, schemeId]
+  notable_fields: [storageUrl, sharepointPath]
+- name: Address
+  role: postal address on an Office
+- name: ProblemDetails
+  role: error envelope (see errors/rics-problem-types.yml)
+relationships:
+- {from: RegulationScheme, to: RegulationScheme, kind: has_many, via: childSchemes, note: self-referential parent/child scheme tree, also parentRegulatedSchemeId}
+- {from: RegulationScheme, to: Office, kind: has_many, via: offices}
+- {from: RegulationScheme, to: MemberDirectorPrincipal, kind: has_many, via: memberDirectorPrincipals}
+- {from: RegulationScheme, to: PiiInsurer, kind: has_many, via: piiInsurers}
+- {from: RegulationScheme, to: RedressProvider, kind: has_many, via: redressProviders}
+- {from: RegulationScheme, to: SurveyingService, kind: has_many, via: surveyingServices}
+- {from: RegulationScheme, to: RegulationReturn, kind: has_many, via: regulationReturns}
+- {from: RegulationScheme, to: SchemeLicenceType, kind: has_one, via: schemeLicenceType, enum: true}
+- {from: RegulationScheme, to: SchemeLicenceStatus, kind: has_one, via: schemeLicenceStatus, enum: true}
+- {from: RegulationScheme, to: SchemeLicenceStatusReason, kind: has_one, via: schemeLicenceStatusReason, enum: true}
+- {from: RegulationScheme, to: RegulatedOrganisationType, kind: has_one, via: regulatedOrganisationType, enum: true}
+- {from: RegulationScheme, to: LicenceEndReason, kind: has_one, via: licenceEndReason, enum: true}
+- {from: RegulationScheme, to: InclusionReason, kind: has_one, via: inclusionReason, enum: true}
+- {from: RegulationScheme, to: FirmRegsRoute, kind: has_one, via: firmPiiAndAdrRoute, enum: true}
+- {from: RegulationScheme, to: MemberPiiAndAdrRoute, kind: has_one, via: memberPiiAndAdrRoute, enum: true}
+- {from: RegulationScheme, to: Gima, kind: has_one, via: gimaStatus, enum: true}
+- {from: RegulationScheme, to: ProfileModel, kind: belongs_to, via: responsiblePrincipalId, note: 'id-reference only, no $ref - resolve via GET /api/Profile/{id}'}
+- {from: RegulationScheme, to: ProfileModel, kind: belongs_to, via: contactOfficerId, note: 'exposed as contactOfficer/contactOfficerNumber, id-reference only'}
+- {from: Office, to: Address, kind: has_one, via: address}
+- {from: RegulationReturn, to: RegulatoryType, kind: has_one, via: regulatoryType, enum: true}
+- {from: RegulationReturn, to: ReturnStatusCode, kind: has_one, via: statusCode, enum: true}
+- {from: RegulationReturn, to: ScoreResult, kind: has_one, via: result, enum: true}
+- {from: RegulationReturn, to: RegulationScheme, kind: belongs_to, via: regulatedSchemeId}
+- {from: RegulationSubscriptions, to: RegulationSubscription, kind: has_many, via: subscriptions}
+- {from: RegulationSubscription, to: Subscription, kind: has_many, via: subscriptions}
+- {from: RegulationSubscription, to: SubscriptionUser, kind: has_many, via: subscriptionUsers}
+- {from: RegulationSubscription, to: SponsorshipCode, kind: has_one, via: sponsorshipCode, enum: true}
+- {from: RegulationSubscription, to: SubscriptionPaymentMethod, kind: has_one, via: paymentMethod, enum: true}
+- {from: RegulationSubscription, to: SubscriptionOwnerStatus, kind: has_one, via: status, enum: true}
+- {from: RegulationSubscription, to: CancellationReason, kind: has_one, via: reasonForCancellation, enum: true}
+- {from: RegulationSubscription, to: SuspensionReason, kind: has_one, via: reasonForSuspension, enum: true}
+- {from: RegulationSubscription, to: EndDateChangeReason, kind: has_one, via: reasonForEndDateChange, enum: true}
+- {from: RegulationSubscription, to: PortalLocation, kind: has_one, via: portalSection, enum: true}
+- {from: RegulationSubscription, to: RegulationScheme, kind: belongs_to, via: regulatedScheme}
+- {from: SubscriptionUser, to: SubscriptionUserStatus, kind: has_one, via: status, enum: true}
+- {from: SubscriptionUser, to: SubscriptionUserApprovalStatus, kind: has_one, via: approvalStatus, enum: true}
+- {from: SubscriptionUser, to: ProfileModel, kind: belongs_to, via: contactId, note: id-reference only}
+- {from: PaymentInformation, to: RegulationQuote, kind: has_many, via: quotes}
+- {from: PaymentInformation, to: RegulationSalesOrder, kind: has_many, via: salesOrders}
+- {from: RegulationQuote, to: RegulationQuoteLine, kind: has_many, via: quoteLines}
+- {from: RegulationQuote, to: QuoteStatus, kind: has_one, via: status, enum: true}
+- {from: RegulationQuote, to: PurchaseType, kind: has_one, via: purchaseType, enum: true}
+- {from: RegulationSalesOrder, to: SalesOrderStatus, kind: has_one, via: status, enum: true}
+- {from: RegulationSalesOrder, to: RegulationQuote, kind: belongs_to, via: quoteNumber}
+- {from: PaymentRequestModel, to: Fees, kind: has_many, via: paymentFees}
+- {from: PaymentRequestModel, to: ProfileModel, kind: belongs_to, via: contactNo, note: id-reference only}
+- {from: ProfileModel, to: ProfessionalGrade, kind: has_one, via: professionalGrade, enum: true}
+- {from: ProfileModel, to: MemberDesignation, kind: has_one, via: designation, enum: true}
+- {from: ProfileModel, to: CurrentApplicationType, kind: has_one, via: applicantType, enum: true}
+- {from: RegulationDeclaration, to: RegulationScheme, kind: belongs_to, via: schemeId}
+identifier_conventions:
+  contactNo: >-
+    The RICS member/contact number. It is the join key across ProfileModel, RegulationScheme
+    (licencedContactNumber, submittedByContactNumber, contactOfficerNumber,
+    responsiblePrincipalNumber), SubscriptionUser and PaymentRequestModel, and it is the same value
+    the Azure AD B2C sign-in exposes as the non-standard contactNumber claim.
+  regulatedSchemeNumber: the firm-facing regulation scheme number, the path key on GET /api/Regulation/{schemeNumber}
+  licenceKey: appears on both SubscriptionUser and SurveyWriterModel - the seat key a partner product validates
+  no_prefixes: RICS uses no Stripe-style typed id prefixes; identifiers are bare GUIDs or numbers
+enum_lookups: [AddressType, CancellationReason, CurrentApplicationType, EndDateChangeReason, FirmRegsRoute, Gima, InclusionReason, LicenceEndReason, MemberDesignation, MemberPiiAndAdrRoute, PortalLocation, ProfessionalGrade, PurchaseType, QuoteStatus, RegulatedOrganisationType, RegulatoryType, ReturnStatusCode, SalesOrderStatus, SchemeLicenceStatus, SchemeLicenceStatusReason, SchemeLicenceType, ScoreResult, SponsorshipCode, SponsorshipCodeStatus, SubscriptionOwnerStatus, SubscriptionPaymentMethod, SubscriptionUserApprovalStatus, SubscriptionUserStatus, SuspensionReason]
+notes:
+  pii: >-
+    ProfileModel carries direct personal data (name, preferred email, business and mobile phone,
+    job title, country) and RegulationScheme carries named individuals. This is a personal-data API
+    under UK GDPR, which is consistent with it being closed and credential-gated.
+  separate_standard: >-
+    This is NOT the RICS Data Standard. RDS 3.3.3 (openapi/rics-data-standard-3.3.3-schema.json) is
+    an entirely separate, MIT-licensed land/property/infrastructure asset model with no overlap with
+    the regulation entities above - RICS ships two unconnected data models.
