@@ -13,7 +13,8 @@ surfaces:
   openapi:
     file: openapi/rics-digitalcommunity-api-openapi.json
     live: https://api.rics.org/swagger/v1/swagger.json
-    status: 200 anonymous
+    status: published
+    status_raw: published
     operations: 16
     operationIds_declared: 0
   graphql:
