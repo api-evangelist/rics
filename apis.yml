@@ -86,6 +86,9 @@ apis:
     url: mcp/rics-tool-crosswalk.yml
     name: Candidate MCP tool to OpenAPI operation crosswalk (RICS runs no MCP server; 16 of 16 bound by construction)
 common:
+- type: License
+  name: MIT
+  url: https://github.com/RICS-Data-Standard/RDS/blob/main/LICENSE
 - type: AgenticAccess
   url: agentic-access/rics-agentic-access.yml
 - type: DomainSecurity
