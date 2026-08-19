@@ -2,24 +2,25 @@ generated: '2026-07-26'
 method: derived
 status: candidate
 source: openapi/rics-digitalcommunity-api-openapi.json
-summary: >-
-  RICS publishes no MCP server. https://api.rics.org/mcp returns a hard 404, nothing appears in the
-  MCP registries or under @modelcontextprotocol, and no RICS property mentions Model Context
-  Protocol. The tool list below is DERIVED by API Evangelist from the 16 operations of the published
-  DigitalCommunity OpenAPI as a candidate design - it is not a RICS artifact and nothing here is
-  live. Note that any real deployment would be gated twice over: RICS must issue the credentials,
-  and the data behind these tools is firm-regulation and member personal data.
+summary: 'RICS publishes no MCP server. https://api.rics.org/mcp returns a hard 404, nothing appears in
+  the MCP registries or under @modelcontextprotocol, and no RICS property mentions Model Context Protocol.
+  The tool list below is DERIVED by API Evangelist from the 16 operations of the published DigitalCommunity
+  OpenAPI as a candidate design - it is not a RICS artifact and nothing here is live. Note that any real
+  deployment would be gated twice over: RICS must issue the credentials, and the data behind these tools
+  is firm-regulation and member personal data.'
 server:
   name: rics-digitalcommunity
   transport: http
   url: null
   published: false
-  probe: {url: 'https://api.rics.org/mcp', status: 404, date: '2026-07-26'}
+  probe:
+    url: https://api.rics.org/mcp
+    status: 404
+    date: '2026-07-26'
 auth:
-  model: >-
-    Bearer JWT from POST /token, exchanged for a RICS-issued username and password. An MCP server
-    would have to hold those credentials as server-side configuration - there is no OAuth
-    authorization flow to delegate, so per-user consent is not expressible.
+  model: Bearer JWT from POST /token, exchanged for a RICS-issued username and password. An MCP server
+    would have to hold those credentials as server-side configuration - there is no OAuth authorization
+    flow to delegate, so per-user consent is not expressible.
 tools:
 - name: get_token
   description: Exchange RICS-issued credentials for a short-lived bearer token.
@@ -27,7 +28,9 @@ tools:
   action_class: acting
   note: infrastructure - a real server would hold this internally rather than expose it as a tool
 - name: get_regulation_scheme
-  description: Retrieve a RICS regulation scheme (a regulated firm's licence) by scheme number, including its offices, member directors and principals, PII insurers, redress providers, surveying services, annual returns and child schemes.
+  description: Retrieve a RICS regulation scheme (a regulated firm's licence) by scheme number, including
+    its offices, member directors and principals, PII insurers, redress providers, surveying services,
+    annual returns and child schemes.
   source_operation: openapi/rics-digitalcommunity-api-openapi.json#GET /api/Regulation/{schemeNumber}
   action_class: connected
 - name: list_regulation_subscriptions
@@ -39,7 +42,8 @@ tools:
   source_operation: openapi/rics-digitalcommunity-api-openapi.json#GET /api/Regulation/PaymentInformation
   action_class: connected
 - name: get_member_profile
-  description: Retrieve a RICS member or applicant profile by contact id, including professional grade and designation.
+  description: Retrieve a RICS member or applicant profile by contact id, including professional grade
+    and designation.
   source_operation: openapi/rics-digitalcommunity-api-openapi.json#GET /api/Profile/{id}
   action_class: connected
   sensitivity: personal data
@@ -65,7 +69,8 @@ tools:
   action_class: acting
   note: undocumented - the operation has no description, no parameters and no request schema in the specification
 - name: validate_survey_writer_licence
-  description: Validate a survey-writing software licence key and return its organisation, product and validity window.
+  description: Validate a survey-writing software licence key and return its organisation, product and
+    validity window.
   source_operation: openapi/rics-digitalcommunity-api-openapi.json#GET /api/SurveyWriter/{id}
   action_class: connected
 - name: list_regulation_declaration_documents
@@ -73,7 +78,8 @@ tools:
   source_operation: openapi/rics-digitalcommunity-api-openapi.json#GET /api/AzureStorage/GetRegulationDeclarationDocuments
   action_class: connected
 - name: store_regulation_declaration_document
-  description: Record a regulation declaration document pointer (row key, scheme id, storage URL, SharePoint path).
+  description: Record a regulation declaration document pointer (row key, scheme id, storage URL, SharePoint
+    path).
   source_operation: openapi/rics-digitalcommunity-api-openapi.json#POST /api/AzureStorage/StoreRegulationDeclarationDocument
   action_class: acting
 - name: delete_regulation_declaration_documents
@@ -97,7 +103,12 @@ tools:
   note: an administrative operation that should almost certainly never be exposed to an agent
 governance:
   reference: agentic-access/rics-agentic-access.yml
-  caution: >-
-    Nine of these sixteen candidate tools read or write personal data of RICS members and regulated
-    firms, two are destructive, and one moves money with no idempotency contract. Any real MCP
-    exposure of this API needs the escalation contracts in agentic-access/ applied first.
+  caution: Nine of these sixteen candidate tools read or write personal data of RICS members and regulated
+    firms, two are destructive, and one moves money with no idempotency contract. Any real MCP exposure
+    of this API needs the escalation contracts in agentic-access/ applied first.
+deployment:
+  mode: none
+  verified: derived
+  tools: 16
+  checked: '2026-08-12'
+  source: catalog MCP census

@@ -1,0 +1,3460 @@
+{
+  "item": [
+    {
+      "id": "ae155bfc-be8b-47db-bf52-a0ef2358f561",
+      "name": "AzureStorage",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "45f81c9b-a6f5-47fb-b759-53912898f437",
+          "name": "/api/AzureStorage/GetRegulationDeclarationDocuments",
+          "request": {
+            "name": "/api/AzureStorage/GetRegulationDeclarationDocuments",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "AzureStorage",
+                "GetRegulationDeclarationDocuments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f4e4991a-065f-41b4-b371-af2b654da3ab",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "AzureStorage",
+                    "GetRegulationDeclarationDocuments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"rowKey\": \"string\",\n    \"schemeId\": \"string\",\n    \"storageUrl\": \"string\",\n    \"sharepointPath\": \"string\"\n  },\n  {\n    \"rowKey\": \"string\",\n    \"schemeId\": \"string\",\n    \"storageUrl\": \"string\",\n    \"sharepointPath\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8c3e3989-a446-464f-b335-02b122719c6f",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "AzureStorage",
+                    "GetRegulationDeclarationDocuments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "69eb4993-48e7-48c3-bd12-d231c4816625",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "AzureStorage",
+                    "GetRegulationDeclarationDocuments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0bcd63e3-bbfd-47ec-a1d0-ab4a96a13e0a",
+          "name": "/api/AzureStorage/DeleteRegulationDeclarationDocuments",
+          "request": {
+            "name": "/api/AzureStorage/DeleteRegulationDeclarationDocuments",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "AzureStorage",
+                "DeleteRegulationDeclarationDocuments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"rowKey\": \"<string>\",\n    \"schemeId\": \"<string>\",\n    \"storageUrl\": \"<string>\",\n    \"sharepointPath\": \"<string>\"\n  },\n  {\n    \"rowKey\": \"<string>\",\n    \"schemeId\": \"<string>\",\n    \"storageUrl\": \"<string>\",\n    \"sharepointPath\": \"<string>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b044221f-2f42-4fa0-8fec-33c18012cf22",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "AzureStorage",
+                    "DeleteRegulationDeclarationDocuments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"rowKey\": \"<string>\",\n    \"schemeId\": \"<string>\",\n    \"storageUrl\": \"<string>\",\n    \"sharepointPath\": \"<string>\"\n  },\n  {\n    \"rowKey\": \"<string>\",\n    \"schemeId\": \"<string>\",\n    \"storageUrl\": \"<string>\",\n    \"sharepointPath\": \"<string>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b9d6b3b1-b09b-43b1-9e93-d7cc51fd1377",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "AzureStorage",
+                    "DeleteRegulationDeclarationDocuments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"rowKey\": \"<string>\",\n    \"schemeId\": \"<string>\",\n    \"storageUrl\": \"<string>\",\n    \"sharepointPath\": \"<string>\"\n  },\n  {\n    \"rowKey\": \"<string>\",\n    \"schemeId\": \"<string>\",\n    \"storageUrl\": \"<string>\",\n    \"sharepointPath\": \"<string>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "36193f93-1b1c-417c-a47c-38865792d563",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "AzureStorage",
+                    "DeleteRegulationDeclarationDocuments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"rowKey\": \"<string>\",\n    \"schemeId\": \"<string>\",\n    \"storageUrl\": \"<string>\",\n    \"sharepointPath\": \"<string>\"\n  },\n  {\n    \"rowKey\": \"<string>\",\n    \"schemeId\": \"<string>\",\n    \"storageUrl\": \"<string>\",\n    \"sharepointPath\": \"<string>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bab8e685-135f-40ef-bae8-404f735165cb",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "AzureStorage",
+                    "DeleteRegulationDeclarationDocuments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"rowKey\": \"<string>\",\n    \"schemeId\": \"<string>\",\n    \"storageUrl\": \"<string>\",\n    \"sharepointPath\": \"<string>\"\n  },\n  {\n    \"rowKey\": \"<string>\",\n    \"schemeId\": \"<string>\",\n    \"storageUrl\": \"<string>\",\n    \"sharepointPath\": \"<string>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7d47eaf7-0236-4ebe-9cd8-e5b4cff65bea",
+          "name": "/api/AzureStorage/StoreRegulationDeclarationDocument",
+          "request": {
+            "name": "/api/AzureStorage/StoreRegulationDeclarationDocument",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "AzureStorage",
+                "StoreRegulationDeclarationDocument"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "RowKey",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "SchemeId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "StorageUrl",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "SharepointPath",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4fadf0ef-6bf9-4228-a601-6f723277bb44",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "AzureStorage",
+                    "StoreRegulationDeclarationDocument"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "RowKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "SchemeId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "StorageUrl",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "SharepointPath",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4739b826-41b8-4796-a4a1-4b51a2da2aeb",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "AzureStorage",
+                    "StoreRegulationDeclarationDocument"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "RowKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "SchemeId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "StorageUrl",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "SharepointPath",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1e02f016-cc65-4551-b24c-63dd26e18676",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "AzureStorage",
+                    "StoreRegulationDeclarationDocument"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "RowKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "SchemeId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "StorageUrl",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "SharepointPath",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d8c37692-a83a-47f6-b3fb-e680714ab6ba",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "AzureStorage",
+                    "StoreRegulationDeclarationDocument"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "RowKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "SchemeId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "StorageUrl",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "SharepointPath",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0ef3b524-76ba-410e-9f8d-04d18bd3adce",
+          "name": "/api/AzureStorage/UploadFile",
+          "request": {
+            "name": "/api/AzureStorage/UploadFile",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "AzureStorage",
+                "UploadFile"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "containerName",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "25783c97-6e40-4412-8f70-ba5b89c08880",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "AzureStorage",
+                    "UploadFile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "containerName",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a5d69e5a-e790-4b4a-9711-268bd7fc6914",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "AzureStorage",
+                    "UploadFile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "containerName",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f6eabc4a-fe55-4e0c-8dfe-7145d30953bd",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "AzureStorage",
+                    "UploadFile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "containerName",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "213de66d-e7e6-4f25-bb77-b52986dda75d",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "AzureStorage",
+                    "UploadFile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "containerName",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9de6ee0b-faae-4e5b-9f87-12fc7b476729",
+          "name": "/api/AzureStorage/DownloadFile",
+          "request": {
+            "name": "/api/AzureStorage/DownloadFile",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "AzureStorage",
+                "DownloadFile"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fileUrl",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3b8f8558-d1c0-465e-8038-5d5c5e16a51c",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "AzureStorage",
+                    "DownloadFile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fileUrl",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ecf5fbe4-cd40-45b9-be5c-03521bdaba9d",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "AzureStorage",
+                    "DownloadFile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fileUrl",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "54d9fe67-8768-48dc-b1a8-8d27280c0b48",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "AzureStorage",
+                    "DownloadFile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fileUrl",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cf2c3b61-de89-4771-91fc-dcbba20202a9",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "AzureStorage",
+                    "DownloadFile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fileUrl",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2e19a0ac-7990-457c-8a76-632113679cfb",
+          "name": "/api/AzureStorage/DeleteLogData",
+          "request": {
+            "name": "/api/AzureStorage/DeleteLogData",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "AzureStorage",
+                "DeleteLogData"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "tableName",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "toDate",
+                  "value": "<dateTime>"
+                }
+              ],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1067b7b7-987d-4615-8047-cbcbeadbb19c",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "AzureStorage",
+                    "DeleteLogData"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tableName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "toDate",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "92ae82ca-df7b-43ca-a46f-76f28384ddaf",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "AzureStorage",
+                    "DeleteLogData"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tableName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "toDate",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "61aeb266-4aaa-4329-8f7c-af21f4493119",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "AzureStorage",
+                    "DeleteLogData"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tableName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "toDate",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "038230fd-461b-4aa3-8d5c-4ab79a4ddd2e",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "AzureStorage",
+                    "DeleteLogData"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tableName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "toDate",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "ebb8124c-95da-4cb1-879b-6a60dd14a325",
+      "name": "OlaMerchantPost",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "cf9917b6-fff9-4077-bb0a-a0dc74592645",
+          "name": "/api/OlaMerchantPost",
+          "request": {
+            "name": "/api/OlaMerchantPost",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "OlaMerchantPost"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cbcb73f2-49e3-4f35-ab81-88ca43ffa7d4",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "OlaMerchantPost"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "e9f8b0ff-0d85-43d8-910a-6d1f4c2bb9a5",
+      "name": "Payment",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5edbc16d-c894-44f0-b78c-44d7ec106ec9",
+          "name": "/api/Payment/:id",
+          "request": {
+            "name": "/api/Payment/:id",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "Payment",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "36907893-8c80-4298-a447-6ee0551892a2",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "Payment",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"contactNo\": \"string\",\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"friendlyName\": \"string\",\n  \"address1\": \"string\",\n  \"administrativeArea\": \"string\",\n  \"country\": \"string\",\n  \"currency\": \"string\",\n  \"email\": \"string\",\n  \"locality\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"postalCode\": \"string\",\n  \"currencyCode\": \"string\",\n  \"canPayByIvr\": true,\n  \"reference\": \"string\",\n  \"formattedReference\": \"string\",\n  \"mid\": \"string\",\n  \"paymentFees\": {\n    \"subsscriptionAmount\": 1411.9456554634835,\n    \"lionHeartAmount\": 6709.21204906195,\n    \"upgAmount\": 248.64173767265797\n  },\n  \"isTest\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1f6413b6-da44-4341-8cf6-f37da2bcd1d7",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "Payment",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 7583,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8d75a4bc-1597-449c-b8f3-c61e371916da",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "Payment",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 7583,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d3508a53-5edb-49d2-8c32-100683bdfaff",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "Payment",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 7583,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3c5cdfac-4fca-42d0-8bd8-80d7fc8bd8f4",
+          "name": "/api/Payment/:id/reference/:reference",
+          "request": {
+            "name": "/api/Payment/:id/reference/:reference",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "Payment",
+                ":id",
+                "reference",
+                ":reference"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "reference",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e5447cb2-e813-4528-b010-4b04d3d1c142",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "Payment",
+                    ":id",
+                    "reference",
+                    ":reference"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reference",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"contactNo\": \"string\",\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"friendlyName\": \"string\",\n  \"address1\": \"string\",\n  \"administrativeArea\": \"string\",\n  \"country\": \"string\",\n  \"currency\": \"string\",\n  \"email\": \"string\",\n  \"locality\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"postalCode\": \"string\",\n  \"currencyCode\": \"string\",\n  \"canPayByIvr\": true,\n  \"reference\": \"string\",\n  \"formattedReference\": \"string\",\n  \"mid\": \"string\",\n  \"paymentFees\": {\n    \"subsscriptionAmount\": 1411.9456554634835,\n    \"lionHeartAmount\": 6709.21204906195,\n    \"upgAmount\": 248.64173767265797\n  },\n  \"isTest\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "144b4b0f-d6bb-4bd3-b69e-2bd0dda260f9",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "Payment",
+                    ":id",
+                    "reference",
+                    ":reference"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reference",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 7583,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d1abe3ad-5408-4d1e-aa00-af87ebd165be",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "Payment",
+                    ":id",
+                    "reference",
+                    ":reference"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reference",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 7583,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "319daee6-0858-4c0a-ac1c-3e63ea1a17e3",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "Payment",
+                    ":id",
+                    "reference",
+                    ":reference"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reference",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 7583,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f5b60aab-b829-4fa1-94d4-f4ba381530e0",
+          "name": "/api/Payment/update",
+          "request": {
+            "name": "/api/Payment/update",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "Payment",
+                "update"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"key_0\": [\n    {\n      \"value\": \"<Circular reference to #/components/schemas/JToken detected>\"\n    },\n    {\n      \"value\": \"<Circular reference to #/components/schemas/JToken detected>\"\n    }\n  ],\n  \"key_1\": [\n    {\n      \"value\": \"<Circular reference to #/components/schemas/JToken detected>\"\n    },\n    {\n      \"value\": \"<Circular reference to #/components/schemas/JToken detected>\"\n    }\n  ],\n  \"key_2\": [\n    {\n      \"value\": \"<Circular reference to #/components/schemas/JToken detected>\"\n    },\n    {\n      \"value\": \"<Circular reference to #/components/schemas/JToken detected>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ee18c0bc-21fc-4dc5-876b-54bd0b6d9e23",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "Payment",
+                    "update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key_0\": [\n    {\n      \"value\": \"<Circular reference to #/components/schemas/JToken detected>\"\n    },\n    {\n      \"value\": \"<Circular reference to #/components/schemas/JToken detected>\"\n    }\n  ],\n  \"key_1\": [\n    {\n      \"value\": \"<Circular reference to #/components/schemas/JToken detected>\"\n    },\n    {\n      \"value\": \"<Circular reference to #/components/schemas/JToken detected>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "006b098c-4724-4f42-9738-0c0aec55444b",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "Payment",
+                    "update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key_0\": [\n    {\n      \"value\": \"<Circular reference to #/components/schemas/JToken detected>\"\n    },\n    {\n      \"value\": \"<Circular reference to #/components/schemas/JToken detected>\"\n    }\n  ],\n  \"key_1\": [\n    {\n      \"value\": \"<Circular reference to #/components/schemas/JToken detected>\"\n    },\n    {\n      \"value\": \"<Circular reference to #/components/schemas/JToken detected>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 7583,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "425ab3a5-8abd-42cc-8aa1-5b36f72bcc27",
+      "name": "Profile",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c74eaa56-1188-4b80-8b54-98fb773d2191",
+          "name": "/api/Profile/:id",
+          "request": {
+            "name": "/api/Profile/:id",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "Profile",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9bea5641-4bbc-46c7-a760-a30fbc21a773",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "Profile",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"contactId\": \"63d1fb80-bbac-4678-631d-82802ba98486\",\n  \"contactNo\": \"string\",\n  \"firstName\": \"string\",\n  \"middleName\": \"string\",\n  \"lastName\": \"string\",\n  \"title\": \"string\",\n  \"preferredEmail\": \"string\",\n  \"salutation\": \"string\",\n  \"honours\": \"string\",\n  \"country\": \"string\",\n  \"region\": \"string\",\n  \"worldRegion\": \"string\",\n  \"jobTitle\": \"string\",\n  \"department\": \"string\",\n  \"businessPhone\": \"string\",\n  \"mobilePhone\": \"string\",\n  \"contactType\": \"string\",\n  \"professionalGrade\": 200000000,\n  \"designation\": 0,\n  \"applicantType\": 200000000,\n  \"summary\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e3c440d9-db1b-4cd5-b826-746458f4c01a",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "Profile",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 7583,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "284c1502-f009-41a1-b735-cdd6dd139b64",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "Profile",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 7583,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f47d70d9-c483-4ffe-a5aa-ca1b85bdff18",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "Profile",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 7583,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "4ce06ac7-e2dd-45a8-a0fd-a0e26e3407e5",
+      "name": "Regulation",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "425c004f-0adc-43f0-8827-66a97c91cfad",
+          "name": "/api/Regulation/:schemeNumber",
+          "request": {
+            "name": "/api/Regulation/:schemeNumber",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "Regulation",
+                ":schemeNumber"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "schemeNumber",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9029dbc0-d423-4341-833d-e7c7c7fee229",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "Regulation",
+                    ":schemeNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "schemeNumber",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"regulatedSchemeId\": \"6e6fa602-bb4c-5630-ad8c-07a3cb12c798\",\n  \"regulatedSchemeNumber\": \"string\",\n  \"parentRegulatedSchemeId\": \"15df97ae-024f-134f-e328-9d633a11c8aa\",\n  \"parentRegulatedSchemeName\": \"string\",\n  \"licencedContactId\": \"f37af757-976e-c391-dbc8-9e83ed77486c\",\n  \"licencedContactName\": \"string\",\n  \"licencedContactNumber\": \"string\",\n  \"submittedByContactId\": \"220366cf-6123-cba6-6ce9-73bbe66533ae\",\n  \"submittedByContactNumber\": \"string\",\n  \"submittedByContact\": \"string\",\n  \"name\": \"string\",\n  \"regulatedEntityName\": \"string\",\n  \"regulatedSchemeTypeId\": \"57cf88af-53d9-fa76-6755-713cc8210f6b\",\n  \"regulatedSchemeTypeName\": \"string\",\n  \"regulatedSchemeTypeCode\": \"string\",\n  \"schemeLicenceType\": 0,\n  \"schemeLicenceTypeName\": \"string\",\n  \"masterAccount\": \"1ab1c694-bf63-c745-8824-35a2e2f81442\",\n  \"masterAccountName\": \"string\",\n  \"officeNumber\": \"string\",\n  \"firmNumber\": \"string\",\n  \"contactOfficer\": \"1751aa95-8943-98c7-26a5-b57d8f5f7b15\",\n  \"personalAddressOkay\": false,\n  \"preferredAddressOkay\": true,\n  \"localGroupOkay\": true,\n  \"isSellable\": true,\n  \"contactOfficerName\": \"string\",\n  \"contactOfficerNumber\": \"string\",\n  \"schemeLicenceStatus\": 200000007,\n  \"schemeLicenceStatusName\": \"string\",\n  \"schemeLicenceStatusReason\": 200000007,\n  \"schemeLicenceStatusReasonName\": \"string\",\n  \"approvalConditions\": \"string\",\n  \"submissionDate\": \"2022-08-03T06:10:46.030Z\",\n  \"approvalDate\": \"2012-02-22T21:34:15.263Z\",\n  \"licenceEndDate\": \"1960-09-20T00:15:18.409Z\",\n  \"licenceEndReason\": 200000003,\n  \"licenceEndReasonName\": \"string\",\n  \"inclusionReason\": 0,\n  \"inclusionReasonName\": \"string\",\n  \"numDirectorPrincipals\": 170,\n  \"numMemberDirectorPrincipals\": 5962,\n  \"regulatedOrganisationType\": 200000000,\n  \"regulatedOrganisationTypeName\": \"string\",\n  \"isSelfDeclaredAsVrsEligible\": false,\n  \"vrsSponsorshipCode\": \"string\",\n  \"isMemberSignoffRequired\": false,\n  \"signOffContactId\": \"4195ce52-84b3-1f18-ec9b-504ed27a1668\",\n  \"signOffContactName\": \"string\",\n  \"signOffContactNumber\": \"string\",\n  \"dateSignedOff\": \"1976-11-26T20:13:32.651Z\",\n  \"alternatePiiUnderwriters\": \"string\",\n  \"clientMoneyType\": 4377,\n  \"clientMoneyTypeName\": \"string\",\n  \"gimaStatus\": 0,\n  \"gimaStatusName\": \"string\",\n  \"hasPii\": true,\n  \"sponsorship\": true,\n  \"statusChangeDate\": \"2018-08-03T03:26:35.428Z\",\n  \"startDate\": \"1955-11-29T11:12:15.895Z\",\n  \"renewalsDate\": \"1975-11-05T15:15:49.921Z\",\n  \"responsiblePrincipalId\": \"ab8b4896-cb56-00b5-62bf-f194df9dd6af\",\n  \"responsiblePrincipalName\": \"string\",\n  \"responsiblePrincipalNumber\": \"string\",\n  \"isResponsiblePrincipalValid\": false,\n  \"memberPiiAndAdrRoute\": 3,\n  \"memberPiiAndAdrRouteName\": \"string\",\n  \"firmPiiAndAdrRoute\": 7,\n  \"firmPiiAndAdrRouteName\": \"string\",\n  \"regulationReturns\": [\n    {\n      \"regulatoryReturnId\": \"9112cb4f-8e9b-3c4b-61bf-c85ae3866ff7\",\n      \"returnTypeId\": \"63bd675c-4afd-e29b-39c2-37eb876ca2e2\",\n      \"returnTypeName\": \"string\",\n      \"name\": \"string\",\n      \"regulatoryType\": 200000001,\n      \"regulatoryTypeName\": \"string\",\n      \"regulatoryTypeCode\": \"string\",\n      \"regulatedMember\": \"e70315cd-1ce9-a133-9893-1c3f762a9727\",\n      \"regulatedMemberName\": \"string\",\n      \"regulatedFirm\": \"ba19be43-a569-7e2a-450f-c269ed9ba3c0\",\n      \"regulatedFirmName\": \"string\",\n      \"contactOfficer\": \"8b56900e-d3fe-1b36-2758-cf9d8bb1d529\",\n      \"contactOfficerName\": \"string\",\n      \"statusCode\": 200000004,\n      \"status\": \"string\",\n      \"submitterId\": \"d99fb3a6-a85d-bf73-5567-239172e2e4c6\",\n      \"submitterName\": \"string\",\n      \"dateOfSubmission\": \"2009-06-16T02:21:44.216Z\",\n      \"returnDueDate\": \"1958-02-09T21:18:35.868Z\",\n      \"regulationCaseId\": \"c918bf33-b255-0bd8-ca9f-eea0663433a0\",\n      \"regulationCaseName\": \"string\",\n      \"surveyResponseId\": \"0c788c09-b89f-3182-3c1f-7fcf65dee030\",\n      \"surveyResponseName\": \"string\",\n      \"totalAnswersRequired\": 3564,\n      \"totalAnswersProvided\": 6610,\n      \"regulatedSchemeId\": \"68dc8966-916f-cef0-6df8-5f4fc41d5ca0\",\n      \"regulatedSchemeName\": \"string\",\n      \"responsiblePrincipal\": \"26613093-7888-62af-c90e-55de8f8114ab\",\n      \"responsiblePrincipalName\": \"string\",\n      \"result\": 1,\n      \"score\": 1488,\n      \"createdOn\": \"1954-02-20T15:32:26.841Z\",\n      \"modifiedOn\": \"2007-03-20T01:09:34.480Z\"\n    },\n    {\n      \"regulatoryReturnId\": \"1bc88849-35d7-2a43-3808-dc2af0218b32\",\n      \"returnTypeId\": \"b82e3e03-8422-e302-8c9e-30efa18eef74\",\n      \"returnTypeName\": \"string\",\n      \"name\": \"string\",\n      \"regulatoryType\": 200000000,\n      \"regulatoryTypeName\": \"string\",\n      \"regulatoryTypeCode\": \"string\",\n      \"regulatedMember\": \"7deefceb-cc70-7d65-2fef-e08d2795e08f\",\n      \"regulatedMemberName\": \"string\",\n      \"regulatedFirm\": \"f04731b5-1bef-1cfd-cbd7-2bef8fddf04d\",\n      \"regulatedFirmName\": \"string\",\n      \"contactOfficer\": \"d0dff31b-8fa4-98f6-1b82-033c84b32acb\",\n      \"contactOfficerName\": \"string\",\n      \"statusCode\": 200000000,\n      \"status\": \"string\",\n      \"submitterId\": \"d924020f-86f5-71f2-934f-7f0c91c88b67\",\n      \"submitterName\": \"string\",\n      \"dateOfSubmission\": \"1968-09-03T15:37:22.052Z\",\n      \"returnDueDate\": \"1961-04-23T03:29:32.271Z\",\n      \"regulationCaseId\": \"e8b6204a-8fb8-1e91-5f0f-d2df17d7b23d\",\n      \"regulationCaseName\": \"string\",\n      \"surveyResponseId\": \"1d085c6e-8f9c-9f85-689a-ecf1e244ef1c\",\n      \"surveyResponseName\": \"string\",\n      \"totalAnswersRequired\": 553,\n      \"totalAnswersProvided\": 5925,\n      \"regulatedSchemeId\": \"a90d5865-9b52-1df4-0802-f48997410c0c\",\n      \"regulatedSchemeName\": \"string\",\n      \"responsiblePrincipal\": \"39cb1ac3-db39-10c8-b69c-d55ecbf3f28b\",\n      \"responsiblePrincipalName\": \"string\",\n      \"result\": 0,\n      \"score\": 233,\n      \"createdOn\": \"1971-12-31T18:44:43.393Z\",\n      \"modifiedOn\": \"1981-01-10T02:56:38.737Z\"\n    }\n  ],\n  \"childSchemes\": [\n    {\n      \"regulatedSchemeId\": \"927e65e7-79a2-f99e-630c-95c3691693fd\",\n      \"regulatedSchemeNumber\": \"string\",\n      \"parentRegulatedSchemeId\": \"c4571e07-7b3b-2697-fa50-accf8a3f84fe\",\n      \"parentRegulatedSchemeName\": \"string\",\n      \"licencedContactId\": \"48d42116-9be9-9dd0-8f25-4bce24361248\",\n      \"licencedContactName\": \"string\",\n      \"licencedContactNumber\": \"string\",\n      \"submittedByContactId\": \"60448d42-4627-d2bb-928e-38184e8234c2\",\n      \"submittedByContactNumber\": \"string\",\n      \"submittedByContact\": \"string\",\n      \"name\": \"string\",\n      \"regulatedEntityName\": \"string\",\n      \"regulatedSchemeTypeId\": \"5cc6e907-7e7f-a6d8-9d0a-d6e796b3f8be\",\n      \"regulatedSchemeTypeName\": \"string\",\n      \"regulatedSchemeTypeCode\": \"string\",\n      \"schemeLicenceType\": 200000001,\n      \"schemeLicenceTypeName\": \"string\",\n      \"masterAccount\": \"861abf5d-ce17-1f4f-559f-ecdae8cf67b1\",\n      \"masterAccountName\": \"string\",\n      \"officeNumber\": \"string\",\n      \"firmNumber\": \"string\",\n      \"contactOfficer\": \"f684042e-cd97-610e-aa82-f107f63459dd\",\n      \"personalAddressOkay\": false,\n      \"preferredAddressOkay\": false,\n      \"localGroupOkay\": false,\n      \"isSellable\": true,\n      \"contactOfficerName\": \"string\",\n      \"contactOfficerNumber\": \"string\",\n      \"schemeLicenceStatus\": 200000013,\n      \"schemeLicenceStatusName\": \"string\",\n      \"schemeLicenceStatusReason\": 0,\n      \"schemeLicenceStatusReasonName\": \"string\",\n      \"approvalConditions\": \"string\",\n      \"submissionDate\": \"1971-03-24T19:48:14.598Z\",\n      \"approvalDate\": \"1953-09-11T03:51:43.907Z\",\n      \"licenceEndDate\": \"1992-12-20T10:02:18.443Z\",\n      \"licenceEndReason\": 200000016,\n      \"licenceEndReasonName\": \"string\",\n      \"inclusionReason\": 0,\n      \"inclusionReasonName\": \"string\",\n      \"numDirectorPrincipals\": 3715,\n      \"numMemberDirectorPrincipals\": 6298,\n      \"regulatedOrganisationType\": 200000005,\n      \"regulatedOrganisationTypeName\": \"string\",\n      \"isSelfDeclaredAsVrsEligible\": false,\n      \"vrsSponsorshipCode\": \"string\",\n      \"isMemberSignoffRequired\": false,\n      \"signOffContactId\": \"c91f8ec8-dbf7-6eb3-73d7-13d78d19039e\",\n      \"signOffContactName\": \"string\",\n      \"signOffContactNumber\": \"string\",\n      \"dateSignedOff\": \"1994-04-15T08:40:26.838Z\",\n      \"alternatePiiUnderwriters\": \"string\",\n      \"clientMoneyType\": 201,\n      \"clientMoneyTypeName\": \"string\",\n      \"gimaStatus\": 0,\n      \"gimaStatusName\": \"string\",\n      \"hasPii\": true,\n      \"sponsorship\": true,\n      \"statusChangeDate\": \"2023-07-11T16:07:49.709Z\",\n      \"startDate\": \"1999-07-02T19:48:34.238Z\",\n      \"renewalsDate\": \"1947-06-05T00:49:04.020Z\",\n      \"responsiblePrincipalId\": \"c131cabd-14e4-cad7-1096-de48e12aff98\",\n      \"responsiblePrincipalName\": \"string\",\n      \"responsiblePrincipalNumber\": \"string\",\n      \"isResponsiblePrincipalValid\": true,\n      \"memberPiiAndAdrRoute\": 5,\n      \"memberPiiAndAdrRouteName\": \"string\",\n      \"firmPiiAndAdrRoute\": 4,\n      \"firmPiiAndAdrRouteName\": \"string\",\n      \"regulationReturns\": [\n        {\n          \"regulatoryReturnId\": \"a91a22d2-9de6-7520-86df-89094d3973bc\",\n          \"returnTypeId\": \"b5c8ada9-a647-7e17-207c-8af72f8b769c\",\n          \"returnTypeName\": \"string\",\n          \"name\": \"string\",\n          \"regulatoryType\": 0,\n          \"regulatoryTypeName\": \"string\",\n          \"regulatoryTypeCode\": \"string\",\n          \"regulatedMember\": \"304da6eb-60c6-a171-5807-e1b0054195d9\",\n          \"regulatedMemberName\": \"string\",\n          \"regulatedFirm\": \"e2e6dc48-a331-7217-31ab-e769b3db6700\",\n          \"regulatedFirmName\": \"string\",\n          \"contactOfficer\": \"b24045ab-0032-e2fd-23b0-fcc4fbefa55e\",\n          \"contactOfficerName\": \"string\",\n          \"statusCode\": 200000011,\n          \"status\": \"string\",\n          \"submitterId\": \"91ee806d-41f0-5672-210d-5d4eea719f87\",\n          \"submitterName\": \"string\",\n          \"dateOfSubmission\": \"2005-11-21T18:38:37.085Z\",\n          \"returnDueDate\": \"1954-04-20T03:15:23.986Z\",\n          \"regulationCaseId\": \"f70c2a3a-e450-957e-2726-389c616ed5f8\",\n          \"regulationCaseName\": \"string\",\n          \"surveyResponseId\": \"f3964f25-51bd-df67-5d11-1a996015c48f\",\n          \"surveyResponseName\": \"string\",\n          \"totalAnswersRequired\": 6512,\n          \"totalAnswersProvided\": 5843,\n          \"regulatedSchemeId\": \"4d26130d-9534-d079-76fb-dafe076c1d4d\",\n          \"regulatedSchemeName\": \"string\",\n          \"responsiblePrincipal\": \"43bf6a42-5ac9-9d57-bebc-8438b1b112ce\",\n          \"responsiblePrincipalName\": \"string\",\n          \"result\": 1,\n          \"score\": 551,\n          \"createdOn\": \"1997-01-07T12:15:02.779Z\",\n          \"modifiedOn\": \"1961-03-26T06:00:29.920Z\"\n        },\n        {\n          \"regulatoryReturnId\": \"db3d75ef-7ea8-7349-2e4b-b0ad6fd54623\",\n          \"returnTypeId\": \"0ffd5407-74e5-bdf4-a47d-31b3f1b4de4f\",\n          \"returnTypeName\": \"string\",\n          \"name\": \"string\",\n          \"regulatoryType\": 0,\n          \"regulatoryTypeName\": \"string\",\n          \"regulatoryTypeCode\": \"string\",\n          \"regulatedMember\": \"cf142876-4fbd-58a5-f405-a14c1b7844a6\",\n          \"regulatedMemberName\": \"string\",\n          \"regulatedFirm\": \"ce0b35c6-e0ad-7e95-52b3-ec7a65f75a51\",\n          \"regulatedFirmName\": \"string\",\n          \"contactOfficer\": \"c6761445-d56b-0525-3dc7-643c6d284bf2\",\n          \"contactOfficerName\": \"string\",\n          \"statusCode\": 200000006,\n          \"status\": \"string\",\n          \"submitterId\": \"a9b04696-a6d1-fb7e-4e69-71edf9a4355c\",\n          \"submitterName\": \"string\",\n          \"dateOfSubmission\": \"1982-04-20T11:09:53.969Z\",\n          \"returnDueDate\": \"1970-03-15T02:54:24.700Z\",\n          \"regulationCaseId\": \"30028d85-60f4-5cab-028d-6caa14f1c395\",\n          \"regulationCaseName\": \"string\",\n          \"surveyResponseId\": \"56ab5201-94f0-8a7c-a0ed-fcd079b72b8e\",\n          \"surveyResponseName\": \"string\",\n          \"totalAnswersRequired\": 4179,\n          \"totalAnswersProvided\": 6115,\n          \"regulatedSchemeId\": \"b1f73d12-e4da-f418-5f98-397c8c807031\",\n          \"regulatedSchemeName\": \"string\",\n          \"responsiblePrincipal\": \"0ca4afa9-46fa-6a86-d91e-c3fad228bfba\",\n          \"responsiblePrincipalName\": \"string\",\n          \"result\": 2,\n          \"score\": 6617,\n          \"createdOn\": \"1983-03-22T12:47:29.247Z\",\n          \"modifiedOn\": \"2012-03-28T17:41:56.112Z\"\n        }\n      ],\n      \"childSchemes\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/RegulationScheme detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/RegulationScheme detected>\"\n        }\n      ],\n      \"surveyingServices\": [\n        {\n          \"serviceId\": \"f4b97a4e-98f7-06a2-1a82-8508a62df618\",\n          \"code\": \"string\",\n          \"service\": \"string\",\n          \"isValuationService\": false,\n          \"countryId\": \"3bb786d8-4f0f-02eb-0c5f-1c6bba591fcd\",\n          \"countryName\": \"string\",\n          \"countryCode\": \"string\"\n        },\n        {\n          \"serviceId\": \"46456c07-1558-f427-1232-bec9f8e132c0\",\n          \"code\": \"string\",\n          \"service\": \"string\",\n          \"isValuationService\": false,\n          \"countryId\": \"beb93d8a-7f84-6f58-828c-7c4f4d9247ac\",\n          \"countryName\": \"string\",\n          \"countryCode\": \"string\"\n        }\n      ],\n      \"piiInsurers\": [\n        {\n          \"piiUnderwriterName\": \"string\",\n          \"piiUnderwriterId\": \"1f17aad6-9407-c6d6-e5d6-b4d15c314f6c\",\n          \"policyNumber\": \"string\",\n          \"piiInsuranceId\": \"f2ef7b5d-6778-63e4-cf76-754a4a628dd7\",\n          \"regulatedSchemeId\": \"35ad7a79-a879-9efb-be74-c548a130094f\",\n          \"schemeName\": \"string\"\n        },\n        {\n          \"piiUnderwriterName\": \"string\",\n          \"piiUnderwriterId\": \"f076b475-7c2f-9ee5-538b-080b24b89184\",\n          \"policyNumber\": \"string\",\n          \"piiInsuranceId\": \"b9c8af3a-0c37-41b2-a40e-b359dece2f68\",\n          \"regulatedSchemeId\": \"898211ed-f582-fdd1-e95e-8d2b432b3c0d\",\n          \"schemeName\": \"string\"\n        }\n      ],\n      \"noPiiExplanation\": \"string\",\n      \"redressProviders\": [\n        {\n          \"id\": \"80aeb974-ab71-8e3a-cb54-d5c2abbcad43\",\n          \"regulatedSchemeId\": \"1a937157-9d58-6f48-4e62-a373dc28cc88\",\n          \"regulatedSchemeName\": \"string\",\n          \"redressSchemeId\": \"274c2a4f-00a0-2e85-a04b-eed943f95de2\",\n          \"redressSchemeName\": \"string\",\n          \"countryId\": \"2a574369-f2b0-0025-8a9d-dde86f2c159c\",\n          \"countryName\": \"string\",\n          \"countryCode\": \"string\"\n        },\n        {\n          \"id\": \"567c37e0-ffeb-fe5a-ebc8-407ddca7ed0f\",\n          \"regulatedSchemeId\": \"f25a380a-7d88-1ea8-94a5-f43797f76f4d\",\n          \"regulatedSchemeName\": \"string\",\n          \"redressSchemeId\": \"30bc6a18-8c82-f938-0b44-f5dbd75453db\",\n          \"redressSchemeName\": \"string\",\n          \"countryId\": \"3236c945-ecde-8780-4a96-8471d082eaae\",\n          \"countryName\": \"string\",\n          \"countryCode\": \"string\"\n        }\n      ],\n      \"offices\": [\n        {\n          \"accountId\": \"5feaa2a3-93e9-cbe4-4dd6-aedf53e19085\",\n          \"firmNumber\": \"string\",\n          \"officeNumber\": \"string\",\n          \"publicationName\": \"string\",\n          \"registeredName\": \"string\",\n          \"tradingName\": \"string\",\n          \"primaryContact\": \"60d57b91-93be-7ea7-edfe-9a9afc3f2609\",\n          \"primaryContactName\": \"string\",\n          \"address\": {\n            \"ownerId\": \"db06c76b-438e-1922-6bb1-d70f1692b7c7\",\n            \"subsOnlineUpdate\": false,\n            \"addressType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"organisation\": \"string\",\n            \"line1\": \"string\",\n            \"line2\": \"string\",\n            \"line3\": \"string\",\n            \"city\": \"string\",\n            \"county\": \"string\",\n            \"state\": \"string\",\n            \"postcode\": \"string\",\n            \"isoCountryCode\": \"string\",\n            \"countryName\": \"string\",\n            \"countryId\": \"601b8f4e-2b34-520a-c236-28ed0834e639\",\n            \"longitude\": 3275.385471294755,\n            \"latitude\": 161.26607940071813,\n            \"telephone\": \"string\",\n            \"website\": \"string\",\n            \"emailAddress\": \"string\",\n            \"basedInChannelIslands\": true\n          },\n          \"isoCountryCode\": \"string\",\n          \"vatRegNumber\": \"string\",\n          \"isHeadOffice\": true,\n          \"isRegulated\": false,\n          \"hasActiveRegistration\": true\n        },\n        {\n          \"accountId\": \"5d5de1eb-9179-36e5-a521-9da660546cce\",\n          \"firmNumber\": \"string\",\n          \"officeNumber\": \"string\",\n          \"publicationName\": \"string\",\n          \"registeredName\": \"string\",\n          \"tradingName\": \"string\",\n          \"primaryContact\": \"7da1a696-9098-e3ce-61e4-4eec6002ed1f\",\n          \"primaryContactName\": \"string\",\n          \"address\": {\n            \"ownerId\": \"b84f1c7b-0d61-7a0f-d155-a7b278139a7e\",\n            \"subsOnlineUpdate\": false,\n            \"addressType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"organisation\": \"string\",\n            \"line1\": \"string\",\n            \"line2\": \"string\",\n            \"line3\": \"string\",\n            \"city\": \"string\",\n            \"county\": \"string\",\n            \"state\": \"string\",\n            \"postcode\": \"string\",\n            \"isoCountryCode\": \"string\",\n            \"countryName\": \"string\",\n            \"countryId\": \"be130950-e5d8-699a-77cf-db8a0c1f6d81\",\n            \"longitude\": 2348.5509768253364,\n            \"latitude\": 5992.98349663945,\n            \"telephone\": \"string\",\n            \"website\": \"string\",\n            \"emailAddress\": \"string\",\n            \"basedInChannelIslands\": true\n          },\n          \"isoCountryCode\": \"string\",\n          \"vatRegNumber\": \"string\",\n          \"isHeadOffice\": true,\n          \"isRegulated\": false,\n          \"hasActiveRegistration\": false\n        }\n      ],\n      \"memberDirectorPrincipals\": [\n        {\n          \"contactId\": \"39215a47-dd05-7048-af43-12b472cc545f\",\n          \"connectionId\": \"29129fe3-e824-72f7-1e2c-75476ce39db9\",\n          \"emailAddress\": \"string\",\n          \"emailAddress2\": \"string\",\n          \"emailAddress3\": \"string\",\n          \"contactNo\": \"string\",\n          \"fullName\": \"string\",\n          \"hasPreviousBadSchemeStatus\": false,\n          \"notFoundInCrm\": true,\n          \"isResponsiblePrincipal\": true\n        },\n        {\n          \"contactId\": \"c1bc1d99-9049-7389-8d80-26f0cd05c8a8\",\n          \"connectionId\": \"cc9eb37e-336d-a78a-e3e0-7d034c8d68a3\",\n          \"emailAddress\": \"string\",\n          \"emailAddress2\": \"string\",\n          \"emailAddress3\": \"string\",\n          \"contactNo\": \"string\",\n          \"fullName\": \"string\",\n          \"hasPreviousBadSchemeStatus\": false,\n          \"notFoundInCrm\": true,\n          \"isResponsiblePrincipal\": false\n        }\n      ],\n      \"createdOn\": \"2020-12-22T19:59:39.512Z\",\n      \"modifiedOn\": \"2016-07-01T12:29:53.964Z\",\n      \"countOfReturns\": 2391,\n      \"countOfMemberDirectorPrincipals\": 3572,\n      \"countOfSubscriptions\": 7816\n    },\n    {\n      \"regulatedSchemeId\": \"d7f3e3f9-ce47-bb1b-60b0-ca1171189a27\",\n      \"regulatedSchemeNumber\": \"string\",\n      \"parentRegulatedSchemeId\": \"0fc8cbb5-5fa1-081c-58f7-6047611e42d3\",\n      \"parentRegulatedSchemeName\": \"string\",\n      \"licencedContactId\": \"40f199d9-38fa-6b3b-73c0-b8ec5bb93971\",\n      \"licencedContactName\": \"string\",\n      \"licencedContactNumber\": \"string\",\n      \"submittedByContactId\": \"6b39a227-42c2-a997-ff13-04826e23f914\",\n      \"submittedByContactNumber\": \"string\",\n      \"submittedByContact\": \"string\",\n      \"name\": \"string\",\n      \"regulatedEntityName\": \"string\",\n      \"regulatedSchemeTypeId\": \"9a38600b-22b6-17d6-ee8a-429622923a10\",\n      \"regulatedSchemeTypeName\": \"string\",\n      \"regulatedSchemeTypeCode\": \"string\",\n      \"schemeLicenceType\": 200000000,\n      \"schemeLicenceTypeName\": \"string\",\n      \"masterAccount\": \"11ddbf14-46e9-08ad-72d3-2ef10bc33574\",\n      \"masterAccountName\": \"string\",\n      \"officeNumber\": \"string\",\n      \"firmNumber\": \"string\",\n      \"contactOfficer\": \"435c4ac9-db2a-bbc5-512b-5a77fa1ade57\",\n      \"personalAddressOkay\": false,\n      \"preferredAddressOkay\": false,\n      \"localGroupOkay\": true,\n      \"isSellable\": false,\n      \"contactOfficerName\": \"string\",\n      \"contactOfficerNumber\": \"string\",\n      \"schemeLicenceStatus\": 1,\n      \"schemeLicenceStatusName\": \"string\",\n      \"schemeLicenceStatusReason\": 200000008,\n      \"schemeLicenceStatusReasonName\": \"string\",\n      \"approvalConditions\": \"string\",\n      \"submissionDate\": \"1987-10-15T00:51:47.898Z\",\n      \"approvalDate\": \"1968-09-19T16:35:58.328Z\",\n      \"licenceEndDate\": \"1950-12-29T06:58:22.328Z\",\n      \"licenceEndReason\": 200000013,\n      \"licenceEndReasonName\": \"string\",\n      \"inclusionReason\": 200000000,\n      \"inclusionReasonName\": \"string\",\n      \"numDirectorPrincipals\": 7812,\n      \"numMemberDirectorPrincipals\": 8605,\n      \"regulatedOrganisationType\": 200000005,\n      \"regulatedOrganisationTypeName\": \"string\",\n      \"isSelfDeclaredAsVrsEligible\": false,\n      \"vrsSponsorshipCode\": \"string\",\n      \"isMemberSignoffRequired\": true,\n      \"signOffContactId\": \"5c19992c-d762-e12e-2b90-300124e5d054\",\n      \"signOffContactName\": \"string\",\n      \"signOffContactNumber\": \"string\",\n      \"dateSignedOff\": \"1977-04-09T18:18:18.274Z\",\n      \"alternatePiiUnderwriters\": \"string\",\n      \"clientMoneyType\": 4055,\n      \"clientMoneyTypeName\": \"string\",\n      \"gimaStatus\": 200000003,\n      \"gimaStatusName\": \"string\",\n      \"hasPii\": false,\n      \"sponsorship\": false,\n      \"statusChangeDate\": \"2023-12-29T14:49:06.985Z\",\n      \"startDate\": \"1948-09-02T18:47:57.237Z\",\n      \"renewalsDate\": \"1965-04-23T02:27:51.569Z\",\n      \"responsiblePrincipalId\": \"18df185e-8814-11ee-9321-a43f57211100\",\n      \"responsiblePrincipalName\": \"string\",\n      \"responsiblePrincipalNumber\": \"string\",\n      \"isResponsiblePrincipalValid\": false,\n      \"memberPiiAndAdrRoute\": 2,\n      \"memberPiiAndAdrRouteName\": \"string\",\n      \"firmPiiAndAdrRoute\": 7,\n      \"firmPiiAndAdrRouteName\": \"string\",\n      \"regulationReturns\": [\n        {\n          \"regulatoryReturnId\": \"5fd76aff-4ec0-f513-bd22-4dd570ec3f71\",\n          \"returnTypeId\": \"e2b7c094-97dd-5d06-ab0c-75352bdfabc8\",\n          \"returnTypeName\": \"string\",\n          \"name\": \"string\",\n          \"regulatoryType\": 0,\n          \"regulatoryTypeName\": \"string\",\n          \"regulatoryTypeCode\": \"string\",\n          \"regulatedMember\": \"d080ecd9-2e24-ad46-b276-dade789f06f3\",\n          \"regulatedMemberName\": \"string\",\n          \"regulatedFirm\": \"a8fc55c6-1179-0956-01bb-1a4d12ab6394\",\n          \"regulatedFirmName\": \"string\",\n          \"contactOfficer\": \"92c32dff-81bc-5223-212d-2a6844462543\",\n          \"contactOfficerName\": \"string\",\n          \"statusCode\": 200000004,\n          \"status\": \"string\",\n          \"submitterId\": \"e9ec7665-e935-8800-0aa2-b1d221daecdb\",\n          \"submitterName\": \"string\",\n          \"dateOfSubmission\": \"2019-09-28T06:40:17.637Z\",\n          \"returnDueDate\": \"1968-10-04T18:34:43.246Z\",\n          \"regulationCaseId\": \"ff3845b8-515d-0a92-2717-c8a03f05858a\",\n          \"regulationCaseName\": \"string\",\n          \"surveyResponseId\": \"f3bb18cb-860e-dc3b-ce2d-d990598b9c0d\",\n          \"surveyResponseName\": \"string\",\n          \"totalAnswersRequired\": 9077,\n          \"totalAnswersProvided\": 2973,\n          \"regulatedSchemeId\": \"f199208e-b106-4fef-60a5-1b8371707e6f\",\n          \"regulatedSchemeName\": \"string\",\n          \"responsiblePrincipal\": \"20ca6cf1-5c86-d088-af2b-22df273c3178\",\n          \"responsiblePrincipalName\": \"string\",\n          \"result\": 2,\n          \"score\": 1961,\n          \"createdOn\": \"1999-06-14T19:23:40.803Z\",\n          \"modifiedOn\": \"1981-11-02T07:56:56.959Z\"\n        },\n        {\n          \"regulatoryReturnId\": \"7cfe837f-4743-279a-ad3f-db8752637cbd\",\n          \"returnTypeId\": \"460e26bc-eac7-803c-ef36-40e6c01ed974\",\n          \"returnTypeName\": \"string\",\n          \"name\": \"string\",\n          \"regulatoryType\": 0,\n          \"regulatoryTypeName\": \"string\",\n          \"regulatoryTypeCode\": \"string\",\n          \"regulatedMember\": \"c52f965e-0c36-ba72-5ba3-f1d8a826756d\",\n          \"regulatedMemberName\": \"string\",\n          \"regulatedFirm\": \"016d6191-dd1d-bd09-f219-cd0c257ae0a9\",\n          \"regulatedFirmName\": \"string\",\n          \"contactOfficer\": \"1f231513-6bbf-72ba-97fd-c50fc5e55f01\",\n          \"contactOfficerName\": \"string\",\n          \"statusCode\": 200000002,\n          \"status\": \"string\",\n          \"submitterId\": \"52258b39-b6e7-29f2-e05c-53278de6b480\",\n          \"submitterName\": \"string\",\n          \"dateOfSubmission\": \"1949-08-10T17:04:32.386Z\",\n          \"returnDueDate\": \"1986-08-05T02:56:41.237Z\",\n          \"regulationCaseId\": \"c76aaa4f-d26d-6904-84af-fcd4222309ae\",\n          \"regulationCaseName\": \"string\",\n          \"surveyResponseId\": \"60190828-5caf-1ce4-9948-be32de8c9885\",\n          \"surveyResponseName\": \"string\",\n          \"totalAnswersRequired\": 7571,\n          \"totalAnswersProvided\": 3707,\n          \"regulatedSchemeId\": \"857c8006-13b6-d61e-b609-48a51cf002e2\",\n          \"regulatedSchemeName\": \"string\",\n          \"responsiblePrincipal\": \"8f4caab4-e342-9572-c1d1-d7b29ad3d583\",\n          \"responsiblePrincipalName\": \"string\",\n          \"result\": 1,\n          \"score\": 7145,\n          \"createdOn\": \"1999-02-24T13:07:02.030Z\",\n          \"modifiedOn\": \"2003-09-04T02:14:54.093Z\"\n        }\n      ],\n      \"childSchemes\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/RegulationScheme detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/RegulationScheme detected>\"\n        }\n      ],\n      \"surveyingServices\": [\n        {\n          \"serviceId\": \"caa7a9aa-178c-15af-36e4-6b6838b238a3\",\n          \"code\": \"string\",\n          \"service\": \"string\",\n          \"isValuationService\": false,\n          \"countryId\": \"027de294-75fb-df01-2dfc-a2ae9096861e\",\n          \"countryName\": \"string\",\n          \"countryCode\": \"string\"\n        },\n        {\n          \"serviceId\": \"8dd4497e-4a0b-0df0-4e80-6688a52a7f32\",\n          \"code\": \"string\",\n          \"service\": \"string\",\n          \"isValuationService\": false,\n          \"countryId\": \"8b76371f-14de-b920-001b-25e0460170d5\",\n          \"countryName\": \"string\",\n          \"countryCode\": \"string\"\n        }\n      ],\n      \"piiInsurers\": [\n        {\n          \"piiUnderwriterName\": \"string\",\n          \"piiUnderwriterId\": \"477f175a-b3ed-ccb8-7c5f-9e3842b9ffc7\",\n          \"policyNumber\": \"string\",\n          \"piiInsuranceId\": \"b3dcc584-d1a9-8a4c-20e4-9f4650dfe864\",\n          \"regulatedSchemeId\": \"fb9adf23-1a46-bc0a-9ae5-f636b2b3fb72\",\n          \"schemeName\": \"string\"\n        },\n        {\n          \"piiUnderwriterName\": \"string\",\n          \"piiUnderwriterId\": \"7467d0e3-3b67-1170-b597-5004f8e7a4a4\",\n          \"policyNumber\": \"string\",\n          \"piiInsuranceId\": \"c2806865-545e-6c84-fc7c-7f91f49f3209\",\n          \"regulatedSchemeId\": \"624c2a7a-8cb3-bab0-8e6a-601751324e9b\",\n          \"schemeName\": \"string\"\n        }\n      ],\n      \"noPiiExplanation\": \"string\",\n      \"redressProviders\": [\n        {\n          \"id\": \"8f3e81ef-240c-8c30-6baa-083130a9f561\",\n          \"regulatedSchemeId\": \"4ba73226-9f38-2ad1-2d1a-2add34f7f7ec\",\n          \"regulatedSchemeName\": \"string\",\n          \"redressSchemeId\": \"56cb983b-a8a2-b3da-0dda-b6be8f191323\",\n          \"redressSchemeName\": \"string\",\n          \"countryId\": \"b356bb1e-e7f5-beb6-0440-fcc3aa00a94c\",\n          \"countryName\": \"string\",\n          \"countryCode\": \"string\"\n        },\n        {\n          \"id\": \"771c0b25-374c-015a-6a91-09b7653e70c4\",\n          \"regulatedSchemeId\": \"0014a1ab-a18c-6ee3-465c-abe365d69fa8\",\n          \"regulatedSchemeName\": \"string\",\n          \"redressSchemeId\": \"e3496429-6cf8-49ff-c255-41b9e2ea48c0\",\n          \"redressSchemeName\": \"string\",\n          \"countryId\": \"44242bf6-ed78-1c39-0295-eafb89de60e7\",\n          \"countryName\": \"string\",\n          \"countryCode\": \"string\"\n        }\n      ],\n      \"offices\": [\n        {\n          \"accountId\": \"3a22d46a-20ea-21e3-74db-3fec98aadfe6\",\n          \"firmNumber\": \"string\",\n          \"officeNumber\": \"string\",\n          \"publicationName\": \"string\",\n          \"registeredName\": \"string\",\n          \"tradingName\": \"string\",\n          \"primaryContact\": \"0c737f53-9dcc-2629-2953-0b7c7bbe6b21\",\n          \"primaryContactName\": \"string\",\n          \"address\": {\n            \"ownerId\": \"aafed899-1e44-94a0-e223-1fad07e2b5b3\",\n            \"subsOnlineUpdate\": true,\n            \"addressType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"organisation\": \"string\",\n            \"line1\": \"string\",\n            \"line2\": \"string\",\n            \"line3\": \"string\",\n            \"city\": \"string\",\n            \"county\": \"string\",\n            \"state\": \"string\",\n            \"postcode\": \"string\",\n            \"isoCountryCode\": \"string\",\n            \"countryName\": \"string\",\n            \"countryId\": \"74d170a8-d609-d9cb-b07d-2eb701bfcc75\",\n            \"longitude\": 9404.619424553839,\n            \"latitude\": 7227.1148671333185,\n            \"telephone\": \"string\",\n            \"website\": \"string\",\n            \"emailAddress\": \"string\",\n            \"basedInChannelIslands\": false\n          },\n          \"isoCountryCode\": \"string\",\n          \"vatRegNumber\": \"string\",\n          \"isHeadOffice\": true,\n          \"isRegulated\": false,\n          \"hasActiveRegistration\": true\n        },\n        {\n          \"accountId\": \"3111064f-0a11-bea6-fb01-f4929060c35b\",\n          \"firmNumber\": \"string\",\n          \"officeNumber\": \"string\",\n          \"publicationName\": \"string\",\n          \"registeredName\": \"string\",\n          \"tradingName\": \"string\",\n          \"primaryContact\": \"f3b06b01-aa7a-5595-3d5a-8442ec733a68\",\n          \"primaryContactName\": \"string\",\n          \"address\": {\n            \"ownerId\": \"419a786b-4d9d-68e4-7dba-aed4083b4d14\",\n            \"subsOnlineUpdate\": true,\n            \"addressType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"organisation\": \"string\",\n            \"line1\": \"string\",\n            \"line2\": \"string\",\n            \"line3\": \"string\",\n            \"city\": \"string\",\n            \"county\": \"string\",\n            \"state\": \"string\",\n            \"postcode\": \"string\",\n            \"isoCountryCode\": \"string\",\n            \"countryName\": \"string\",\n            \"countryId\": \"77f7c651-461f-e5de-fe5e-93a086bd171b\",\n            \"longitude\": 4361.606098241286,\n            \"latitude\": 3440.8844741258936,\n            \"telephone\": \"string\",\n            \"website\": \"string\",\n            \"emailAddress\": \"string\",\n            \"basedInChannelIslands\": true\n          },\n          \"isoCountryCode\": \"string\",\n          \"vatRegNumber\": \"string\",\n          \"isHeadOffice\": true,\n          \"isRegulated\": false,\n          \"hasActiveRegistration\": false\n        }\n      ],\n      \"memberDirectorPrincipals\": [\n        {\n          \"contactId\": \"57fd6113-bbf7-9d58-86cd-e711c9fef3c1\",\n          \"connectionId\": \"dec025c7-4120-a66b-fc0d-f12d21902075\",\n          \"emailAddress\": \"string\",\n          \"emailAddress2\": \"string\",\n          \"emailAddress3\": \"string\",\n          \"contactNo\": \"string\",\n          \"fullName\": \"string\",\n          \"hasPreviousBadSchemeStatus\": true,\n          \"notFoundInCrm\": true,\n          \"isResponsiblePrincipal\": true\n        },\n        {\n          \"contactId\": \"92406237-c073-c963-2bcf-00e5d3459828\",\n          \"connectionId\": \"a60e6ce4-ce46-db5f-988d-9210baee8727\",\n          \"emailAddress\": \"string\",\n          \"emailAddress2\": \"string\",\n          \"emailAddress3\": \"string\",\n          \"contactNo\": \"string\",\n          \"fullName\": \"string\",\n          \"hasPreviousBadSchemeStatus\": false,\n          \"notFoundInCrm\": false,\n          \"isResponsiblePrincipal\": false\n        }\n      ],\n      \"createdOn\": \"1989-07-18T10:51:32.077Z\",\n      \"modifiedOn\": \"1960-12-22T05:16:42.723Z\",\n      \"countOfReturns\": 1877,\n      \"countOfMemberDirectorPrincipals\": 5762,\n      \"countOfSubscriptions\": 3140\n    }\n  ],\n  \"surveyingServices\": [\n    {\n      \"serviceId\": \"2c23003f-a8ad-75c9-8ebe-8daa41661013\",\n      \"code\": \"string\",\n      \"service\": \"string\",\n      \"isValuationService\": true,\n      \"countryId\": \"504c1087-9b14-d95f-5a5e-85ade6101fc2\",\n      \"countryName\": \"string\",\n      \"countryCode\": \"string\"\n    },\n    {\n      \"serviceId\": \"62cdd422-49a2-b482-093d-703865f17341\",\n      \"code\": \"string\",\n      \"service\": \"string\",\n      \"isValuationService\": false,\n      \"countryId\": \"e2116134-b771-df8f-3c39-223b55287850\",\n      \"countryName\": \"string\",\n      \"countryCode\": \"string\"\n    }\n  ],\n  \"piiInsurers\": [\n    {\n      \"piiUnderwriterName\": \"string\",\n      \"piiUnderwriterId\": \"112ea86f-a5c4-4a8e-f98a-872e661112e6\",\n      \"policyNumber\": \"string\",\n      \"piiInsuranceId\": \"b65cf219-7192-33b1-edbc-452c1921c3a4\",\n      \"regulatedSchemeId\": \"f73c8a76-8188-1067-4b86-b48519d99e8f\",\n      \"schemeName\": \"string\"\n    },\n    {\n      \"piiUnderwriterName\": \"string\",\n      \"piiUnderwriterId\": \"876b8484-40cc-d69c-0955-1e1ab5c4c829\",\n      \"policyNumber\": \"string\",\n      \"piiInsuranceId\": \"87ee535b-37df-9383-cfa2-a1f2abb4b734\",\n      \"regulatedSchemeId\": \"54c1987e-bde7-7399-7b5c-cd50a13c5004\",\n      \"schemeName\": \"string\"\n    }\n  ],\n  \"noPiiExplanation\": \"string\",\n  \"redressProviders\": [\n    {\n      \"id\": \"70b436de-ec1c-14b4-bbc6-8a0b62ec1925\",\n      \"regulatedSchemeId\": \"a7a5f8b7-b82a-a0b1-3ef1-ca0b908e3c04\",\n      \"regulatedSchemeName\": \"string\",\n      \"redressSchemeId\": \"97ed076d-0216-56ea-d956-acf9053b960f\",\n      \"redressSchemeName\": \"string\",\n      \"countryId\": \"5d1cfa30-628e-5e30-4019-e2341060fde1\",\n      \"countryName\": \"string\",\n      \"countryCode\": \"string\"\n    },\n    {\n      \"id\": \"004f73ca-ebc6-d973-86c6-c5c134eff636\",\n      \"regulatedSchemeId\": \"c33c322a-e771-b6c0-2a2e-01957315d3eb\",\n      \"regulatedSchemeName\": \"string\",\n      \"redressSchemeId\": \"e9050b31-caaa-651f-e1dc-ee8cc06e8016\",\n      \"redressSchemeName\": \"string\",\n      \"countryId\": \"30cb953d-3976-af8b-b252-6ce76e677ba2\",\n      \"countryName\": \"string\",\n      \"countryCode\": \"string\"\n    }\n  ],\n  \"offices\": [\n    {\n      \"accountId\": \"cd66c8fe-4ddb-7cb4-0fe4-36fe4746431a\",\n      \"firmNumber\": \"string\",\n      \"officeNumber\": \"string\",\n      \"publicationName\": \"string\",\n      \"registeredName\": \"string\",\n      \"tradingName\": \"string\",\n      \"primaryContact\": \"4d794584-4560-540a-54ee-1fc5ed241469\",\n      \"primaryContactName\": \"string\",\n      \"address\": {\n        \"ownerId\": \"a2867ad1-8233-443f-daef-55cbc854f8f2\",\n        \"subsOnlineUpdate\": false,\n        \"addressType\": 0,\n        \"organisation\": \"string\",\n        \"line1\": \"string\",\n        \"line2\": \"string\",\n        \"line3\": \"string\",\n        \"city\": \"string\",\n        \"county\": \"string\",\n        \"state\": \"string\",\n        \"postcode\": \"string\",\n        \"isoCountryCode\": \"string\",\n        \"countryName\": \"string\",\n        \"countryId\": \"771c7429-af8f-61ee-454c-295c861ac460\",\n        \"longitude\": 6091.789246516287,\n        \"latitude\": 2878.1544078099687,\n        \"telephone\": \"string\",\n        \"website\": \"string\",\n        \"emailAddress\": \"string\",\n        \"basedInChannelIslands\": true\n      },\n      \"isoCountryCode\": \"string\",\n      \"vatRegNumber\": \"string\",\n      \"isHeadOffice\": false,\n      \"isRegulated\": true,\n      \"hasActiveRegistration\": false\n    },\n    {\n      \"accountId\": \"091b117f-a009-8e0d-714a-bf8068451853\",\n      \"firmNumber\": \"string\",\n      \"officeNumber\": \"string\",\n      \"publicationName\": \"string\",\n      \"registeredName\": \"string\",\n      \"tradingName\": \"string\",\n      \"primaryContact\": \"da84c9c8-4e84-4b6b-27f3-6f05615baf76\",\n      \"primaryContactName\": \"string\",\n      \"address\": {\n        \"ownerId\": \"f5e8e508-3c20-275c-8906-82d0cfe07d29\",\n        \"subsOnlineUpdate\": false,\n        \"addressType\": 1,\n        \"organisation\": \"string\",\n        \"line1\": \"string\",\n        \"line2\": \"string\",\n        \"line3\": \"string\",\n        \"city\": \"string\",\n        \"county\": \"string\",\n        \"state\": \"string\",\n        \"postcode\": \"string\",\n        \"isoCountryCode\": \"string\",\n        \"countryName\": \"string\",\n        \"countryId\": \"229973b6-83ae-57ce-01b6-1628d6acbfa9\",\n        \"longitude\": 1932.0164952996477,\n        \"latitude\": 5165.955316076637,\n        \"telephone\": \"string\",\n        \"website\": \"string\",\n        \"emailAddress\": \"string\",\n        \"basedInChannelIslands\": true\n      },\n      \"isoCountryCode\": \"string\",\n      \"vatRegNumber\": \"string\",\n      \"isHeadOffice\": true,\n      \"isRegulated\": true,\n      \"hasActiveRegistration\": false\n    }\n  ],\n  \"memberDirectorPrincipals\": [\n    {\n      \"contactId\": \"ac69f0b2-75b0-cf6a-cc1e-a7588a14bc94\",\n      \"connectionId\": \"d990bc5d-6473-79ea-0bb2-056f08e57d6c\",\n      \"emailAddress\": \"string\",\n      \"emailAddress2\": \"string\",\n      \"emailAddress3\": \"string\",\n      \"contactNo\": \"string\",\n      \"fullName\": \"string\",\n      \"hasPreviousBadSchemeStatus\": true,\n      \"notFoundInCrm\": false,\n      \"isResponsiblePrincipal\": true\n    },\n    {\n      \"contactId\": \"2603a5b8-54fa-30d3-d871-00ec1226b3c3\",\n      \"connectionId\": \"cca13a71-e392-f2d6-023e-3066cc6423b4\",\n      \"emailAddress\": \"string\",\n      \"emailAddress2\": \"string\",\n      \"emailAddress3\": \"string\",\n      \"contactNo\": \"string\",\n      \"fullName\": \"string\",\n      \"hasPreviousBadSchemeStatus\": true,\n      \"notFoundInCrm\": false,\n      \"isResponsiblePrincipal\": true\n    }\n  ],\n  \"createdOn\": \"1992-04-19T23:46:16.974Z\",\n  \"modifiedOn\": \"1990-11-27T10:25:39.238Z\",\n  \"countOfReturns\": 7329,\n  \"countOfMemberDirectorPrincipals\": 1826,\n  \"countOfSubscriptions\": 821\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "10d2eeec-a73e-4dd0-b056-826afe7ce0f6",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "Regulation",
+                    ":schemeNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "schemeNumber",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "99e1d48a-90f4-4a86-bc43-7775465fcc5d",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "Regulation",
+                    ":schemeNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "schemeNumber",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 7583,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ec9f4c6b-4742-4f4d-b269-6c71b1137dfc",
+          "name": "/api/Regulation/Subscriptions",
+          "request": {
+            "name": "/api/Regulation/Subscriptions",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "Regulation",
+                "Subscriptions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "regulationSchemeId",
+                  "value": "<uuid>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "217d3fe1-799f-49d4-b5e0-451278f5acad",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "Regulation",
+                    "Subscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "regulationSchemeId",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"subscriptions\": [\n    {\n      \"ownerId\": \"dd44f4f9-b652-1c2b-c012-fb62ae583fc6\",\n      \"ownerName\": \"string\",\n      \"subscriptionNumber\": \"string\",\n      \"subscriptionProductId\": \"c6f08a4d-31bd-1dda-07b1-75ffc511a765\",\n      \"subscriptionProductName\": \"string\",\n      \"contactId\": \"072b2f5b-158a-becd-0852-61bca601f800\",\n      \"contactName\": \"string\",\n      \"preferredEmailAddress\": \"string\",\n      \"name\": \"string\",\n      \"numberOfLicences\": 171,\n      \"startDate\": \"2020-08-20T23:08:07.704Z\",\n      \"endDate\": \"1966-11-06T14:36:30.851Z\",\n      \"isOnBehalfOfAnAccount\": false,\n      \"reasonForEndDateChange\": 200000001,\n      \"reasonForEndDateChangeName\": \"string\",\n      \"reasonForSuspension\": 200000001,\n      \"reasonForSuspensionName\": \"string\",\n      \"reasonForCancellation\": 200000002,\n      \"reasonForCancellationName\": \"string\",\n      \"status\": 200000002,\n      \"subscriptions\": [\n        {\n          \"subscriptionId\": \"130cdef1-0844-ae0d-4e3f-9ea6956c9857\",\n          \"startDate\": \"2021-09-06T06:15:37.905Z\",\n          \"endDate\": \"1977-03-15T12:24:07.496Z\",\n          \"numberOfLicences\": 2932,\n          \"poNumber\": \"string\",\n          \"createdDate\": \"1949-09-12T19:06:30.315Z\",\n          \"salesOrders\": [\n            \"4f3fc06c-0e0b-850b-f164-40cf0d7819b6\",\n            \"0edd0628-a5f7-a4f5-0718-be26fd25d43b\"\n          ],\n          \"quotes\": [\n            \"ccaf23c5-2c20-abcb-b488-abfddf3d827f\",\n            \"12e20a93-7f97-d54d-ff16-654801120047\"\n          ]\n        },\n        {\n          \"subscriptionId\": \"731dd1d7-88ef-d640-f0f1-feab728e4f7d\",\n          \"startDate\": \"1974-03-31T11:03:28.909Z\",\n          \"endDate\": \"1997-12-11T10:35:56.424Z\",\n          \"numberOfLicences\": 7797,\n          \"poNumber\": \"string\",\n          \"createdDate\": \"1958-05-19T09:43:09.699Z\",\n          \"salesOrders\": [\n            \"ebc46f0d-cc86-11f4-9d27-4ea511a2698f\",\n            \"444150be-dd18-b606-70e8-a18d5433f2c3\"\n          ],\n          \"quotes\": [\n            \"b6aea152-9378-1b7a-a2f5-f395650ce595\",\n            \"6bb165b7-ad82-fde0-af1b-bf02e2fabaad\"\n          ]\n        }\n      ],\n      \"subscriptionUsers\": [\n        {\n          \"subscriptionUserId\": \"46ddc37b-efde-88b1-5351-6b8c8c9a9964\",\n          \"contactId\": \"2a8469d5-eee8-b3f0-073e-e8581cd2f533\",\n          \"contactNo\": \"string\",\n          \"contactName\": \"string\",\n          \"preferredEmailAddress\": \"string\",\n          \"sponsorshipCodeId\": \"23d869fd-8671-0f1c-8f19-7c6016c8527a\",\n          \"subscriptionProductId\": \"bb53f1ad-6aec-4bf7-a2c0-b7121ef41088\",\n          \"subscriptionId\": \"1e47aacc-4e56-f19c-d88f-51b110ab7297\",\n          \"status\": 1,\n          \"approvalStatus\": 200000000,\n          \"licenceKey\": \"string\",\n          \"endDate\": \"1981-06-19T01:22:04.256Z\",\n          \"vrsSponsorshipApplicationId\": \"13f8fb10-3ba6-5c10-e672-b22492d52df1\"\n        },\n        {\n          \"subscriptionUserId\": \"e4410990-ec63-7dd6-f023-b631c944f2ae\",\n          \"contactId\": \"941e9581-7c44-22d8-cc81-799b3ee4b6aa\",\n          \"contactNo\": \"string\",\n          \"contactName\": \"string\",\n          \"preferredEmailAddress\": \"string\",\n          \"sponsorshipCodeId\": \"56e5ac82-61a7-39b0-ac14-54ae4f9586e3\",\n          \"subscriptionProductId\": \"62c8a5a4-6421-7b29-a8aa-49e6c601fe17\",\n          \"subscriptionId\": \"b40803d4-bf84-e784-c637-2f5d788ca946\",\n          \"status\": 2,\n          \"approvalStatus\": 0,\n          \"licenceKey\": \"string\",\n          \"endDate\": \"2015-12-29T10:24:07.229Z\",\n          \"vrsSponsorshipApplicationId\": \"c36f4ff9-945b-e79e-7a5a-74b6d76ed13f\"\n        }\n      ],\n      \"sponsorshipCode\": {\n        \"sponsorshipCodeId\": \"04c7bba8-6c8a-e6fc-0105-b8861282853c\",\n        \"code\": \"string\",\n        \"status\": 200000001,\n        \"startDate\": \"1986-06-16T17:13:08.582Z\",\n        \"endDate\": \"2002-10-12T21:48:08.182Z\",\n        \"totalAllowance\": 1438,\n        \"quantityAvailable\": 5092,\n        \"quantityUsed\": 312,\n        \"createdOn\": \"2023-04-16T05:30:02.460Z\",\n        \"modifiedOn\": \"1972-06-15T22:28:31.241Z\"\n      },\n      \"paymentMethod\": 200000003,\n      \"paymentMethodName\": \"string\",\n      \"renewalGuid\": \"084d2e92-7894-2ffb-580d-dc17cf8c8b62\",\n      \"regulatedScheme\": \"a6596d0a-0957-644b-3cfc-6cff6ff1d49f\",\n      \"regulatedSchemeName\": \"string\",\n      \"portalSection\": 0,\n      \"portalSectionName\": \"string\",\n      \"createdOn\": \"1946-10-18T00:42:05.235Z\",\n      \"modifiedOn\": \"1997-09-15T06:46:08.037Z\"\n    },\n    {\n      \"ownerId\": \"768a196e-d025-442d-8354-7776a9a5d77c\",\n      \"ownerName\": \"string\",\n      \"subscriptionNumber\": \"string\",\n      \"subscriptionProductId\": \"2916f584-853e-baf3-3541-2d290ae29091\",\n      \"subscriptionProductName\": \"string\",\n      \"contactId\": \"5b2747b1-d2bb-c683-2b2c-5a1d7d54c565\",\n      \"contactName\": \"string\",\n      \"preferredEmailAddress\": \"string\",\n      \"name\": \"string\",\n      \"numberOfLicences\": 5592,\n      \"startDate\": \"1975-06-13T02:57:57.731Z\",\n      \"endDate\": \"2004-04-30T12:04:39.498Z\",\n      \"isOnBehalfOfAnAccount\": true,\n      \"reasonForEndDateChange\": 0,\n      \"reasonForEndDateChangeName\": \"string\",\n      \"reasonForSuspension\": 200000001,\n      \"reasonForSuspensionName\": \"string\",\n      \"reasonForCancellation\": 200000002,\n      \"reasonForCancellationName\": \"string\",\n      \"status\": 0,\n      \"subscriptions\": [\n        {\n          \"subscriptionId\": \"5f60e36f-ee14-356b-670d-5894b995aeca\",\n          \"startDate\": \"1984-07-05T05:13:51.254Z\",\n          \"endDate\": \"1957-02-14T16:17:00.387Z\",\n          \"numberOfLicences\": 3771,\n          \"poNumber\": \"string\",\n          \"createdDate\": \"2024-01-19T07:44:22.862Z\",\n          \"salesOrders\": [\n            \"1ff6dacf-2f07-03e2-ad6a-9e89c3915c4e\",\n            \"f2b0db0a-1d9c-2051-83a3-8190107888ed\"\n          ],\n          \"quotes\": [\n            \"87b1f2cf-10ec-8eb2-111c-8ccad98cb6e9\",\n            \"fe9bf5ac-928d-c5f4-de36-0f182b8cce7e\"\n          ]\n        },\n        {\n          \"subscriptionId\": \"67ad75d3-21d8-c95a-3c00-8933dd71357a\",\n          \"startDate\": \"1946-09-04T10:21:31.777Z\",\n          \"endDate\": \"2014-08-16T11:28:00.671Z\",\n          \"numberOfLicences\": 5488,\n          \"poNumber\": \"string\",\n          \"createdDate\": \"1997-04-27T11:11:49.447Z\",\n          \"salesOrders\": [\n            \"5e594c56-5068-82f5-6026-bee491070b71\",\n            \"78b28405-24be-5281-7ed7-4f38019bf59f\"\n          ],\n          \"quotes\": [\n            \"0fd44e60-8c81-261d-d1ec-1b4ab943cb36\",\n            \"2dd6994b-bcc8-86a2-ae4b-0f6f24b94d47\"\n          ]\n        }\n      ],\n      \"subscriptionUsers\": [\n        {\n          \"subscriptionUserId\": \"d51d14ce-8b22-ec65-2b7b-82f1c406d407\",\n          \"contactId\": \"4e005277-2a71-2d84-f584-42ff81ac2fb4\",\n          \"contactNo\": \"string\",\n          \"contactName\": \"string\",\n          \"preferredEmailAddress\": \"string\",\n          \"sponsorshipCodeId\": \"6e7a8b7e-d753-f627-558d-66b01bc83490\",\n          \"subscriptionProductId\": \"4e07a974-b12f-5a3f-ffe9-a10038fbb8fc\",\n          \"subscriptionId\": \"aeb93917-4336-918f-d77f-44c3b7cd5263\",\n          \"status\": 0,\n          \"approvalStatus\": 0,\n          \"licenceKey\": \"string\",\n          \"endDate\": \"1955-03-23T20:51:21.241Z\",\n          \"vrsSponsorshipApplicationId\": \"519a9435-f245-01b8-8b13-7f222e188879\"\n        },\n        {\n          \"subscriptionUserId\": \"c53740bd-b25b-7dc0-08d1-50a6ff1d4d33\",\n          \"contactId\": \"5d4c5721-6db2-85a7-ef94-67ac4d64cbf9\",\n          \"contactNo\": \"string\",\n          \"contactName\": \"string\",\n          \"preferredEmailAddress\": \"string\",\n          \"sponsorshipCodeId\": \"3c1edbe4-72f0-c830-4dfe-3a802447983b\",\n          \"subscriptionProductId\": \"c3d9f1aa-2229-bc7f-6543-c793457b80d4\",\n          \"subscriptionId\": \"0c94042b-daff-b05d-0204-9ea4ab258e48\",\n          \"status\": 0,\n          \"approvalStatus\": 200000000,\n          \"licenceKey\": \"string\",\n          \"endDate\": \"2024-11-25T12:57:41.210Z\",\n          \"vrsSponsorshipApplicationId\": \"73a3b3ce-7a70-96bf-22ed-5b0ca73c2cd9\"\n        }\n      ],\n      \"sponsorshipCode\": {\n        \"sponsorshipCodeId\": \"85e7915f-2ace-ba7d-c8a9-ec000e32afe7\",\n        \"code\": \"string\",\n        \"status\": 200000000,\n        \"startDate\": \"1976-04-16T01:27:05.749Z\",\n        \"endDate\": \"1999-11-04T18:24:43.910Z\",\n        \"totalAllowance\": 6596,\n        \"quantityAvailable\": 3323,\n        \"quantityUsed\": 339,\n        \"createdOn\": \"2000-08-27T09:07:44.926Z\",\n        \"modifiedOn\": \"1969-02-26T21:08:52.988Z\"\n      },\n      \"paymentMethod\": 0,\n      \"paymentMethodName\": \"string\",\n      \"renewalGuid\": \"1636ae9f-9c2b-dbd1-a4c2-e764f7ec9f7c\",\n      \"regulatedScheme\": \"c975b8cc-22e1-279b-7a81-a91e42bf759e\",\n      \"regulatedSchemeName\": \"string\",\n      \"portalSection\": 200000000,\n      \"portalSectionName\": \"string\",\n      \"createdOn\": \"1977-12-24T15:23:27.938Z\",\n      \"modifiedOn\": \"2022-07-07T06:34:59.641Z\"\n    }\n  ],\n  \"countOfSubscriptions\": 6888\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b595e933-f233-4aad-8378-d148200b100c",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "Regulation",
+                    "Subscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "regulationSchemeId",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "79d4f1f6-c491-466a-8ae7-7a17cd93a7ad",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "Regulation",
+                    "Subscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "regulationSchemeId",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 7583,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8af4526b-4fe3-4013-8afa-450f4662a3e6",
+          "name": "/api/Regulation/PaymentInformation",
+          "request": {
+            "name": "/api/Regulation/PaymentInformation",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "Regulation",
+                "PaymentInformation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "regulationSchemeId",
+                  "value": "<uuid>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "47597ddb-5989-4500-b929-a9b59bf88211",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "Regulation",
+                    "PaymentInformation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "regulationSchemeId",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"quotes\": [\n    {\n      \"quoteId\": \"57da6f98-bc6a-587c-58f6-b96ba1e7783e\",\n      \"quoteRef\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"revisionNumber\": 3941,\n      \"transactionCurrencyId\": \"e9d003c7-4f31-9742-6b5d-59250edc6d3f\",\n      \"isoCurrencyCode\": \"string\",\n      \"currencyName\": \"string\",\n      \"currencySymbol\": \"string\",\n      \"totalAmount\": 2378.5279421644345,\n      \"taxAmount\": 1878.3704247266996,\n      \"discountAmount\": 4827.579242923604,\n      \"priceListId\": \"c3910673-f97f-d71f-f8df-ff057a2d34d8\",\n      \"paymentReceived\": false,\n      \"status\": 0,\n      \"quoteLines\": [\n        {\n          \"quoteLineId\": \"72479ec8-45f8-1416-c500-0d6f87858f74\",\n          \"catalogProductId\": \"370720cd-fa47-0e60-d37f-67a173f4dd90\",\n          \"quantity\": 1948.809807605909,\n          \"unitPrice\": 8179.676544640985,\n          \"baseAmount\": 4743.368552869053,\n          \"extendedAmount\": 1991.284754750069,\n          \"discountAmount\": 1621.3901552108057,\n          \"productTypeCode\": 9515,\n          \"productName\": \"string\",\n          \"productNumber\": \"string\",\n          \"sequenceNo\": 4119,\n          \"isPriceOverridden\": false,\n          \"subscriptionId\": \"dbe0388d-4e16-ecd4-2e19-0b787fff0ed4\",\n          \"startDate\": \"1965-02-15T08:33:10.164Z\",\n          \"endDate\": \"1960-02-28T02:34:31.937Z\"\n        },\n        {\n          \"quoteLineId\": \"91ec1e03-c8c5-0dc5-edd7-29f5ba98920b\",\n          \"catalogProductId\": \"486577d8-44e1-de90-c5ff-819632d8779a\",\n          \"quantity\": 1285.0879370527223,\n          \"unitPrice\": 8968.025568589228,\n          \"baseAmount\": 7825.929411619952,\n          \"extendedAmount\": 4859.513075666788,\n          \"discountAmount\": 944.1804534201958,\n          \"productTypeCode\": 3858,\n          \"productName\": \"string\",\n          \"productNumber\": \"string\",\n          \"sequenceNo\": 3457,\n          \"isPriceOverridden\": true,\n          \"subscriptionId\": \"dde66b0d-6238-779c-0a65-7d8157adf64f\",\n          \"startDate\": \"1993-08-08T14:56:21.733Z\",\n          \"endDate\": \"2000-10-10T22:00:44.030Z\"\n        }\n      ],\n      \"dateCreated\": \"1981-10-25T00:00:34.666Z\",\n      \"purchaseType\": 200000001\n    },\n    {\n      \"quoteId\": \"4495503e-555c-111c-4815-9f3734bfbbff\",\n      \"quoteRef\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"revisionNumber\": 5054,\n      \"transactionCurrencyId\": \"f23f41c2-c825-7b99-5656-5ac640c357f1\",\n      \"isoCurrencyCode\": \"string\",\n      \"currencyName\": \"string\",\n      \"currencySymbol\": \"string\",\n      \"totalAmount\": 4793.277544248913,\n      \"taxAmount\": 7192.346517859403,\n      \"discountAmount\": 9058.09588002702,\n      \"priceListId\": \"45e5ea15-6299-0065-fbab-0ed00ea71d3f\",\n      \"paymentReceived\": true,\n      \"status\": 0,\n      \"quoteLines\": [\n        {\n          \"quoteLineId\": \"127e99fa-45ab-a18d-40ad-99fe420f98cb\",\n          \"catalogProductId\": \"37be40fc-a478-6374-e3d8-f4d42c942723\",\n          \"quantity\": 1802.0781886262637,\n          \"unitPrice\": 2326.126441699704,\n          \"baseAmount\": 2012.255483949308,\n          \"extendedAmount\": 1092.6998437033942,\n          \"discountAmount\": 5751.492788090026,\n          \"productTypeCode\": 6351,\n          \"productName\": \"string\",\n          \"productNumber\": \"string\",\n          \"sequenceNo\": 1920,\n          \"isPriceOverridden\": true,\n          \"subscriptionId\": \"f0bc8a55-a16c-cb1e-1554-e570215f91e2\",\n          \"startDate\": \"2005-04-08T00:33:42.326Z\",\n          \"endDate\": \"2021-08-23T09:44:35.280Z\"\n        },\n        {\n          \"quoteLineId\": \"f5d94adc-48d9-8638-53fe-32e9df2f621f\",\n          \"catalogProductId\": \"6a55a43d-d469-7141-9651-388fd53922f3\",\n          \"quantity\": 9564.29919521184,\n          \"unitPrice\": 1374.9211839180164,\n          \"baseAmount\": 1568.3615115714256,\n          \"extendedAmount\": 3550.050713682185,\n          \"discountAmount\": 563.3453888202145,\n          \"productTypeCode\": 8786,\n          \"productName\": \"string\",\n          \"productNumber\": \"string\",\n          \"sequenceNo\": 9405,\n          \"isPriceOverridden\": true,\n          \"subscriptionId\": \"720129ef-4fa6-23df-b35e-4a29b839df65\",\n          \"startDate\": \"1977-11-02T10:58:13.456Z\",\n          \"endDate\": \"1962-06-24T14:06:51.526Z\"\n        }\n      ],\n      \"dateCreated\": \"1992-01-28T22:35:05.001Z\",\n      \"purchaseType\": 200000000\n    }\n  ],\n  \"salesOrders\": [\n    {\n      \"orderId\": \"df757312-3598-08ba-9ccd-6ca8bab08086\",\n      \"orderRef\": \"string\",\n      \"status\": 3,\n      \"totalAmount\": 3036.704179733599,\n      \"dateCreated\": \"2014-02-04T18:45:02.391Z\",\n      \"isoCurrencyCode\": \"string\",\n      \"currencySymbol\": \"string\",\n      \"quoteNumber\": \"string\"\n    },\n    {\n      \"orderId\": \"30ae9a95-248f-1794-8c0f-7749349fd821\",\n      \"orderRef\": \"string\",\n      \"status\": 100001,\n      \"totalAmount\": 4090.376351972451,\n      \"dateCreated\": \"1972-07-07T18:36:21.029Z\",\n      \"isoCurrencyCode\": \"string\",\n      \"currencySymbol\": \"string\",\n      \"quoteNumber\": \"string\"\n    }\n  ],\n  \"countOfQuotes\": 8522,\n  \"countOfSalesOrders\": 500,\n  \"countOfSchemeAnnualReturns\": 7034\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ba495320-2c6c-4639-8902-b206edb2b9ff",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "Regulation",
+                    "PaymentInformation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "regulationSchemeId",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fc73f18f-6b9e-40c1-a806-9feb82fa12b3",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "Regulation",
+                    "PaymentInformation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "regulationSchemeId",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 7583,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "5bf56ca9-74e8-44ab-821b-30741b819001",
+      "name": "SurveyWriter",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "faf2dc84-5af2-4eae-b491-d5506d1a2ce2",
+          "name": "/api/SurveyWriter/:id",
+          "request": {
+            "name": "/api/SurveyWriter/:id",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "SurveyWriter",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "883f9a1b-ba88-4ba8-b4fa-877239ceb302",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "SurveyWriter",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"isValid\": false,\n  \"licenceKey\": \"string\",\n  \"organisation\": \"string\",\n  \"productType\": \"string\",\n  \"productCode\": \"string\",\n  \"startDate\": \"1949-06-29T03:12:07.651Z\",\n  \"endDate\": \"1981-11-06T02:29:37.366Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4c0ed072-1a1f-4c6d-8d71-fc050eaa4b9f",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "SurveyWriter",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 7583,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a3ee172c-125a-44fd-b66f-0b9972576290",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "SurveyWriter",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 7583,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "94ede49c-05af-4142-824a-d7ee9d22711f",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "SurveyWriter",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 7583,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "127724ed-55c9-4125-87ed-ad52d786147d",
+      "name": "Token",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "df81aaae-6161-4eb0-a2ea-2fea8854ce5f",
+          "name": "/token",
+          "request": {
+            "name": "/token",
+            "description": {},
+            "url": {
+              "path": [
+                "token"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"key_0\": [\n    {\n      \"value\": \"<Circular reference to #/components/schemas/JToken detected>\"\n    },\n    {\n      \"value\": \"<Circular reference to #/components/schemas/JToken detected>\"\n    }\n  ],\n  \"key_1\": [\n    {\n      \"value\": \"<Circular reference to #/components/schemas/JToken detected>\"\n    },\n    {\n      \"value\": \"<Circular reference to #/components/schemas/JToken detected>\"\n    }\n  ],\n  \"key_2\": [\n    {\n      \"value\": \"<Circular reference to #/components/schemas/JToken detected>\"\n    },\n    {\n      \"value\": \"<Circular reference to #/components/schemas/JToken detected>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7c1328ae-ef4c-457a-a852-3099ac52c065",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "token"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key_0\": [\n    {\n      \"value\": \"<Circular reference to #/components/schemas/JToken detected>\"\n    },\n    {\n      \"value\": \"<Circular reference to #/components/schemas/JToken detected>\"\n    }\n  ],\n  \"key_1\": [\n    {\n      \"value\": \"<Circular reference to #/components/schemas/JToken detected>\"\n    },\n    {\n      \"value\": \"<Circular reference to #/components/schemas/JToken detected>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a66da9d0-4d0c-41ca-9b53-b893ea150feb",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "token"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key_0\": [\n    {\n      \"value\": \"<Circular reference to #/components/schemas/JToken detected>\"\n    },\n    {\n      \"value\": \"<Circular reference to #/components/schemas/JToken detected>\"\n    }\n  ],\n  \"key_1\": [\n    {\n      \"value\": \"<Circular reference to #/components/schemas/JToken detected>\"\n    },\n    {\n      \"value\": \"<Circular reference to #/components/schemas/JToken detected>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 7583,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0a41a721-a417-4630-bb9e-3fcffcc3d446",
+    "name": "DigitalCommunity API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "To use this API, you need to have been first been issued a username and password by RICS. These need to be sent in a JSON User object in the body of a POST request to the /token endpoint in order to receive back a secure bearer token. This token must then be sent with every subsequent request to an information endpoint (in the request's authorization header). Bearer tokens have a limited lifetime and will need to be refreshed by your client periodically. The mechanism by which this refresh occurs is a matter for your client software to address.",
+      "type": "text/plain"
+    }
+  }
+}
