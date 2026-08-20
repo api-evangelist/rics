@@ -26,6 +26,17 @@ description: >-
   belongs to HM Land Registry and Ordnance Survey, not to the professional body.
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/groq.png
 tags:
+- Real-Estate
+- United Kingdom
+- Industry Body
+- Valuation
+- Standards
+- Surveying
+- Property Measurement
+- Regulations
+- Construction
+- PropTech
+tags_raw:
 - Real Estate
 - United Kingdom
 - Industry Body
@@ -64,6 +75,12 @@ apis:
   humanURL: https://api.rics.org/
   baseURL: https://api.rics.org
   tags:
+  - Regulations
+  - Membership
+  - Payments
+  - Surveying
+  - Professional Body
+  tags_raw:
   - Regulation
   - Membership
   - Payments
