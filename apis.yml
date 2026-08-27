@@ -57,58 +57,129 @@ created: '2026-07-26'
 modified: '2026-07-26'
 specificationVersion: '0.23'
 apis:
-- aid: rics:rics-digitalcommunity-api
-  name: RICS DigitalCommunity API
+- aid: rics:rics-azurestorage-api
+  name: RICS (Royal Institution of Chartered Surveyors) Azure Storage API
   description: >-
-    The RICS DigitalCommunity API is a live, RICS-operated REST API served from api.rics.org whose
-    OpenAPI 3.0.1 contract is published anonymously and without credentials at
-    https://api.rics.org/swagger/v1/swagger.json (HTTP 200, 67,992 bytes, fetched 2026-07-26) and
-    rendered in a Swagger UI at https://api.rics.org/. It carries 16 operations across seven tags -
-    Token, Profile, Regulation, Payment, SurveyWriter, AzureStorage and OlaMerchantPost - and its
-    schemas are unmistakably those of a professional regulator: RegulationScheme, SchemeLicenceType,
-    SchemeLicenceStatus, PiiInsurer, RedressProvider, MemberDesignation, ProfessionalGrade,
-    RegulatedOrganisationType, SurveyingService, SurveyWriterModel, RegulationSubscription and
-    RegulationQuote. This is the machinery behind RICS firm regulation, professional indemnity
-    insurance and redress declarations, subscription billing and survey-writing software
-    integration - it is NOT a property, listings or valuation-data API. Access is not self-serve.
-    The specification's own info.description states that "to use this API, you need to have been
-    first been issued a username and password by RICS", which are POSTed as a JSON User object to
-    /token to receive a short-lived bearer JWT that must accompany every subsequent request. No
-    application form, pricing page, terms page or developer documentation for this API was found on
-    any RICS property; the closest published route is the RICS Tech Partner Programme. Probed
-    anonymously on 2026-07-26, GET /api/Profile/1 returned HTTP 401 and GET /token returned HTTP 405,
-    confirming the surface is live and enforcing authentication.
+    The AzureStorage API from RICS (Royal Institution of Chartered Surveyors) — 6 operation(s) for azurestorage.
   humanURL: https://api.rics.org/
   baseURL: https://api.rics.org
   tags:
-  - Regulations
-  - Membership
-  - Payments
-  - Surveying
-  - Professional Body
-  tags_raw:
-  - Regulation
-  - Membership
-  - Payments
-  - Surveying
-  - Professional Body
+  - AzureStorage
   properties:
   - type: OpenAPI
-    url: openapi/rics-digitalcommunity-api-openapi.json
-    name: RICS DigitalCommunity API OpenAPI 3.0.1, harvested verbatim from https://api.rics.org/swagger/v1/swagger.json on 2026-07-26 (HTTP 200)
+    url: openapi/rics-azurestorage-api-openapi.yml
   - type: APIReference
     url: https://api.rics.org/
-    name: Swagger UI for the DigitalCommunity API (public, anonymous, tryItOut disabled)
   - type: Partners
     url: https://www.rics.org/get-involved/rics-tech-partner-programme
-    name: RICS Tech Partner Programme - the only published route to a RICS technology integration
-  - type: Overlay
-    url: overlays/rics-digitalcommunity-api-overlay.yaml
-    name: API Evangelist Overlay 1.0.0 assigning the operationIds and tags the published spec never declared
   - type: ToolCrosswalk
     url: mcp/rics-tool-crosswalk.yml
-    name: Candidate MCP tool to OpenAPI operation crosswalk (RICS runs no MCP server; 16 of 16 bound by construction)
+- aid: rics:rics-olamerchantpost-api
+  name: RICS (Royal Institution of Chartered Surveyors) Ola Merchant Post API
+  description: >-
+    The OlaMerchantPost API from RICS (Royal Institution of Chartered Surveyors) — 1 operation(s) for
+    olamerchantpost.
+  humanURL: https://api.rics.org/
+  baseURL: https://api.rics.org
+  tags:
+  - OlaMerchantPost
+  properties:
+  - type: OpenAPI
+    url: openapi/rics-olamerchantpost-api-openapi.yml
+  - type: APIReference
+    url: https://api.rics.org/
+  - type: Partners
+    url: https://www.rics.org/get-involved/rics-tech-partner-programme
+  - type: ToolCrosswalk
+    url: mcp/rics-tool-crosswalk.yml
+- aid: rics:rics-payment-api
+  name: RICS (Royal Institution of Chartered Surveyors) Payment API
+  description: >-
+    The Payment API from RICS (Royal Institution of Chartered Surveyors) — 3 operation(s) for payment.
+  humanURL: https://api.rics.org/
+  baseURL: https://api.rics.org
+  tags:
+  - Payment
+  properties:
+  - type: OpenAPI
+    url: openapi/rics-payment-api-openapi.yml
+  - type: APIReference
+    url: https://api.rics.org/
+  - type: Partners
+    url: https://www.rics.org/get-involved/rics-tech-partner-programme
+  - type: ToolCrosswalk
+    url: mcp/rics-tool-crosswalk.yml
+- aid: rics:rics-profile-api
+  name: RICS (Royal Institution of Chartered Surveyors) Profile API
+  description: >-
+    The Profile API from RICS (Royal Institution of Chartered Surveyors) — 1 operation(s) for profile.
+  humanURL: https://api.rics.org/
+  baseURL: https://api.rics.org
+  tags:
+  - Profile
+  properties:
+  - type: OpenAPI
+    url: openapi/rics-profile-api-openapi.yml
+  - type: APIReference
+    url: https://api.rics.org/
+  - type: Partners
+    url: https://www.rics.org/get-involved/rics-tech-partner-programme
+  - type: ToolCrosswalk
+    url: mcp/rics-tool-crosswalk.yml
+- aid: rics:rics-regulation-api
+  name: RICS (Royal Institution of Chartered Surveyors) Regulation API
+  description: >-
+    The Regulation API from RICS (Royal Institution of Chartered Surveyors) — 3 operation(s) for regulation.
+  humanURL: https://api.rics.org/
+  baseURL: https://api.rics.org
+  tags:
+  - Regulation
+  properties:
+  - type: OpenAPI
+    url: openapi/rics-regulation-api-openapi.yml
+  - type: APIReference
+    url: https://api.rics.org/
+  - type: Partners
+    url: https://www.rics.org/get-involved/rics-tech-partner-programme
+  - type: ToolCrosswalk
+    url: mcp/rics-tool-crosswalk.yml
+- aid: rics:rics-surveywriter-api
+  name: RICS (Royal Institution of Chartered Surveyors) Survey Writer API
+  description: >-
+    The SurveyWriter API from RICS (Royal Institution of Chartered Surveyors) — 1 operation(s) for surveywriter.
+  humanURL: https://api.rics.org/
+  baseURL: https://api.rics.org
+  tags:
+  - SurveyWriter
+  properties:
+  - type: OpenAPI
+    url: openapi/rics-surveywriter-api-openapi.yml
+  - type: APIReference
+    url: https://api.rics.org/
+  - type: Partners
+    url: https://www.rics.org/get-involved/rics-tech-partner-programme
+  - type: ToolCrosswalk
+    url: mcp/rics-tool-crosswalk.yml
+- aid: rics:rics-token-api
+  name: RICS (Royal Institution of Chartered Surveyors) Token API
+  description: >-
+    The Token API from RICS (Royal Institution of Chartered Surveyors) — 1 operation(s) for token.
+  humanURL: https://api.rics.org/
+  baseURL: https://api.rics.org
+  tags:
+  - Token
+  properties:
+  - type: OpenAPI
+    url: openapi/rics-token-api-openapi.yml
+  - type: APIReference
+    url: https://api.rics.org/
+  - type: Partners
+    url: https://www.rics.org/get-involved/rics-tech-partner-programme
+  - type: ToolCrosswalk
+    url: mcp/rics-tool-crosswalk.yml
 common:
+- type: Overlay
+  url: overlays/rics-digitalcommunity-api-overlay.yaml
 - type: License
   name: MIT
   url: https://github.com/RICS-Data-Standard/RDS/blob/main/LICENSE
