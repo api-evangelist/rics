@@ -53,6 +53,20 @@ tags_raw:
 - Regulation
 - Construction
 - PropTech
+deliveryModel:
+  model: open-core
+  license: MIT
+  open_source: true
+  commercial: true
+  callable_host: false
+  label: Open core · an OSS project plus a commercial hosted product
+  confidence: high
+  source:
+  - license
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 created: '2026-07-26'
 modified: '2026-07-26'
 specificationVersion: '0.23'
@@ -178,6 +192,10 @@ apis:
   - type: ToolCrosswalk
     url: mcp/rics-tool-crosswalk.yml
 common:
+- type: IssueTracker
+  url: https://github.com/RICS-Data-Standard/RDS/issues
+- type: Releases
+  url: https://github.com/RICS-Data-Standard/RDS/releases
 - type: Overlay
   url: overlays/rics-digitalcommunity-api-overlay.yaml
 - type: License
