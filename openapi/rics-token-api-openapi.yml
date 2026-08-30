@@ -1,0 +1,88 @@
+openapi: 3.2.0
+info:
+  title: DigitalCommunity Token API
+  description: To use this API, you need to have been first been issued a username and password by RICS. These need to be sent in a JSON User object in the body of a POST request to the /token endpoint in order to receive back a secure bearer token. This token must then be sent with every subsequent request to an information endpoint (in the request's authorization header). Bearer tokens have a limited lifetime and will need to be refreshed by your client periodically. The mechanism by which this refresh occurs is a matter for your client software to address.
+  version: v1
+security:
+- Bearer: []
+tags:
+- name: Token
+paths:
+  /token:
+    post:
+      tags:
+      - Token
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              type: object
+              additionalProperties:
+                $ref: '#/components/schemas/JToken'
+          application/json:
+            schema:
+              type: object
+              additionalProperties:
+                $ref: '#/components/schemas/JToken'
+          text/json:
+            schema:
+              type: object
+              additionalProperties:
+                $ref: '#/components/schemas/JToken'
+          application/*+json:
+            schema:
+              type: object
+              additionalProperties:
+                $ref: '#/components/schemas/JToken'
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+components:
+  schemas:
+    JToken:
+      type: array
+      items:
+        $ref: '#/components/schemas/JToken'
+    ProblemDetails:
+      type: object
+      properties:
+        type:
+          type:
+          - string
+          - 'null'
+        title:
+          type:
+          - string
+          - 'null'
+        status:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        detail:
+          type:
+          - string
+          - 'null'
+        instance:
+          type:
+          - string
+          - 'null'
+      additionalProperties: {}
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      description: Please enter into field the word 'Bearer' following by space and JWT
+      name: Authorization
+      in: header

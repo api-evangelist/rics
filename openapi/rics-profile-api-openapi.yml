@@ -1,0 +1,188 @@
+openapi: 3.2.0
+info:
+  title: DigitalCommunity Profile API
+  description: To use this API, you need to have been first been issued a username and password by RICS. These need to be sent in a JSON User object in the body of a POST request to the /token endpoint in order to receive back a secure bearer token. This token must then be sent with every subsequent request to an information endpoint (in the request's authorization header). Bearer tokens have a limited lifetime and will need to be refreshed by your client periodically. The mechanism by which this refresh occurs is a matter for your client software to address.
+  version: v1
+security:
+- Bearer: []
+tags:
+- name: Profile
+paths:
+  /api/Profile/{id}:
+    get:
+      tags:
+      - Profile
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProfileModel'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+components:
+  schemas:
+    ProfileModel:
+      type: object
+      properties:
+        contactId:
+          type: string
+          format: uuid
+        contactNo:
+          type:
+          - string
+          - 'null'
+        firstName:
+          type:
+          - string
+          - 'null'
+        middleName:
+          type:
+          - string
+          - 'null'
+        lastName:
+          type:
+          - string
+          - 'null'
+        title:
+          type:
+          - string
+          - 'null'
+        preferredEmail:
+          type:
+          - string
+          - 'null'
+        salutation:
+          type:
+          - string
+          - 'null'
+        honours:
+          type:
+          - string
+          - 'null'
+        country:
+          type:
+          - string
+          - 'null'
+        region:
+          type:
+          - string
+          - 'null'
+        worldRegion:
+          type:
+          - string
+          - 'null'
+        jobTitle:
+          type:
+          - string
+          - 'null'
+        department:
+          type:
+          - string
+          - 'null'
+        businessPhone:
+          type:
+          - string
+          - 'null'
+        mobilePhone:
+          type:
+          - string
+          - 'null'
+        contactType:
+          type:
+          - string
+          - 'null'
+        professionalGrade:
+          $ref: '#/components/schemas/ProfessionalGrade'
+        designation:
+          $ref: '#/components/schemas/MemberDesignation'
+        applicantType:
+          $ref: '#/components/schemas/CurrentApplicationType'
+        summary:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ProblemDetails:
+      type: object
+      properties:
+        type:
+          type:
+          - string
+          - 'null'
+        title:
+          type:
+          - string
+          - 'null'
+        status:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        detail:
+          type:
+          - string
+          - 'null'
+        instance:
+          type:
+          - string
+          - 'null'
+      additionalProperties: {}
+    ProfessionalGrade:
+      enum:
+      - 0
+      - 200000000
+      - 200000001
+      - 200000002
+      - 200000003
+      - 200000004
+      type: integer
+      format: int32
+    CurrentApplicationType:
+      enum:
+      - 0
+      - 200000000
+      - 200000001
+      - 200000002
+      - 200000003
+      type: integer
+      format: int32
+    MemberDesignation:
+      enum:
+      - 0
+      - 200000000
+      - 200000001
+      - 200000002
+      - 200000003
+      - 200000004
+      type: integer
+      format: int32
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      description: Please enter into field the word 'Bearer' following by space and JWT
+      name: Authorization
+      in: header

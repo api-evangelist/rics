@@ -1,0 +1,195 @@
+openapi: 3.2.0
+info:
+  title: DigitalCommunity Azure Storage API
+  description: To use this API, you need to have been first been issued a username and password by RICS. These need to be sent in a JSON User object in the body of a POST request to the /token endpoint in order to receive back a secure bearer token. This token must then be sent with every subsequent request to an information endpoint (in the request's authorization header). Bearer tokens have a limited lifetime and will need to be refreshed by your client periodically. The mechanism by which this refresh occurs is a matter for your client software to address.
+  version: v1
+security:
+- Bearer: []
+tags:
+- name: AzureStorage
+paths:
+  /api/AzureStorage/GetRegulationDeclarationDocuments:
+    get:
+      tags:
+      - AzureStorage
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RegulationDeclaration'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RegulationDeclaration'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RegulationDeclaration'
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+      deprecated: true
+  /api/AzureStorage/DeleteRegulationDeclarationDocuments:
+    delete:
+      tags:
+      - AzureStorage
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/RegulationDeclaration'
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/RegulationDeclaration'
+          text/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/RegulationDeclaration'
+          application/*+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/RegulationDeclaration'
+      responses:
+        '200':
+          description: Success
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: true
+  /api/AzureStorage/StoreRegulationDeclarationDocument:
+    post:
+      tags:
+      - AzureStorage
+      parameters:
+      - name: RowKey
+        in: query
+        schema:
+          type: string
+      - name: SchemeId
+        in: query
+        schema:
+          type: string
+      - name: StorageUrl
+        in: query
+        schema:
+          type: string
+      - name: SharepointPath
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: true
+  /api/AzureStorage/UploadFile:
+    post:
+      tags:
+      - AzureStorage
+      parameters:
+      - name: containerName
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: true
+  /api/AzureStorage/DownloadFile:
+    get:
+      tags:
+      - AzureStorage
+      parameters:
+      - name: fileUrl
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: true
+  /api/AzureStorage/DeleteLogData:
+    post:
+      tags:
+      - AzureStorage
+      parameters:
+      - name: tableName
+        in: query
+        schema:
+          type: string
+      - name: toDate
+        in: query
+        schema:
+          type: string
+          format: date-time
+      responses:
+        '200':
+          description: Success
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: true
+components:
+  schemas:
+    RegulationDeclaration:
+      type: object
+      properties:
+        rowKey:
+          type:
+          - string
+          - 'null'
+        schemeId:
+          type:
+          - string
+          - 'null'
+        storageUrl:
+          type:
+          - string
+          - 'null'
+        sharepointPath:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      description: Please enter into field the word 'Bearer' following by space and JWT
+      name: Authorization
+      in: header

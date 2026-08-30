@@ -1,0 +1,244 @@
+openapi: 3.2.0
+info:
+  title: DigitalCommunity Payment API
+  description: To use this API, you need to have been first been issued a username and password by RICS. These need to be sent in a JSON User object in the body of a POST request to the /token endpoint in order to receive back a secure bearer token. This token must then be sent with every subsequent request to an information endpoint (in the request's authorization header). Bearer tokens have a limited lifetime and will need to be refreshed by your client periodically. The mechanism by which this refresh occurs is a matter for your client software to address.
+  version: v1
+security:
+- Bearer: []
+tags:
+- name: Payment
+paths:
+  /api/Payment/{id}:
+    get:
+      tags:
+      - Payment
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentRequestModel'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /api/Payment/{id}/reference/{reference}:
+    get:
+      tags:
+      - Payment
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: reference
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentRequestModel'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /api/Payment/update:
+    post:
+      tags:
+      - Payment
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              type: object
+              additionalProperties:
+                $ref: '#/components/schemas/JToken'
+          application/json:
+            schema:
+              type: object
+              additionalProperties:
+                $ref: '#/components/schemas/JToken'
+          text/json:
+            schema:
+              type: object
+              additionalProperties:
+                $ref: '#/components/schemas/JToken'
+          application/*+json:
+            schema:
+              type: object
+              additionalProperties:
+                $ref: '#/components/schemas/JToken'
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+components:
+  schemas:
+    JToken:
+      type: array
+      items:
+        $ref: '#/components/schemas/JToken'
+    Fees:
+      type: object
+      properties:
+        subsscriptionAmount:
+          type: number
+          format: double
+        lionHeartAmount:
+          type: number
+          format: double
+        upgAmount:
+          type: number
+          format: double
+      additionalProperties: false
+    PaymentRequestModel:
+      type: object
+      properties:
+        contactNo:
+          type:
+          - string
+          - 'null'
+        firstName:
+          type:
+          - string
+          - 'null'
+        lastName:
+          type:
+          - string
+          - 'null'
+        friendlyName:
+          type:
+          - string
+          - 'null'
+        address1:
+          type:
+          - string
+          - 'null'
+        administrativeArea:
+          type:
+          - string
+          - 'null'
+        country:
+          type:
+          - string
+          - 'null'
+        currency:
+          type:
+          - string
+          - 'null'
+        email:
+          type:
+          - string
+          - 'null'
+        locality:
+          type:
+          - string
+          - 'null'
+        phoneNumber:
+          type:
+          - string
+          - 'null'
+        postalCode:
+          type:
+          - string
+          - 'null'
+        currencyCode:
+          type:
+          - string
+          - 'null'
+        canPayByIvr:
+          type: boolean
+        reference:
+          type:
+          - string
+          - 'null'
+        formattedReference:
+          type:
+          - string
+          - 'null'
+        mid:
+          type:
+          - string
+          - 'null'
+        paymentFees:
+          $ref: '#/components/schemas/Fees'
+        isTest:
+          type: boolean
+      additionalProperties: false
+    ProblemDetails:
+      type: object
+      properties:
+        type:
+          type:
+          - string
+          - 'null'
+        title:
+          type:
+          - string
+          - 'null'
+        status:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        detail:
+          type:
+          - string
+          - 'null'
+        instance:
+          type:
+          - string
+          - 'null'
+      additionalProperties: {}
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      description: Please enter into field the word 'Bearer' following by space and JWT
+      name: Authorization
+      in: header
