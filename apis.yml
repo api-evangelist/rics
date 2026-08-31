@@ -147,6 +147,8 @@ apis:
   humanURL: https://api.rics.org/
   baseURL: https://api.rics.org
   tags:
+  - Regulations
+  tags_raw:
   - Regulation
   properties:
   - type: OpenAPI
