@@ -67,6 +67,20 @@ deliveryModel:
   - pricing
   generated: '2026-08-28'
   method: derived
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source:
+  - authentication
+  - scopes
+  - security
+  generated: '2026-09-03'
+  method: derived
 created: '2026-07-26'
 modified: '2026-07-26'
 specificationVersion: '0.23'
@@ -234,8 +248,9 @@ common:
 - type: Conformance
   url: conformance/rics-conformance.yml
   name: Standards conformance - OpenAPI 3.0.1, JSON Schema draft-04, OIDC, IVS/IPMS/ICMS/ILMS/IBOS; no RESO, no OData, no OAuth on the API
-- type: MCPServer
+- type: X-MCPServerCandidate
   url: mcp/rics-mcp.yml
+  note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate — a tool list derived from the published API contracts, not an existing server. The scorer already read the manifest and reported mcp_server correctly; the MCPServer type was crediting the artifact-type surfaces with a server that does not exist.'
   name: Candidate MCP tool list derived from the OpenAPI - RICS publishes no MCP server (api.rics.org/mcp returns 404)
 - type: AgentSkill
   url: skills/_index.yml
