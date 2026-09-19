@@ -127,6 +127,8 @@ apis:
   humanURL: https://api.rics.org/
   baseURL: https://api.rics.org
   tags:
+  - Payments
+  tags_raw:
   - Payment
   properties:
   - type: OpenAPI
@@ -144,6 +146,8 @@ apis:
   humanURL: https://api.rics.org/
   baseURL: https://api.rics.org
   tags:
+  - Profiles
+  tags_raw:
   - Profile
   properties:
   - type: OpenAPI
@@ -197,6 +201,8 @@ apis:
   humanURL: https://api.rics.org/
   baseURL: https://api.rics.org
   tags:
+  - Tokens
+  tags_raw:
   - Token
   properties:
   - type: OpenAPI
