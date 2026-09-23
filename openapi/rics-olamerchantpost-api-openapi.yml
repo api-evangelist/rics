@@ -1,7 +1,7 @@
 openapi: 3.2.0
 info:
   title: DigitalCommunity Ola Merchant Post API
-  description: To use this API, you need to have been first been issued a username and password by RICS. These need to be sent in a JSON User object in the body of a POST request to the /token endpoint in order to receive back a secure bearer token. This token must then be sent with every subsequent request to an information endpoint (in the request's authorization header). Bearer tokens have a limited lifetime and will need to be refreshed by your client periodically. The mechanism by which this refresh occurs is a matter for your client software to address.
+  description: To use this API, you need to have been first been issued a username and password by RICS.
   version: v1
 security:
 - Bearer: []
@@ -15,6 +15,10 @@ paths:
       responses:
         '200':
           description: Success
+      summary: Create api ola merchant post
+      x-summary-source: derived
+      operationId: postApiOlaMerchantPost
+      x-operation-id-source: derived
 components:
   securitySchemes:
     Bearer:

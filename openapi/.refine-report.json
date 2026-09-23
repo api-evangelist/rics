@@ -1,0 +1,39 @@
+{
+  "provider": "rics",
+  "sources": [
+    "_original/rics-digitalcommunity-api-openapi.json"
+  ],
+  "outputs": [
+    "rics-azurestorage-api-openapi.yml",
+    "rics-olamerchantpost-api-openapi.yml",
+    "rics-payment-api-openapi.yml",
+    "rics-profile-api-openapi.yml",
+    "rics-regulation-api-openapi.yml",
+    "rics-surveywriter-api-openapi.yml",
+    "rics-token-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "rics-digitalcommunity-api-openapi.json: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "rics-digitalcommunity-api-openapi.json: declared missing tag: AzureStorage",
+    "rics-digitalcommunity-api-openapi.json: declared missing tag: OlaMerchantPost",
+    "rics-digitalcommunity-api-openapi.json: declared missing tag: Payment",
+    "rics-digitalcommunity-api-openapi.json: declared missing tag: Profile",
+    "rics-digitalcommunity-api-openapi.json: declared missing tag: Regulation",
+    "rics-digitalcommunity-api-openapi.json: declared missing tag: SurveyWriter",
+    "rics-digitalcommunity-api-openapi.json: declared missing tag: Token",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "rics-azurestorage-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rics-olamerchantpost-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rics-payment-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rics-profile-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rics-regulation-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rics-surveywriter-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rics-token-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
+}

@@ -1,7 +1,7 @@
 openapi: 3.2.0
 info:
   title: DigitalCommunity Azure Storage API
-  description: To use this API, you need to have been first been issued a username and password by RICS. These need to be sent in a JSON User object in the body of a POST request to the /token endpoint in order to receive back a secure bearer token. This token must then be sent with every subsequent request to an information endpoint (in the request's authorization header). Bearer tokens have a limited lifetime and will need to be refreshed by your client periodically. The mechanism by which this refresh occurs is a matter for your client software to address.
+  description: To use this API, you need to have been first been issued a username and password by RICS.
   version: v1
 security:
 - Bearer: []
@@ -36,6 +36,10 @@ paths:
         '400':
           description: Bad Request
       deprecated: true
+      summary: Get api azure storage get regulation declaration documents
+      x-summary-source: derived
+      operationId: getApiAzureStorageGetRegulationDeclarationDocuments
+      x-operation-id-source: derived
   /api/AzureStorage/DeleteRegulationDeclarationDocuments:
     delete:
       tags:
@@ -72,6 +76,10 @@ paths:
         '404':
           description: Not Found
       deprecated: true
+      summary: Delete api azure storage delete regulation declaration documents
+      x-summary-source: derived
+      operationId: deleteApiAzureStorageDeleteRegulationDeclarationDocuments
+      x-operation-id-source: derived
   /api/AzureStorage/StoreRegulationDeclarationDocument:
     post:
       tags:
@@ -103,6 +111,10 @@ paths:
         '404':
           description: Not Found
       deprecated: true
+      summary: Create api azure storage store regulation declaration document
+      x-summary-source: derived
+      operationId: postApiAzureStorageStoreRegulationDeclarationDocument
+      x-operation-id-source: derived
   /api/AzureStorage/UploadFile:
     post:
       tags:
@@ -122,6 +134,10 @@ paths:
         '404':
           description: Not Found
       deprecated: true
+      summary: Create api azure storage upload file
+      x-summary-source: derived
+      operationId: postApiAzureStorageUploadFile
+      x-operation-id-source: derived
   /api/AzureStorage/DownloadFile:
     get:
       tags:
@@ -141,6 +157,10 @@ paths:
         '404':
           description: Not Found
       deprecated: true
+      summary: Get api azure storage download file
+      x-summary-source: derived
+      operationId: getApiAzureStorageDownloadFile
+      x-operation-id-source: derived
   /api/AzureStorage/DeleteLogData:
     post:
       tags:
@@ -165,6 +185,10 @@ paths:
         '404':
           description: Not Found
       deprecated: true
+      summary: Create api azure storage delete log data
+      x-summary-source: derived
+      operationId: postApiAzureStorageDeleteLogData
+      x-operation-id-source: derived
 components:
   schemas:
     RegulationDeclaration:

@@ -1,7 +1,7 @@
 openapi: 3.2.0
 info:
   title: DigitalCommunity Regulation API
-  description: To use this API, you need to have been first been issued a username and password by RICS. These need to be sent in a JSON User object in the body of a POST request to the /token endpoint in order to receive back a secure bearer token. This token must then be sent with every subsequent request to an information endpoint (in the request's authorization header). Bearer tokens have a limited lifetime and will need to be refreshed by your client periodically. The mechanism by which this refresh occurs is a matter for your client software to address.
+  description: To use this API, you need to have been first been issued a username and password by RICS.
   version: v1
 security:
 - Bearer: []
@@ -33,6 +33,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
+      summary: Get api regulation by scheme number
+      x-summary-source: derived
+      operationId: getApiRegulationBySchemeNumber
+      x-operation-id-source: derived
   /api/Regulation/Subscriptions:
     get:
       tags:
@@ -58,6 +62,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
+      summary: Get api regulation subscriptions
+      x-summary-source: derived
+      operationId: getApiRegulationSubscriptions
+      x-operation-id-source: derived
   /api/Regulation/PaymentInformation:
     get:
       tags:
@@ -83,8 +91,81 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
+      summary: Get api regulation payment information
+      x-summary-source: derived
+      operationId: getApiRegulationPaymentInformation
+      x-operation-id-source: derived
 components:
   schemas:
+    CancellationReason:
+      enum:
+      - 0
+      - 200000000
+      - 200000001
+      - 200000002
+      - 200000003
+      - 200000004
+      - 200000005
+      type: integer
+      format: int32
+    RegulationQuoteLine:
+      type: object
+      properties:
+        quoteLineId:
+          type: string
+          format: uuid
+        catalogProductId:
+          type: string
+          format: uuid
+        quantity:
+          type: number
+          format: double
+        unitPrice:
+          type: number
+          format: double
+        baseAmount:
+          type: number
+          format: double
+        extendedAmount:
+          type: number
+          format: double
+        discountAmount:
+          type: number
+          format: double
+        productTypeCode:
+          type: integer
+          format: int32
+        productName:
+          type:
+          - string
+          - 'null'
+        productNumber:
+          type:
+          - string
+          - 'null'
+        sequenceNo:
+          type: integer
+          format: int32
+        isPriceOverridden:
+          type:
+          - boolean
+          - 'null'
+        subscriptionId:
+          type:
+          - string
+          - 'null'
+          format: uuid
+        startDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        endDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+      additionalProperties: false
     PiiInsurer:
       type: object
       properties:
@@ -110,186 +191,15 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    QuoteStatus:
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      - 7
-      - 200000000
-      - 647390000
-      type: integer
-      format: int32
-    RegulatoryType:
-      enum:
-      - 0
-      - 200000000
-      - 200000001
-      type: integer
-      format: int32
-    MemberPiiAndAdrRoute:
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      - 7
-      - 8
-      type: integer
-      format: int32
-    SchemeLicenceStatus:
+    SponsorshipCodeStatus:
       enum:
       - 0
       - 1
       - 2
       - 200000000
       - 200000001
-      - 200000002
-      - 200000003
-      - 200000004
-      - 200000005
-      - 200000006
-      - 200000007
-      - 200000008
-      - 200000009
-      - 200000010
-      - 200000011
-      - 200000012
-      - 200000013
-      - 200000014
-      - 200000015
       type: integer
       format: int32
-    ProblemDetails:
-      type: object
-      properties:
-        type:
-          type:
-          - string
-          - 'null'
-        title:
-          type:
-          - string
-          - 'null'
-        status:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        detail:
-          type:
-          - string
-          - 'null'
-        instance:
-          type:
-          - string
-          - 'null'
-      additionalProperties: {}
-    RegulationQuote:
-      type: object
-      properties:
-        quoteId:
-          type: string
-          format: uuid
-        quoteRef:
-          type:
-          - string
-          - 'null'
-        name:
-          type:
-          - string
-          - 'null'
-        description:
-          type:
-          - string
-          - 'null'
-        revisionNumber:
-          type: integer
-          format: int32
-        transactionCurrencyId:
-          type: string
-          format: uuid
-        isoCurrencyCode:
-          type:
-          - string
-          - 'null'
-        currencyName:
-          type:
-          - string
-          - 'null'
-        currencySymbol:
-          type:
-          - string
-          - 'null'
-        totalAmount:
-          type: number
-          format: double
-        taxAmount:
-          type: number
-          format: double
-        discountAmount:
-          type: number
-          format: double
-        priceListId:
-          type:
-          - string
-          - 'null'
-          format: uuid
-        paymentReceived:
-          type: boolean
-        status:
-          $ref: '#/components/schemas/QuoteStatus'
-        quoteLines:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/RegulationQuoteLine'
-        dateCreated:
-          type: string
-          format: date-time
-        purchaseType:
-          $ref: '#/components/schemas/PurchaseType'
-      additionalProperties: false
-    RedressProvider:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        regulatedSchemeId:
-          type: string
-          format: uuid
-        regulatedSchemeName:
-          type:
-          - string
-          - 'null'
-        redressSchemeId:
-          type: string
-          format: uuid
-        redressSchemeName:
-          type:
-          - string
-          - 'null'
-        countryId:
-          type: string
-          format: uuid
-        countryName:
-          type:
-          - string
-          - 'null'
-        countryCode:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
     RegulationScheme:
       type: object
       properties:
@@ -626,197 +536,148 @@ components:
       - 200000007
       type: integer
       format: int32
-    RegulationQuoteLine:
+    SchemeLicenceType:
+      enum:
+      - 0
+      - 200000000
+      - 200000001
+      type: integer
+      format: int32
+    ProblemDetails:
       type: object
       properties:
-        quoteLineId:
-          type: string
-          format: uuid
-        catalogProductId:
-          type: string
-          format: uuid
-        quantity:
-          type: number
-          format: double
-        unitPrice:
-          type: number
-          format: double
-        baseAmount:
-          type: number
-          format: double
-        extendedAmount:
-          type: number
-          format: double
-        discountAmount:
-          type: number
-          format: double
-        productTypeCode:
-          type: integer
-          format: int32
-        productName:
+        type:
           type:
           - string
           - 'null'
-        productNumber:
+        title:
           type:
           - string
           - 'null'
-        sequenceNo:
-          type: integer
-          format: int32
-        isPriceOverridden:
-          type:
-          - boolean
-          - 'null'
-        subscriptionId:
-          type:
-          - string
-          - 'null'
-          format: uuid
-        startDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        endDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-      additionalProperties: false
-    SubscriptionUser:
-      type: object
-      properties:
-        subscriptionUserId:
-          type: string
-          format: uuid
-        contactId:
-          type: string
-          format: uuid
-        contactNo:
-          type:
-          - string
-          - 'null'
-        contactName:
-          type:
-          - string
-          - 'null'
-        preferredEmailAddress:
-          type:
-          - string
-          - 'null'
-        sponsorshipCodeId:
-          type:
-          - string
-          - 'null'
-          format: uuid
-        subscriptionProductId:
-          type: string
-          format: uuid
-        subscriptionId:
-          type: string
-          format: uuid
         status:
-          $ref: '#/components/schemas/SubscriptionUserStatus'
-        approvalStatus:
-          $ref: '#/components/schemas/SubscriptionUserApprovalStatus'
-        licenceKey:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        detail:
           type:
           - string
           - 'null'
-        endDate:
+        instance:
           type:
           - string
           - 'null'
-          format: date-time
-        vrsSponsorshipApplicationId:
-          type:
-          - string
-          - 'null'
-          format: uuid
-      additionalProperties: false
-    Address:
+      additionalProperties: {}
+    PaymentInformation:
       type: object
       properties:
-        ownerId:
+        quotes:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/RegulationQuote'
+        salesOrders:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/RegulationSalesOrder'
+        countOfQuotes:
+          type: integer
+          format: int32
+        countOfSalesOrders:
+          type: integer
+          format: int32
+        countOfSchemeAnnualReturns:
+          type: integer
+          format: int32
+      additionalProperties: false
+    EndDateChangeReason:
+      enum:
+      - 0
+      - 200000000
+      - 200000001
+      - 200000002
+      - 200000003
+      - 200000004
+      type: integer
+      format: int32
+    RegulatoryType:
+      enum:
+      - 0
+      - 200000000
+      - 200000001
+      type: integer
+      format: int32
+    RedressProvider:
+      type: object
+      properties:
+        id:
           type: string
           format: uuid
-        subsOnlineUpdate:
-          type: boolean
-        addressType:
-          $ref: '#/components/schemas/AddressType'
-        organisation:
+        regulatedSchemeId:
+          type: string
+          format: uuid
+        regulatedSchemeName:
           type:
           - string
           - 'null'
-        line1:
-          type:
-          - string
-          - 'null'
-        line2:
-          type:
-          - string
-          - 'null'
-        line3:
-          type:
-          - string
-          - 'null'
-        city:
-          type:
-          - string
-          - 'null'
-        county:
-          type:
-          - string
-          - 'null'
-        state:
-          type:
-          - string
-          - 'null'
-        postcode:
-          type:
-          - string
-          - 'null'
-        isoCountryCode:
-          type:
-          - string
-          - 'null'
-        countryName:
+        redressSchemeId:
+          type: string
+          format: uuid
+        redressSchemeName:
           type:
           - string
           - 'null'
         countryId:
           type: string
           format: uuid
-        longitude:
-          type: number
-          format: double
-        latitude:
-          type: number
-          format: double
-        telephone:
+        countryName:
           type:
           - string
           - 'null'
-        website:
+        countryCode:
           type:
           - string
           - 'null'
-        emailAddress:
-          type:
-          - string
-          - 'null'
-        basedInChannelIslands:
-          type: boolean
       additionalProperties: false
-    SubscriptionPaymentMethod:
+    AddressType:
+      enum:
+      - 0
+      - 1
+      - 2
+      type: integer
+      format: int32
+    RegulatedOrganisationType:
       enum:
       - 0
       - 200000000
+      - 200000001
       - 200000002
       - 200000003
       - 200000004
-      - 200000006
+      - 200000005
+      type: integer
+      format: int32
+    MemberPiiAndAdrRoute:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      type: integer
+      format: int32
+    SubscriptionUserApprovalStatus:
+      enum:
+      - 0
+      - 200000000
+      - 200000001
       type: integer
       format: int32
     PurchaseType:
@@ -826,135 +687,47 @@ components:
       - 200000001
       type: integer
       format: int32
-    SuspensionReason:
-      enum:
-      - 0
-      - 200000000
-      - 200000001
-      - 200000002
-      type: integer
-      format: int32
-    Office:
+    SurveyingService:
       type: object
       properties:
-        accountId:
+        serviceId:
           type: string
           format: uuid
-        firmNumber:
+        code:
           type:
           - string
           - 'null'
-        officeNumber:
+        service:
           type:
           - string
           - 'null'
-        publicationName:
-          type:
-          - string
-          - 'null'
-        registeredName:
-          type:
-          - string
-          - 'null'
-        tradingName:
-          type:
-          - string
-          - 'null'
-        primaryContact:
-          type:
-          - string
-          - 'null'
+        isValuationService:
+          type: boolean
+        countryId:
+          type: string
           format: uuid
-        primaryContactName:
+        countryName:
           type:
           - string
           - 'null'
-        address:
-          $ref: '#/components/schemas/Address'
-        isoCountryCode:
+        countryCode:
           type:
           - string
           - 'null'
-        vatRegNumber:
-          type:
-          - string
-          - 'null'
-        isHeadOffice:
-          type: boolean
-        isRegulated:
-          type: boolean
-        hasActiveRegistration:
-          type: boolean
       additionalProperties: false
-    SubscriptionUserStatus:
-      enum:
-      - 0
-      - 1
-      - 2
-      type: integer
-      format: int32
-    MemberDirectorPrincipal:
+    RegulationSubscriptions:
       type: object
       properties:
-        contactId:
+        subscriptions:
           type:
-          - string
+          - array
           - 'null'
-          format: uuid
-        connectionId:
-          type:
-          - string
-          - 'null'
-          format: uuid
-        emailAddress:
-          type:
-          - string
-          - 'null'
-        emailAddress2:
-          type:
-          - string
-          - 'null'
-        emailAddress3:
-          type:
-          - string
-          - 'null'
-        contactNo:
-          type:
-          - string
-          - 'null'
-        fullName:
-          type:
-          - string
-          - 'null'
-        hasPreviousBadSchemeStatus:
-          type: boolean
-        notFoundInCrm:
-          type: boolean
-        isResponsiblePrincipal:
-          type: boolean
+          items:
+            $ref: '#/components/schemas/RegulationSubscription'
+        countOfSubscriptions:
+          type: integer
+          format: int32
       additionalProperties: false
-    SchemeLicenceStatusReason:
-      enum:
-      - 0
-      - 200000000
-      - 200000001
-      - 200000002
-      - 200000003
-      - 200000004
-      - 200000005
-      - 200000006
-      - 200000007
-      - 200000008
-      - 200000009
-      - 200000010
-      - 200000011
-      - 200000012
-      - 200000013
-      - 200000014
-      - 200000015
-      - 200000016
-      type: integer
-      format: int32
     Subscription:
       type: object
       properties:
@@ -998,38 +771,46 @@ components:
             type: string
             format: uuid
       additionalProperties: false
-    PaymentInformation:
+    MemberDirectorPrincipal:
       type: object
       properties:
-        quotes:
+        contactId:
           type:
-          - array
+          - string
           - 'null'
-          items:
-            $ref: '#/components/schemas/RegulationQuote'
-        salesOrders:
+          format: uuid
+        connectionId:
           type:
-          - array
+          - string
           - 'null'
-          items:
-            $ref: '#/components/schemas/RegulationSalesOrder'
-        countOfQuotes:
-          type: integer
-          format: int32
-        countOfSalesOrders:
-          type: integer
-          format: int32
-        countOfSchemeAnnualReturns:
-          type: integer
-          format: int32
+          format: uuid
+        emailAddress:
+          type:
+          - string
+          - 'null'
+        emailAddress2:
+          type:
+          - string
+          - 'null'
+        emailAddress3:
+          type:
+          - string
+          - 'null'
+        contactNo:
+          type:
+          - string
+          - 'null'
+        fullName:
+          type:
+          - string
+          - 'null'
+        hasPreviousBadSchemeStatus:
+          type: boolean
+        notFoundInCrm:
+          type: boolean
+        isResponsiblePrincipal:
+          type: boolean
       additionalProperties: false
-    InclusionReason:
-      enum:
-      - 0
-      - 200000000
-      - 200000001
-      type: integer
-      format: int32
     RegulationSalesOrder:
       type: object
       properties:
@@ -1061,38 +842,7 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    ScoreResult:
-      enum:
-      - 0
-      - 1
-      - 2
-      type: integer
-      format: int32
-    AddressType:
-      enum:
-      - 0
-      - 1
-      - 2
-      type: integer
-      format: int32
-    EndDateChangeReason:
-      enum:
-      - 0
-      - 200000000
-      - 200000001
-      - 200000002
-      - 200000003
-      - 200000004
-      type: integer
-      format: int32
-    SubscriptionUserApprovalStatus:
-      enum:
-      - 0
-      - 200000000
-      - 200000001
-      type: integer
-      format: int32
-    CancellationReason:
+    ReturnStatusCode:
       enum:
       - 0
       - 200000000
@@ -1101,6 +851,14 @@ components:
       - 200000003
       - 200000004
       - 200000005
+      - 200000006
+      - 200000007
+      - 200000008
+      - 200000009
+      - 200000010
+      - 200000011
+      - 200000012
+      - 200000013
       type: integer
       format: int32
     SponsorshipCode:
@@ -1136,61 +894,6 @@ components:
         modifiedOn:
           type: string
           format: date-time
-      additionalProperties: false
-    SalesOrderStatus:
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 100001
-      - 100002
-      - 100003
-      - 200000
-      - 200001
-      type: integer
-      format: int32
-    SurveyingService:
-      type: object
-      properties:
-        serviceId:
-          type: string
-          format: uuid
-        code:
-          type:
-          - string
-          - 'null'
-        service:
-          type:
-          - string
-          - 'null'
-        isValuationService:
-          type: boolean
-        countryId:
-          type: string
-          format: uuid
-        countryName:
-          type:
-          - string
-          - 'null'
-        countryCode:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    RegulationSubscriptions:
-      type: object
-      properties:
-        subscriptions:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/RegulationSubscription'
-        countOfSubscriptions:
-          type: integer
-          format: int32
       additionalProperties: false
     RegulationReturn:
       type: object
@@ -1325,23 +1028,22 @@ components:
           - 'null'
           format: date-time
       additionalProperties: false
-    Gima:
+    InclusionReason:
+      enum:
+      - 0
+      - 200000000
+      - 200000001
+      type: integer
+      format: int32
+    SuspensionReason:
       enum:
       - 0
       - 200000000
       - 200000001
       - 200000002
-      - 200000003
       type: integer
       format: int32
-    SchemeLicenceType:
-      enum:
-      - 0
-      - 200000000
-      - 200000001
-      type: integer
-      format: int32
-    ReturnStatusCode:
+    SchemeLicenceStatusReason:
       enum:
       - 0
       - 200000000
@@ -1358,8 +1060,165 @@ components:
       - 200000011
       - 200000012
       - 200000013
+      - 200000014
+      - 200000015
+      - 200000016
       type: integer
       format: int32
+    SalesOrderStatus:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 100001
+      - 100002
+      - 100003
+      - 200000
+      - 200001
+      type: integer
+      format: int32
+    Address:
+      type: object
+      properties:
+        ownerId:
+          type: string
+          format: uuid
+        subsOnlineUpdate:
+          type: boolean
+        addressType:
+          $ref: '#/components/schemas/AddressType'
+        organisation:
+          type:
+          - string
+          - 'null'
+        line1:
+          type:
+          - string
+          - 'null'
+        line2:
+          type:
+          - string
+          - 'null'
+        line3:
+          type:
+          - string
+          - 'null'
+        city:
+          type:
+          - string
+          - 'null'
+        county:
+          type:
+          - string
+          - 'null'
+        state:
+          type:
+          - string
+          - 'null'
+        postcode:
+          type:
+          - string
+          - 'null'
+        isoCountryCode:
+          type:
+          - string
+          - 'null'
+        countryName:
+          type:
+          - string
+          - 'null'
+        countryId:
+          type: string
+          format: uuid
+        longitude:
+          type: number
+          format: double
+        latitude:
+          type: number
+          format: double
+        telephone:
+          type:
+          - string
+          - 'null'
+        website:
+          type:
+          - string
+          - 'null'
+        emailAddress:
+          type:
+          - string
+          - 'null'
+        basedInChannelIslands:
+          type: boolean
+      additionalProperties: false
+    RegulationQuote:
+      type: object
+      properties:
+        quoteId:
+          type: string
+          format: uuid
+        quoteRef:
+          type:
+          - string
+          - 'null'
+        name:
+          type:
+          - string
+          - 'null'
+        description:
+          type:
+          - string
+          - 'null'
+        revisionNumber:
+          type: integer
+          format: int32
+        transactionCurrencyId:
+          type: string
+          format: uuid
+        isoCurrencyCode:
+          type:
+          - string
+          - 'null'
+        currencyName:
+          type:
+          - string
+          - 'null'
+        currencySymbol:
+          type:
+          - string
+          - 'null'
+        totalAmount:
+          type: number
+          format: double
+        taxAmount:
+          type: number
+          format: double
+        discountAmount:
+          type: number
+          format: double
+        priceListId:
+          type:
+          - string
+          - 'null'
+          format: uuid
+        paymentReceived:
+          type: boolean
+        status:
+          $ref: '#/components/schemas/QuoteStatus'
+        quoteLines:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/RegulationQuoteLine'
+        dateCreated:
+          type: string
+          format: date-time
+        purchaseType:
+          $ref: '#/components/schemas/PurchaseType'
+      additionalProperties: false
     LicenceEndReason:
       enum:
       - 0
@@ -1382,18 +1241,46 @@ components:
       - 200000016
       type: integer
       format: int32
-    RegulatedOrganisationType:
+    SubscriptionUserStatus:
       enum:
       - 0
+      - 1
+      - 2
+      type: integer
+      format: int32
+    SchemeLicenceStatus:
+      enum:
+      - 0
+      - 1
+      - 2
       - 200000000
       - 200000001
       - 200000002
       - 200000003
       - 200000004
       - 200000005
+      - 200000006
+      - 200000007
+      - 200000008
+      - 200000009
+      - 200000010
+      - 200000011
+      - 200000012
+      - 200000013
+      - 200000014
+      - 200000015
       type: integer
       format: int32
-    FirmRegsRoute:
+    PortalLocation:
+      enum:
+      - 0
+      - 200000000
+      - 200000001
+      - 200000002
+      - 200000003
+      type: integer
+      format: int32
+    QuoteStatus:
       enum:
       - 0
       - 1
@@ -1403,18 +1290,78 @@ components:
       - 5
       - 6
       - 7
-      - 8
-      - 9
-      - 10
+      - 200000000
+      - 647390000
       type: integer
       format: int32
-    SponsorshipCodeStatus:
+    SubscriptionUser:
+      type: object
+      properties:
+        subscriptionUserId:
+          type: string
+          format: uuid
+        contactId:
+          type: string
+          format: uuid
+        contactNo:
+          type:
+          - string
+          - 'null'
+        contactName:
+          type:
+          - string
+          - 'null'
+        preferredEmailAddress:
+          type:
+          - string
+          - 'null'
+        sponsorshipCodeId:
+          type:
+          - string
+          - 'null'
+          format: uuid
+        subscriptionProductId:
+          type: string
+          format: uuid
+        subscriptionId:
+          type: string
+          format: uuid
+        status:
+          $ref: '#/components/schemas/SubscriptionUserStatus'
+        approvalStatus:
+          $ref: '#/components/schemas/SubscriptionUserApprovalStatus'
+        licenceKey:
+          type:
+          - string
+          - 'null'
+        endDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        vrsSponsorshipApplicationId:
+          type:
+          - string
+          - 'null'
+          format: uuid
+      additionalProperties: false
+    Gima:
       enum:
       - 0
-      - 1
-      - 2
       - 200000000
       - 200000001
+      - 200000002
+      - 200000003
+      type: integer
+      format: int32
+    SubscriptionPaymentMethod:
+      enum:
+      - 0
+      - 200000000
+      - 200000002
+      - 200000003
+      - 200000004
+      - 200000006
       type: integer
       format: int32
     RegulationSubscription:
@@ -1537,13 +1484,78 @@ components:
           - 'null'
           format: date-time
       additionalProperties: false
-    PortalLocation:
+    FirmRegsRoute:
       enum:
       - 0
-      - 200000000
-      - 200000001
-      - 200000002
-      - 200000003
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+      - 10
+      type: integer
+      format: int32
+    Office:
+      type: object
+      properties:
+        accountId:
+          type: string
+          format: uuid
+        firmNumber:
+          type:
+          - string
+          - 'null'
+        officeNumber:
+          type:
+          - string
+          - 'null'
+        publicationName:
+          type:
+          - string
+          - 'null'
+        registeredName:
+          type:
+          - string
+          - 'null'
+        tradingName:
+          type:
+          - string
+          - 'null'
+        primaryContact:
+          type:
+          - string
+          - 'null'
+          format: uuid
+        primaryContactName:
+          type:
+          - string
+          - 'null'
+        address:
+          $ref: '#/components/schemas/Address'
+        isoCountryCode:
+          type:
+          - string
+          - 'null'
+        vatRegNumber:
+          type:
+          - string
+          - 'null'
+        isHeadOffice:
+          type: boolean
+        isRegulated:
+          type: boolean
+        hasActiveRegistration:
+          type: boolean
+      additionalProperties: false
+    ScoreResult:
+      enum:
+      - 0
+      - 1
+      - 2
       type: integer
       format: int32
   securitySchemes:
