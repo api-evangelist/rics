@@ -32,7 +32,7 @@ imageNote: >-
   No correct icon has been sourced yet. Shipping the wrong company's mark is worse
   than shipping none; re-run the icon backfill once a real asset exists.
 tags:
-- Real-Estate
+- Real Estate
 - United Kingdom
 - Industry Body
 - Valuation
@@ -53,6 +53,7 @@ tags_raw:
 - Regulation
 - Construction
 - PropTech
+- Real-Estate
 deliveryModel:
   model: open-core
   license: MIT

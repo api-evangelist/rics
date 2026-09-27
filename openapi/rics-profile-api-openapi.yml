@@ -49,26 +49,31 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    MemberDesignation:
-      enum:
-      - 0
-      - 200000000
-      - 200000001
-      - 200000002
-      - 200000003
-      - 200000004
-      type: integer
-      format: int32
-    ProfessionalGrade:
-      enum:
-      - 0
-      - 200000000
-      - 200000001
-      - 200000002
-      - 200000003
-      - 200000004
-      type: integer
-      format: int32
+    ProblemDetails:
+      type: object
+      properties:
+        type:
+          type:
+          - string
+          - 'null'
+        title:
+          type:
+          - string
+          - 'null'
+        status:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        detail:
+          type:
+          - string
+          - 'null'
+        instance:
+          type:
+          - string
+          - 'null'
+      additionalProperties: {}
     ProfileModel:
       type: object
       properties:
@@ -150,6 +155,26 @@ components:
           - string
           - 'null'
       additionalProperties: false
+    MemberDesignation:
+      enum:
+      - 0
+      - 200000000
+      - 200000001
+      - 200000002
+      - 200000003
+      - 200000004
+      type: integer
+      format: int32
+    ProfessionalGrade:
+      enum:
+      - 0
+      - 200000000
+      - 200000001
+      - 200000002
+      - 200000003
+      - 200000004
+      type: integer
+      format: int32
     CurrentApplicationType:
       enum:
       - 0
@@ -159,31 +184,6 @@ components:
       - 200000003
       type: integer
       format: int32
-    ProblemDetails:
-      type: object
-      properties:
-        type:
-          type:
-          - string
-          - 'null'
-        title:
-          type:
-          - string
-          - 'null'
-        status:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        detail:
-          type:
-          - string
-          - 'null'
-        instance:
-          type:
-          - string
-          - 'null'
-      additionalProperties: {}
   securitySchemes:
     Bearer:
       type: apiKey

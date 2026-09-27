@@ -170,6 +170,10 @@ components:
           - string
           - 'null'
       additionalProperties: {}
+    JToken:
+      type: array
+      items:
+        $ref: '#/components/schemas/JToken'
     PaymentRequestModel:
       type: object
       properties:
@@ -244,10 +248,6 @@ components:
         isTest:
           type: boolean
       additionalProperties: false
-    JToken:
-      type: array
-      items:
-        $ref: '#/components/schemas/JToken'
   securitySchemes:
     Bearer:
       type: apiKey
