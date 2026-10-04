@@ -97,28 +97,15 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    FirmRegsRoute:
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      - 7
-      - 8
-      - 9
-      - 10
-      type: integer
-      format: int32
-    PortalLocation:
+    CancellationReason:
       enum:
       - 0
       - 200000000
       - 200000001
       - 200000002
       - 200000003
+      - 200000004
+      - 200000005
       type: integer
       format: int32
     Address:
@@ -195,148 +182,6 @@ components:
         basedInChannelIslands:
           type: boolean
       additionalProperties: false
-    QuoteStatus:
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      - 7
-      - 200000000
-      - 647390000
-      type: integer
-      format: int32
-    LicenceEndReason:
-      enum:
-      - 0
-      - 200000000
-      - 200000001
-      - 200000002
-      - 200000003
-      - 200000004
-      - 200000005
-      - 200000006
-      - 200000007
-      - 200000008
-      - 200000009
-      - 200000010
-      - 200000011
-      - 200000012
-      - 200000013
-      - 200000014
-      - 200000015
-      - 200000016
-      type: integer
-      format: int32
-    SubscriptionUser:
-      type: object
-      properties:
-        subscriptionUserId:
-          type: string
-          format: uuid
-        contactId:
-          type: string
-          format: uuid
-        contactNo:
-          type:
-          - string
-          - 'null'
-        contactName:
-          type:
-          - string
-          - 'null'
-        preferredEmailAddress:
-          type:
-          - string
-          - 'null'
-        sponsorshipCodeId:
-          type:
-          - string
-          - 'null'
-          format: uuid
-        subscriptionProductId:
-          type: string
-          format: uuid
-        subscriptionId:
-          type: string
-          format: uuid
-        status:
-          $ref: '#/components/schemas/SubscriptionUserStatus'
-        approvalStatus:
-          $ref: '#/components/schemas/SubscriptionUserApprovalStatus'
-        licenceKey:
-          type:
-          - string
-          - 'null'
-        endDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        vrsSponsorshipApplicationId:
-          type:
-          - string
-          - 'null'
-          format: uuid
-      additionalProperties: false
-    ScoreResult:
-      enum:
-      - 0
-      - 1
-      - 2
-      type: integer
-      format: int32
-    SubscriptionOwnerStatus:
-      enum:
-      - 0
-      - 1
-      - 2
-      - 200000000
-      - 200000002
-      - 200000003
-      - 200000004
-      - 200000005
-      - 200000006
-      - 200000007
-      type: integer
-      format: int32
-    RegulatedOrganisationType:
-      enum:
-      - 0
-      - 200000000
-      - 200000001
-      - 200000002
-      - 200000003
-      - 200000004
-      - 200000005
-      type: integer
-      format: int32
-    SchemeLicenceStatus:
-      enum:
-      - 0
-      - 1
-      - 2
-      - 200000000
-      - 200000001
-      - 200000002
-      - 200000003
-      - 200000004
-      - 200000005
-      - 200000006
-      - 200000007
-      - 200000008
-      - 200000009
-      - 200000010
-      - 200000011
-      - 200000012
-      - 200000013
-      - 200000014
-      - 200000015
-      type: integer
-      format: int32
     SubscriptionUserStatus:
       enum:
       - 0
@@ -344,81 +189,38 @@ components:
       - 2
       type: integer
       format: int32
-    InclusionReason:
-      enum:
-      - 0
-      - 200000000
-      - 200000001
-      type: integer
-      format: int32
-    SponsorshipCodeStatus:
-      enum:
-      - 0
-      - 1
-      - 2
-      - 200000000
-      - 200000001
-      type: integer
-      format: int32
-    RedressProvider:
+    PaymentInformation:
       type: object
       properties:
-        id:
-          type: string
-          format: uuid
-        regulatedSchemeId:
-          type: string
-          format: uuid
-        regulatedSchemeName:
-          type:
-          - string
-          - 'null'
-        redressSchemeId:
-          type: string
-          format: uuid
-        redressSchemeName:
-          type:
-          - string
-          - 'null'
-        countryId:
-          type: string
-          format: uuid
-        countryName:
-          type:
-          - string
-          - 'null'
-        countryCode:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    SalesOrderStatus:
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 100001
-      - 100002
-      - 100003
-      - 200000
-      - 200001
-      type: integer
-      format: int32
-    RegulationSubscriptions:
-      type: object
-      properties:
-        subscriptions:
+        quotes:
           type:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/RegulationSubscription'
-        countOfSubscriptions:
+            $ref: '#/components/schemas/RegulationQuote'
+        salesOrders:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/RegulationSalesOrder'
+        countOfQuotes:
+          type: integer
+          format: int32
+        countOfSalesOrders:
+          type: integer
+          format: int32
+        countOfSchemeAnnualReturns:
           type: integer
           format: int32
       additionalProperties: false
+    PurchaseType:
+      enum:
+      - 0
+      - 200000000
+      - 200000001
+      type: integer
+      format: int32
     SurveyingService:
       type: object
       properties:
@@ -447,6 +249,78 @@ components:
           - string
           - 'null'
       additionalProperties: false
+    RegulatoryType:
+      enum:
+      - 0
+      - 200000000
+      - 200000001
+      type: integer
+      format: int32
+    ScoreResult:
+      enum:
+      - 0
+      - 1
+      - 2
+      type: integer
+      format: int32
+    AddressType:
+      enum:
+      - 0
+      - 1
+      - 2
+      type: integer
+      format: int32
+    LicenceEndReason:
+      enum:
+      - 0
+      - 200000000
+      - 200000001
+      - 200000002
+      - 200000003
+      - 200000004
+      - 200000005
+      - 200000006
+      - 200000007
+      - 200000008
+      - 200000009
+      - 200000010
+      - 200000011
+      - 200000012
+      - 200000013
+      - 200000014
+      - 200000015
+      - 200000016
+      type: integer
+      format: int32
+    SubscriptionUserApprovalStatus:
+      enum:
+      - 0
+      - 200000000
+      - 200000001
+      type: integer
+      format: int32
+    SalesOrderStatus:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 100001
+      - 100002
+      - 100003
+      - 200000
+      - 200001
+      type: integer
+      format: int32
+    SuspensionReason:
+      enum:
+      - 0
+      - 200000000
+      - 200000001
+      - 200000002
+      type: integer
+      format: int32
     ProblemDetails:
       type: object
       properties:
@@ -472,32 +346,7 @@ components:
           - string
           - 'null'
       additionalProperties: {}
-    PaymentInformation:
-      type: object
-      properties:
-        quotes:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/RegulationQuote'
-        salesOrders:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/RegulationSalesOrder'
-        countOfQuotes:
-          type: integer
-          format: int32
-        countOfSalesOrders:
-          type: integer
-          format: int32
-        countOfSchemeAnnualReturns:
-          type: integer
-          format: int32
-      additionalProperties: false
-    SubscriptionUserApprovalStatus:
+    SchemeLicenceType:
       enum:
       - 0
       - 200000000
@@ -826,19 +675,42 @@ components:
           type: integer
           format: int32
       additionalProperties: false
-    EndDateChangeReason:
+    RegulationSalesOrder:
+      type: object
+      properties:
+        orderId:
+          type: string
+          format: uuid
+        orderRef:
+          type:
+          - string
+          - 'null'
+        status:
+          $ref: '#/components/schemas/SalesOrderStatus'
+        totalAmount:
+          type: number
+          format: double
+        dateCreated:
+          type: string
+          format: date-time
+        isoCurrencyCode:
+          type:
+          - string
+          - 'null'
+        currencySymbol:
+          type:
+          - string
+          - 'null'
+        quoteNumber:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    SchemeLicenceStatus:
       enum:
       - 0
-      - 200000000
-      - 200000001
-      - 200000002
-      - 200000003
-      - 200000004
-      type: integer
-      format: int32
-    ReturnStatusCode:
-      enum:
-      - 0
+      - 1
+      - 2
       - 200000000
       - 200000001
       - 200000002
@@ -853,6 +725,75 @@ components:
       - 200000011
       - 200000012
       - 200000013
+      - 200000014
+      - 200000015
+      type: integer
+      format: int32
+    Subscription:
+      type: object
+      properties:
+        subscriptionId:
+          type: string
+          format: uuid
+        startDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        endDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        numberOfLicences:
+          type: integer
+          format: int32
+        poNumber:
+          type:
+          - string
+          - 'null'
+        createdDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        salesOrders:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+            format: uuid
+        quotes:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+            format: uuid
+      additionalProperties: false
+    EndDateChangeReason:
+      enum:
+      - 0
+      - 200000000
+      - 200000001
+      - 200000002
+      - 200000003
+      - 200000004
+      type: integer
+      format: int32
+    QuoteStatus:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 200000000
+      - 647390000
       type: integer
       format: int32
     MemberPiiAndAdrRoute:
@@ -868,62 +809,64 @@ components:
       - 8
       type: integer
       format: int32
-    MemberDirectorPrincipal:
+    SubscriptionUser:
       type: object
       properties:
+        subscriptionUserId:
+          type: string
+          format: uuid
         contactId:
-          type:
-          - string
-          - 'null'
+          type: string
           format: uuid
-        connectionId:
-          type:
-          - string
-          - 'null'
-          format: uuid
-        emailAddress:
-          type:
-          - string
-          - 'null'
-        emailAddress2:
-          type:
-          - string
-          - 'null'
-        emailAddress3:
-          type:
-          - string
-          - 'null'
         contactNo:
           type:
           - string
           - 'null'
-        fullName:
+        contactName:
           type:
           - string
           - 'null'
-        hasPreviousBadSchemeStatus:
-          type: boolean
-        notFoundInCrm:
-          type: boolean
-        isResponsiblePrincipal:
-          type: boolean
+        preferredEmailAddress:
+          type:
+          - string
+          - 'null'
+        sponsorshipCodeId:
+          type:
+          - string
+          - 'null'
+          format: uuid
+        subscriptionProductId:
+          type: string
+          format: uuid
+        subscriptionId:
+          type: string
+          format: uuid
+        status:
+          $ref: '#/components/schemas/SubscriptionUserStatus'
+        approvalStatus:
+          $ref: '#/components/schemas/SubscriptionUserApprovalStatus'
+        licenceKey:
+          type:
+          - string
+          - 'null'
+        endDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        vrsSponsorshipApplicationId:
+          type:
+          - string
+          - 'null'
+          format: uuid
       additionalProperties: false
-    PurchaseType:
+    SponsorshipCodeStatus:
       enum:
       - 0
+      - 1
+      - 2
       - 200000000
       - 200000001
-      type: integer
-      format: int32
-    CancellationReason:
-      enum:
-      - 0
-      - 200000000
-      - 200000001
-      - 200000002
-      - 200000003
-      - 200000004
-      - 200000005
       type: integer
       format: int32
     PiiInsurer:
@@ -951,11 +894,59 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    SchemeLicenceType:
+    SubscriptionOwnerStatus:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 200000000
+      - 200000002
+      - 200000003
+      - 200000004
+      - 200000005
+      - 200000006
+      - 200000007
+      type: integer
+      format: int32
+    RedressProvider:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        regulatedSchemeId:
+          type: string
+          format: uuid
+        regulatedSchemeName:
+          type:
+          - string
+          - 'null'
+        redressSchemeId:
+          type: string
+          format: uuid
+        redressSchemeName:
+          type:
+          - string
+          - 'null'
+        countryId:
+          type: string
+          format: uuid
+        countryName:
+          type:
+          - string
+          - 'null'
+        countryCode:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PortalLocation:
       enum:
       - 0
       - 200000000
       - 200000001
+      - 200000002
+      - 200000003
       type: integer
       format: int32
     RegulationReturn:
@@ -1091,84 +1082,35 @@ components:
           - 'null'
           format: date-time
       additionalProperties: false
-    Office:
+    RegulationQuote:
       type: object
       properties:
-        accountId:
+        quoteId:
           type: string
           format: uuid
-        firmNumber:
+        quoteRef:
           type:
           - string
           - 'null'
-        officeNumber:
+        name:
           type:
           - string
           - 'null'
-        publicationName:
+        description:
           type:
           - string
           - 'null'
-        registeredName:
-          type:
-          - string
-          - 'null'
-        tradingName:
-          type:
-          - string
-          - 'null'
-        primaryContact:
-          type:
-          - string
-          - 'null'
-          format: uuid
-        primaryContactName:
-          type:
-          - string
-          - 'null'
-        address:
-          $ref: '#/components/schemas/Address'
-        isoCountryCode:
-          type:
-          - string
-          - 'null'
-        vatRegNumber:
-          type:
-          - string
-          - 'null'
-        isHeadOffice:
-          type: boolean
-        isRegulated:
-          type: boolean
-        hasActiveRegistration:
-          type: boolean
-      additionalProperties: false
-    RegulatoryType:
-      enum:
-      - 0
-      - 200000000
-      - 200000001
-      type: integer
-      format: int32
-    RegulationSalesOrder:
-      type: object
-      properties:
-        orderId:
+        revisionNumber:
+          type: integer
+          format: int32
+        transactionCurrencyId:
           type: string
           format: uuid
-        orderRef:
-          type:
-          - string
-          - 'null'
-        status:
-          $ref: '#/components/schemas/SalesOrderStatus'
-        totalAmount:
-          type: number
-          format: double
-        dateCreated:
-          type: string
-          format: date-time
         isoCurrencyCode:
+          type:
+          - string
+          - 'null'
+        currencyName:
           type:
           - string
           - 'null'
@@ -1176,10 +1118,168 @@ components:
           type:
           - string
           - 'null'
-        quoteNumber:
+        totalAmount:
+          type: number
+          format: double
+        taxAmount:
+          type: number
+          format: double
+        discountAmount:
+          type: number
+          format: double
+        priceListId:
           type:
           - string
           - 'null'
+          format: uuid
+        paymentReceived:
+          type: boolean
+        status:
+          $ref: '#/components/schemas/QuoteStatus'
+        quoteLines:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/RegulationQuoteLine'
+        dateCreated:
+          type: string
+          format: date-time
+        purchaseType:
+          $ref: '#/components/schemas/PurchaseType'
+      additionalProperties: false
+    Gima:
+      enum:
+      - 0
+      - 200000000
+      - 200000001
+      - 200000002
+      - 200000003
+      type: integer
+      format: int32
+    InclusionReason:
+      enum:
+      - 0
+      - 200000000
+      - 200000001
+      type: integer
+      format: int32
+    RegulatedOrganisationType:
+      enum:
+      - 0
+      - 200000000
+      - 200000001
+      - 200000002
+      - 200000003
+      - 200000004
+      - 200000005
+      type: integer
+      format: int32
+    MemberDirectorPrincipal:
+      type: object
+      properties:
+        contactId:
+          type:
+          - string
+          - 'null'
+          format: uuid
+        connectionId:
+          type:
+          - string
+          - 'null'
+          format: uuid
+        emailAddress:
+          type:
+          - string
+          - 'null'
+        emailAddress2:
+          type:
+          - string
+          - 'null'
+        emailAddress3:
+          type:
+          - string
+          - 'null'
+        contactNo:
+          type:
+          - string
+          - 'null'
+        fullName:
+          type:
+          - string
+          - 'null'
+        hasPreviousBadSchemeStatus:
+          type: boolean
+        notFoundInCrm:
+          type: boolean
+        isResponsiblePrincipal:
+          type: boolean
+      additionalProperties: false
+    SubscriptionPaymentMethod:
+      enum:
+      - 0
+      - 200000000
+      - 200000002
+      - 200000003
+      - 200000004
+      - 200000006
+      type: integer
+      format: int32
+    SchemeLicenceStatusReason:
+      enum:
+      - 0
+      - 200000000
+      - 200000001
+      - 200000002
+      - 200000003
+      - 200000004
+      - 200000005
+      - 200000006
+      - 200000007
+      - 200000008
+      - 200000009
+      - 200000010
+      - 200000011
+      - 200000012
+      - 200000013
+      - 200000014
+      - 200000015
+      - 200000016
+      type: integer
+      format: int32
+    SponsorshipCode:
+      type: object
+      properties:
+        sponsorshipCodeId:
+          type: string
+          format: uuid
+        code:
+          type:
+          - string
+          - 'null'
+        status:
+          $ref: '#/components/schemas/SponsorshipCodeStatus'
+        startDate:
+          type: string
+          format: date-time
+        endDate:
+          type: string
+          format: date-time
+        totalAllowance:
+          type: integer
+          format: int32
+        quantityAvailable:
+          type: integer
+          format: int32
+        quantityUsed:
+          type: integer
+          format: int32
+        createdOn:
+          type: string
+          format: date-time
+        modifiedOn:
+          type: string
+          format: date-time
       additionalProperties: false
     RegulationQuoteLine:
       type: object
@@ -1239,58 +1339,7 @@ components:
           - 'null'
           format: date-time
       additionalProperties: false
-    Subscription:
-      type: object
-      properties:
-        subscriptionId:
-          type: string
-          format: uuid
-        startDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        endDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        numberOfLicences:
-          type: integer
-          format: int32
-        poNumber:
-          type:
-          - string
-          - 'null'
-        createdDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        salesOrders:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-            format: uuid
-        quotes:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-            format: uuid
-      additionalProperties: false
-    SuspensionReason:
-      enum:
-      - 0
-      - 200000000
-      - 200000001
-      - 200000002
-      type: integer
-      format: int32
-    SchemeLicenceStatusReason:
+    ReturnStatusCode:
       enum:
       - 0
       - 200000000
@@ -1307,64 +1356,88 @@ components:
       - 200000011
       - 200000012
       - 200000013
-      - 200000014
-      - 200000015
-      - 200000016
       type: integer
       format: int32
-    SponsorshipCode:
+    Office:
       type: object
       properties:
-        sponsorshipCodeId:
+        accountId:
           type: string
           format: uuid
-        code:
+        firmNumber:
           type:
           - string
           - 'null'
-        status:
-          $ref: '#/components/schemas/SponsorshipCodeStatus'
-        startDate:
-          type: string
-          format: date-time
-        endDate:
-          type: string
-          format: date-time
-        totalAllowance:
-          type: integer
-          format: int32
-        quantityAvailable:
-          type: integer
-          format: int32
-        quantityUsed:
-          type: integer
-          format: int32
-        createdOn:
-          type: string
-          format: date-time
-        modifiedOn:
-          type: string
-          format: date-time
+        officeNumber:
+          type:
+          - string
+          - 'null'
+        publicationName:
+          type:
+          - string
+          - 'null'
+        registeredName:
+          type:
+          - string
+          - 'null'
+        tradingName:
+          type:
+          - string
+          - 'null'
+        primaryContact:
+          type:
+          - string
+          - 'null'
+          format: uuid
+        primaryContactName:
+          type:
+          - string
+          - 'null'
+        address:
+          $ref: '#/components/schemas/Address'
+        isoCountryCode:
+          type:
+          - string
+          - 'null'
+        vatRegNumber:
+          type:
+          - string
+          - 'null'
+        isHeadOffice:
+          type: boolean
+        isRegulated:
+          type: boolean
+        hasActiveRegistration:
+          type: boolean
       additionalProperties: false
-    Gima:
+    FirmRegsRoute:
       enum:
       - 0
-      - 200000000
-      - 200000001
-      - 200000002
-      - 200000003
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+      - 10
       type: integer
       format: int32
-    SubscriptionPaymentMethod:
-      enum:
-      - 0
-      - 200000000
-      - 200000002
-      - 200000003
-      - 200000004
-      - 200000006
-      type: integer
-      format: int32
+    RegulationSubscriptions:
+      type: object
+      properties:
+        subscriptions:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/RegulationSubscription'
+        countOfSubscriptions:
+          type: integer
+          format: int32
+      additionalProperties: false
     RegulationSubscription:
       type: object
       properties:
@@ -1485,79 +1558,6 @@ components:
           - 'null'
           format: date-time
       additionalProperties: false
-    RegulationQuote:
-      type: object
-      properties:
-        quoteId:
-          type: string
-          format: uuid
-        quoteRef:
-          type:
-          - string
-          - 'null'
-        name:
-          type:
-          - string
-          - 'null'
-        description:
-          type:
-          - string
-          - 'null'
-        revisionNumber:
-          type: integer
-          format: int32
-        transactionCurrencyId:
-          type: string
-          format: uuid
-        isoCurrencyCode:
-          type:
-          - string
-          - 'null'
-        currencyName:
-          type:
-          - string
-          - 'null'
-        currencySymbol:
-          type:
-          - string
-          - 'null'
-        totalAmount:
-          type: number
-          format: double
-        taxAmount:
-          type: number
-          format: double
-        discountAmount:
-          type: number
-          format: double
-        priceListId:
-          type:
-          - string
-          - 'null'
-          format: uuid
-        paymentReceived:
-          type: boolean
-        status:
-          $ref: '#/components/schemas/QuoteStatus'
-        quoteLines:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/RegulationQuoteLine'
-        dateCreated:
-          type: string
-          format: date-time
-        purchaseType:
-          $ref: '#/components/schemas/PurchaseType'
-      additionalProperties: false
-    AddressType:
-      enum:
-      - 0
-      - 1
-      - 2
-      type: integer
-      format: int32
   securitySchemes:
     Bearer:
       type: apiKey

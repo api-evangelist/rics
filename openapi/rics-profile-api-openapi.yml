@@ -49,6 +49,16 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    MemberDesignation:
+      enum:
+      - 0
+      - 200000000
+      - 200000001
+      - 200000002
+      - 200000003
+      - 200000004
+      type: integer
+      format: int32
     ProfileModel:
       type: object
       properties:
@@ -137,16 +147,6 @@ components:
       - 200000001
       - 200000002
       - 200000003
-      type: integer
-      format: int32
-    MemberDesignation:
-      enum:
-      - 0
-      - 200000000
-      - 200000001
-      - 200000002
-      - 200000003
-      - 200000004
       type: integer
       format: int32
     ProblemDetails:

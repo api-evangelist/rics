@@ -132,44 +132,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    ProblemDetails:
-      type: object
-      properties:
-        type:
-          type:
-          - string
-          - 'null'
-        title:
-          type:
-          - string
-          - 'null'
-        status:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        detail:
-          type:
-          - string
-          - 'null'
-        instance:
-          type:
-          - string
-          - 'null'
-      additionalProperties: {}
-    Fees:
-      type: object
-      properties:
-        subsscriptionAmount:
-          type: number
-          format: double
-        lionHeartAmount:
-          type: number
-          format: double
-        upgAmount:
-          type: number
-          format: double
-      additionalProperties: false
     PaymentRequestModel:
       type: object
       properties:
@@ -248,6 +210,44 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/JToken'
+    ProblemDetails:
+      type: object
+      properties:
+        type:
+          type:
+          - string
+          - 'null'
+        title:
+          type:
+          - string
+          - 'null'
+        status:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        detail:
+          type:
+          - string
+          - 'null'
+        instance:
+          type:
+          - string
+          - 'null'
+      additionalProperties: {}
+    Fees:
+      type: object
+      properties:
+        subsscriptionAmount:
+          type: number
+          format: double
+        lionHeartAmount:
+          type: number
+          format: double
+        upgAmount:
+          type: number
+          format: double
+      additionalProperties: false
   securitySchemes:
     Bearer:
       type: apiKey
