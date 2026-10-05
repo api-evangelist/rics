@@ -1,0 +1,12 @@
+{
+ "url": "https://api.rics.org/swagger/v1/swagger.json",
+ "requested_url": "https://api.rics.org/swagger/v1/swagger.json",
+ "status": 200,
+ "content_type": "application/json;charset=utf-8",
+ "bytes": 67992,
+ "sha256": "c3500ce0cb93b6303863c740e0bf062bb8445c8be7be5dc04c59ff217234025b",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "byte-identical",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the archived file is byte-identical to what the provider serves."
+}
