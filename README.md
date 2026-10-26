@@ -1,0 +1,191 @@
+# RICS (Royal Institution of Chartered Surveyors) (rics)
+
+<!-- API-EVANGELIST-PROVENANCE:BEGIN -->
+> ### About this repository
+>
+> **This is not our API.** This repository is an independent, third-party profile of a company's
+> **publicly available** API surface, maintained by [API Evangelist](https://apievangelist.com).
+> API Evangelist does not operate, host, resell, or support this company's APIs, and is not
+> affiliated with or endorsed by the company unless stated on the profile.
+>
+> **Where the information came from.** Everything here is assembled from material a member of the
+> public can reach with a browser and no credentials — the company's own website, developer portal
+> and documentation, the specifications it publishes for public use (OpenAPI, AsyncAPI, JSON Schema,
+> `apis.json`, `llms.txt` and similar), its public repositories, and its public status, pricing and
+> changelog pages. **Nothing here is obtained by breaching a system, defeating an access control, or
+> using credentials of any kind.**
+>
+> **The rating is an independent assessment.** The Kin Score and Agent Readiness rating are
+> independently calculated scores of a company's *public* API artifacts, produced by API Evangelist
+> against a published rubric. They are not certifications, endorsements, security assessments, or
+> audits, and they score published artifacts — not the quality, safety, or security of the software.
+>
+> **Corrections, re-scores, and removal are free.** No partnership, contract, or purchase is
+> required, and you do not need to justify the request.
+>
+> - **Something wrong?** Open an issue on this repository, or email
+>   [info@apievangelist.com](mailto:info@apievangelist.com).
+> - **Published something new?** Ask for a re-score and we will re-run the rating.
+> - **Want the listing taken down?** Say so and we will honor it. The profile is reduced to your
+>   company name, a factual description, and a link to your own site, and the company is recorded as
+>   **unrated** — never scored zero for having asked.
+>
+> **Response times.** Acknowledgement within **one business day**; removal or restriction within
+> **two business days**; corrections and re-scores within **five business days**.
+>
+> **Not from the company, and here with a question?** You are welcome here — we would rather be the
+> front line and point you the right way than have a good report go nowhere. What this repository
+> can answer is narrow, though, so it is worth knowing who you are actually looking for:
+>
+> - **A question about how the API works, an account, billing, or a bug in the service** — that is
+>   the company's own support, not us. We profile this API; we do not operate it and cannot see
+>   your account.
+> - **A bug in an open-source project we only catalog** — file it on that project's own repository.
+>   This has happened with a real and correct bug report that reached us instead of the people who
+>   could fix it, which helped nobody.
+> - **Anything about this listing itself** — the description, the tags, the rating, a missing or
+>   wrong artifact — is ours. Open an issue here.
+> - **Not sure, or something general about API Evangelist or APIs.io** — open an issue on the
+>   [APIs.io Inbox](https://github.com/api-search/inbox) and we will route it.
+>
+> **This repository contains no software, and we will never ask you to download anything.** There is
+> no build, release, installer, or binary here — only text and machine-readable API descriptions, so
+> there is nothing here that can be "corrupt" or need "repairing". Any issue, comment, or email
+> claiming otherwise and offering a download link is not from us and is hostile. Do not follow the
+> link; it is a lure. Report it to GitHub and, if you like, tell us at
+> [info@apievangelist.com](mailto:info@apievangelist.com) so we can take it down.
+>
+> **On a security or compliance team?** Email
+> [info@apievangelist.com](mailto:info@apievangelist.com) with *security* in the subject line and
+> you will get a person, not a form. We will tell you exactly which public URLs this profile was
+> built from so your team can see the same surface we did, and we will take the listing down on
+> request while you work through it.
+>
+> Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
+<!-- API-EVANGELIST-PROVENANCE:END -->
+
+RICS, the Royal Institution of Chartered Surveyors, is the British royal-chartered professional body founded in London in 1868 that qualifies, regulates and sets standards for surveyors, valuers and built-environment professionals worldwide, with the United Kingdom as its home market. In the property value chain it sits on the professional and valuation side rather than the listings side: it writes the RICS Valuation - Global Standards (the Red Book, incorporating IVS), the RICS Home Survey Standard, RICS Property Measurement / IPMS, ICMS, ILMS and the Rules of Conduct, it regulates roughly 12,000 RICS-regulated firms, and it runs the consumer-facing Find a Surveyor directory at ricsfirms.com and the isurv knowledge platform. Because the United Kingdom has no MLS, there is no RESO here at all - no RESO Web API or Data Dictionary certification, no OData `$metadata`, no Universal Property Identifier - so the "certified but unreachable" pattern does not apply; there is simply no listing-data certification layer in this market. What RICS does publish is genuinely machine-readable: the RICS Data Standard (RDS) 3.3.3 is an MIT-licensed JSON Schema and XSD covering land, property and infrastructure assets and incorporating ICMS, ILMS, IPMS, IVS and IBOS, hosted openly on GitHub at RICS-Data-Standard/RDS and downloadable anonymously. RICS also operates one real production API - the DigitalCommunity API at api.rics.org, whose OpenAPI 3.0.1 contract is served publicly and anonymously from a live Swagger UI - but it is not a public data API: it exposes RICS firm regulation schemes, PII and redress records, subscriptions, payments, member profiles and survey-writer integration, and its own description states that credentials must first be issued by RICS. There is no developer portal, no self-serve signup, and no open dataset from RICS; the UK's open property data layer belongs to HM Land Registry and Ordnance Survey, not to the professional body.
+
+**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/rics/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/rics/refs/heads/main/apis.yml)
+
+## Tags
+
+- Real Estate
+- United Kingdom
+- Industry Body
+- Valuation
+- Standards
+- Surveying
+- Property Measurement
+- Regulation
+- Construction
+- PropTech
+
+## Timestamps
+
+- **Created:** 2026-07-26
+- **Modified:** 2026-07-26
+
+## APIs
+
+### RICS DigitalCommunity API
+
+The RICS DigitalCommunity API is a live, RICS-operated REST API served from api.rics.org whose OpenAPI 3.0.1 contract is published anonymously and without credentials at `https://api.rics.org/swagger/v1/swagger.json` (HTTP 200, 67,992 bytes, fetched 2026-07-26) and rendered in a Swagger UI at `https://api.rics.org/`. It carries 16 operations across seven tags — Token, Profile, Regulation, Payment, SurveyWriter, AzureStorage and OlaMerchantPost — and its schemas are unmistakably those of a professional regulator: `RegulationScheme`, `SchemeLicenceType`, `SchemeLicenceStatus`, `PiiInsurer`, `RedressProvider`, `MemberDesignation`, `ProfessionalGrade`, `RegulatedOrganisationType`, `SurveyingService`, `SurveyWriterModel`, `RegulationSubscription` and `RegulationQuote`. This is the machinery behind RICS firm regulation, professional indemnity insurance and redress declarations, subscription billing and survey-writing software integration — it is NOT a property, listings or valuation-data API. Access is not self-serve. The specification's own `info.description` states that "to use this API, you need to have been first been issued a username and password by RICS", which are POSTed as a JSON User object to `/token` to receive a short-lived bearer JWT that must accompany every subsequent request. No application form, pricing page, terms page or developer documentation for this API was found on any RICS property; the closest published route is the RICS Tech Partner Programme. Probed anonymously on 2026-07-26, `GET /api/Profile/1` returned HTTP 401 and `GET /token` returned HTTP 405, confirming the surface is live and enforcing authentication.
+
+- **Human URL:** [https://api.rics.org/](https://api.rics.org/)
+- **Base URL:** `https://api.rics.org`
+
+#### Tags
+
+- Regulation
+- Membership
+- Payments
+- Surveying
+- Professional Body
+
+#### Properties
+
+- [OpenAPI](openapi/rics-digitalcommunity-api-openapi.json) — harvested verbatim from `https://api.rics.org/swagger/v1/swagger.json` on 2026-07-26 (HTTP 200)
+- [API Reference](https://api.rics.org/) — Swagger UI, public and anonymous, "try it out" disabled
+- [Partners](https://www.rics.org/get-involved/rics-tech-partner-programme) — RICS Tech Partner Programme
+
+## Common Properties
+
+- [Website](https://www.rics.org/)
+- [About](https://www.rics.org/about-rics)
+- [Standards and Guidance](https://www.rics.org/profession-standards/rics-standards-and-guidance)
+- [Red Book — RICS Valuation Global Standards](https://www.rics.org/profession-standards/rics-standards-and-guidance/sector-standards/valuation-standards/red-book)
+- [RICS Property Measurement, 2nd edition (IPMS)](https://www.rics.org/profession-standards/rics-standards-and-guidance/sector-standards/real-estate-standards/rics-property-measurement-2nd-edition)
+- [RICS Data Standards](https://www.rics.org/profession-standards/rics-standards-and-guidance/sector-standards/construction-standards/rics-data-standards)
+- [JSON Schema — RICS Data Standard 3.3.3](openapi/rics-data-standard-3.3.3-schema.json) (MIT)
+- [XML Schema — RICS Data Standard 3.3.3](openapi/rics-data-standard-3.3.3-schema.xsd) (MIT)
+- [Data Model — RDS description block](openapi/rics-data-standard-3.3.3-description.json)
+- [Example — RDS reference instance](openapi/rics-data-standard-3.3.3-example.json)
+- [Example — IPMS](openapi/rics-data-standard-3.3.3-ipms-example.json)
+- [Example — ICMS](openapi/rics-data-standard-3.3.3-icms-example.json)
+- [Source Code](https://github.com/RICS-Data-Standard/RDS)
+- [GitHub Organization](https://github.com/RICS-Data-Standard)
+- [OpenID Connect discovery](openapi/rics-azure-ad-b2c-openid-configuration.json)
+- [Login](https://services.rics.org/Rics.IntermediaryIdentityService/)
+- [Regulation](https://www.rics.org/regulation)
+- [Find a Surveyor](https://www.ricsfirms.com/)
+- [isurv](https://www.isurv.com/)
+- [RICS Tech Partner Programme](https://www.rics.org/get-involved/rics-tech-partner-programme)
+- [News and Insights](https://www.rics.org/news-insights)
+- [Email — datastandards@rics.org](mailto:datastandards@rics.org)
+- [LinkedIn](https://www.linkedin.com/company/rics)
+
+## RESO Posture
+
+**Certified:** No. **Posture:** No RESO reference found anywhere in the RICS estate.
+
+RESO is a North American construct tied to NAR-affiliated MLSs, and the United Kingdom has no MLS to certify against. RICS is neither RESO-certified nor a candidate for certification, holds no listing data, and runs no OData service — so "certified but not reachable" does not apply here; there is no certification layer for property data in this market at all. No `$metadata` document exists anywhere in the estate: `api.rics.org` is an ASP.NET/IIS REST service documented with OpenAPI 3.0.1, not OData. There is no Universal Property Identifier — RICS addresses records by its own regulation-scheme numbers and member/firm identifiers (`/api/Regulation/{schemeNumber}`, `/api/Profile/{id}`), while UK property identity is carried by HM Land Registry title numbers and Ordnance Survey UPRN/TOID.
+
+What RICS standardises instead is the professional layer — the Red Book (incorporating IVS), the Home Survey Standard, IPMS, ICMS, ILMS and the Rules of Conduct — plus one genuinely machine-readable contract: the **RICS Data Standard (RDS) 3.3.3**, an MIT-licensed JSON Schema (draft-04) and XSD published on GitHub at [RICS-Data-Standard/RDS](https://github.com/RICS-Data-Standard/RDS), incorporating ICMS, ILMS, IPMS, IVS and IBOS with buildingSMART IFC and OASIS xAL address formats. Every RDS artifact in `openapi/` was fetched anonymously with HTTP 200 — no account, no EULA click-through, no membership. That is the sharpest contrast with RESO, whose reso.org downloads sit behind a EULA. RDS is a schema and exchange format only: it defines no transport, no endpoints and no authentication, and RICS operates no service that serves or accepts RDS documents over HTTP.
+
+## Access Gate
+
+**Gate:** `partner-only`.
+
+Reading the contract costs nothing — `https://api.rics.org/swagger/v1/swagger.json` returns the full OpenAPI 3.0.1 document to an anonymous GET, and the RDS schemas are MIT-licensed on GitHub. Calling the API is a different matter. The specification states verbatim: *"To use this API, you need to have been first been issued a username and password by RICS. These need to be sent in a JSON User object in the body of a POST request to the /token endpoint in order to receive back a secure bearer token."* No application form, developer terms page, pricing page or signup flow for this API exists on any RICS property. The only published route into a RICS technology relationship is the [RICS Tech Partner Programme](https://www.rics.org/get-involved/rics-tech-partner-programme), a curated, commercially negotiated partner network — hence `partner-only` rather than `application-approval`, because there is no published application to make.
+
+There is no self-serve developer portal. `developer.rics.org`, `developers.rics.org`, `docs.rics.org`, `data.rics.org` and `standards.rics.org` all fail DNS resolution. The nearest thing is the bare Swagger UI at `https://api.rics.org/`, which has `tryItOutEnabled: false`, offers no signup and issues no keys. (`developer.bcis.co.uk` is a real Stoplight developer portal, but BCIS was spun out of RICS in 2022 with LDC backing and RICS retains only a minority stake — it is a separate provider.)
+
+Standards PDFs are linked from `www.rics.org` under `/content/dam/ricsglobal/documents/standards/`, but this could **not** be confirmed anonymously: the host is fronted by Imperva Incapsula and answers every path — including the Red Book PDF — with HTTP 200 and a 212-byte JavaScript challenge instead of the document, under both default and full browser headers. The subscription platform isurv.com carries the same standards behind a paid subscription. Treat the free-PDF claim as unverified rather than as a finding.
+
+## Open Data
+
+**None.** RICS publishes no open, unlicensed, publicly callable dataset. Its market intelligence — the RICS UK Residential Market Survey, Construction Monitor and Commercial Property Monitor — is published as reports and news pages, not as data endpoints. What is open from RICS is *specification*, not data: the MIT-licensed RICS Data Standard schema. The genuinely open UK property data layer belongs to the public sector — HM Land Registry Price Paid Data under the Open Government Licence and Ordnance Survey's open addressing and mapping products — and none of it comes from RICS.
+
+## Auth Model
+
+**DigitalCommunity API:** Bearer JWT via a proprietary username/password token exchange. The specification declares a single security scheme, `Bearer`, as `type: apiKey`, `name: Authorization`, `in: header` — "Please enter into field the word 'Bearer' following by space and JWT" — applied globally. `POST https://api.rics.org/token` takes a JSON User object and returns a short-lived token. Despite issuing JWTs this is **not** OAuth 2.0: no grant type, no `client_id`/`client_secret`, no scopes, no discovery document. Refresh is explicitly pushed onto the client. Anonymous probes on 2026-07-26 returned HTTP 401 from `/api/Profile/1` and HTTP 405 from `GET /token`.
+
+**Member sign-in:** OpenID Connect over Azure AD B2C — tenant `ricsb2clive.onmicrosoft.com` (id `88b1d398-08db-4fc1-af82-65ba1595185c`), custom policy `B2C_1A_RICS_signup_signin`, vanity host `b2clogin.rics.org`, `scopes_supported: ["openid"]`, RS256. The discovery document was fetched anonymously (HTTP 200) and is saved verbatim in `openapi/`. This is the sign-in for RICS members and customers reached through `services.rics.org` — it is **not** a developer authorization surface and issues no API credentials.
+
+## API Evangelist Artifacts
+
+Derived and generated by the enrichment pipeline on 2026-07-26 from the published DigitalCommunity OpenAPI, the RICS Data Standard, live anonymous probes and registry searches. Nothing here is a RICS artifact except where the `method` says `searched`.
+
+- [Authentication profile](authentication/rics-authentication.yml) — the single `Bearer` scheme
+- [OAuth scopes](scopes/rics-scopes.yml) — the one scope RICS advertises (`openid`, member sign-in) and why the API has none
+- [Well-known index](well-known/rics-well-known.yml) — every `/.well-known/` probe and its status, with control probes; no security.txt anywhere
+- [API conventions](conventions/rics-conventions.yml) — no idempotency, no pagination, no expansion, no request-id, no rate-limit signalling
+- [Error catalog](errors/rics-problem-types.yml) — the `ProblemDetails` envelope, every declared status, and the undeclared 500 observed on `/token`
+- [Data model](data-model/rics-data-model.yml) — the 52-schema regulation entity graph, hubbed on `RegulationScheme`
+- [Lifecycle](lifecycle/rics-lifecycle.yml) — unversioned `v1`, no deprecation policy, no SLA, no status page
+- [Changelog](changelog/rics-changelog.yml) — the RDS GitHub release history (v3.3.3 March 2022, v3.2.1 April 2021)
+- [Conformance](conformance/rics-conformance.yml) — OpenAPI 3.0.1, JSON Schema draft-04, OIDC, IVS/IPMS/ICMS/ILMS/IBOS; no RESO, no OData, no OAuth on the API
+- [Domain security](security/rics-domain-security.yml) — TLS 1.3 on both hosts, no HSTS, no DNSSEC, no CAA, SPF and DMARC `p=reject`
+- [Packages](packages/rics-packages.yml) — none; every registry searched, all hits are name collisions
+- [MCP server (candidate)](mcp/rics-mcp.yml) and [tool crosswalk](mcp/rics-tool-crosswalk.yml) — RICS runs no MCP server; tools derived from the spec
+- [OpenAPI Overlay](overlays/rics-digitalcommunity-api-overlay.yaml) — the `operationId`s and tags the published spec never declared
+- [Agentic access](agentic-access/rics-agentic-access.yml) — recommended `x-agentic-access` contracts for all 16 operations
+- [Agent skills](skills/_index.yml) — three skills grounded in the real read paths; the writes are deliberately excluded
+- [llms.txt](llms/rics-llms.txt) — generated; RICS publishes none
+
+**Not present, verified:** no webhooks, events, AsyncAPI, GraphQL, gRPC or MCP server; no SDKs, CLI or components; no sandbox, test credentials or test keys (only an `isTest` flag on a payment request); no security.txt, vulnerability disclosure programme, bug bounty, trust centre or published certifications; no status page, SLA or deprecation policy; no Postman collection.
+
+## Maintainers
+
+- **Kin Lane** — kin@apievangelist.com
